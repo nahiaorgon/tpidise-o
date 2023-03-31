@@ -1,7 +1,60 @@
 ﻿@page "/usuarios"
+@inject NotificationService NotificationService
 
-<PageTitle>Usuarios</PageTitle>
+<PageTitle>Areas</PageTitle>
 
-<h1>Usuarios</h1>
+<TituloPrincipal TextoPrincipal="Empleados" TextoSecundario="Areas" />
 
- 
+<br>
+<div class="container-fluid ">
+    <div class="row px-3">
+        <div  class="col-lg-6 col-xl-4 p-4" style="margin-left: 130px;">
+            <RadzenCard>
+                <RadzenText TextAlign="TextAlign.Center" TextStyle="TextStyle.H6" TagName="TagName.H3">Área de Administración</RadzenText>
+                    <RadzenButton Text="Ingresar" class="w-100"
+                    ButtonStyle="ButtonStyle.Primary"
+                        Click=@(args => ShowNotification(new NotificationMessage { Severity = NotificationSeverity.Info, Summary = "Info Summary", Detail = "Info Detail", Duration = 4000 })) />
+                    </RadzenCard>
+                
+        </div>
+   
+    <div class="col-lg-6 col-xl-4 p-4" style="margin-left: 80px;">
+            <RadzenCard>
+                <RadzenText TextAlign="TextAlign.Center" TextStyle="TextStyle.H6" TagName="TagName.H3">Área de Compras</RadzenText>
+                <RadzenButton Text="Ingresar" class="w-100"
+                    ButtonStyle="ButtonStyle.Success"
+                    Click=@(args => ShowNotification(new NotificationMessage { Severity = NotificationSeverity.Warning, Summary = "Warning Summary", Detail = "Warning Detail", Duration = 4000 })) />
+            </RadzenCard>
+    </div>
+    </div>
+
+    <div class="row px-3">
+
+    <div class="col-lg-6 col-xl-4 p-4" style="margin-left: 130px; ">
+            <RadzenCard>
+                <RadzenText TextAlign="TextAlign.Center" TextStyle="TextStyle.H6" TagName="TagName.H3">Área de Producción</RadzenText>
+                <RadzenButton Text="Ingresar" class="w-100"
+                    ButtonStyle="ButtonStyle.Secondary"
+                    Click=@(args => ShowNotification(new NotificationMessage { Severity = NotificationSeverity.Warning, Summary = "Warning Summary", Detail = "Warning Detail", Duration = 4000 })) />
+            </RadzenCard>
+    </div> 
+     <div class="col-lg-6 col-xl-4 p-4" style="margin-left: 80px;">
+            <RadzenCard>
+                <RadzenText TextAlign="TextAlign.Center" TextStyle="TextStyle.H6" TagName="TagName.H3">Área de Ventas</RadzenText>
+                <RadzenButton Text="Ingresar" class="w-100"
+                    ButtonStyle="ButtonStyle.Info"
+                    Click=@(args => ShowNotification(new NotificationMessage { Severity = NotificationSeverity.Warning, Summary = "Warning Summary", Detail = "Warning Detail", Duration = 4000 })) />
+            </RadzenCard>
+    </div>
+   </div>
+   
+</div>
+
+
+@code {
+   void ShowNotification(NotificationMessage message)
+   {
+      NotificationService.Notify(message);
+   }
+
+}

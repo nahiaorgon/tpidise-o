@@ -1,0 +1,54 @@
+@page "/ventasProveedor"
+@using Reciplas.Models;
+@inject NotificationService NotificationService 
+@inherits OwningComponentBase<Usuario>
+@using System.Collections.Generic;  
+
+<PageTitle>Areas</PageTitle>
+
+<h2 class="text-primary rz-color-primary">Ventas</h2>
+
+<h5 class="text-primary rz-color-base-700">Proveedores</h5>
+
+
+<CListado TItem="Models.Proveedor" Data="@proveedores">
+       <Columns>
+        <RadzenDataGridColumn TItem=" Models.Proveedor" Property="Identifiacion" Title="Identificaci&oacute;n" Width="100px" />
+        <RadzenDataGridColumn TItem="Models.Proveedor" Property="Direccion" Title="Direcci&oacute;n" Width="100px" />
+        <RadzenDataGridColumn TItem=" Models.Proveedor" Property="Sucursal" Title="Sucursal" Width="100px"/> 
+        <RadzenDataGridColumn TItem=" Models.Proveedor" Property="Telefono" Title="Telef&oacute;no" Width="100px"/> 
+    </Columns>                 
+</CListado>
+<br>
+<RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="1rem" Wrap="FlexWrap.Wrap">
+    <RadzenButton Click=@(args => OnClick("Secondary button with text and icon")) Text="Nuevo" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Secondary" />
+    <RadzenButton Click=@(args => OnClick("Primary button with text and icon")) Text="Modificar" Icon="check_circle" ButtonStyle="ButtonStyle.Success"  />
+    <RadzenButton Click=@(args => OnClick("Light button with text and icon")) Text="Eliminar"  Icon="report" ButtonStyle="ButtonStyle.Danger" />
+</RadzenStack>
+
+
+
+@code {
+   
+    IEnumerable<Models.Proveedor> proveedores;  
+    protected bool cargando = true;
+    [Parameter] public bool SoloLectura { get; set; } = true;
+    [Parameter] public string Nombre {get; set;}
+    [Parameter] public string Direccion {get; set;}
+    [Parameter] public string Identificacion {get; set;}
+     [Parameter] public int Sucursal {get; set;} 
+
+   /* protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        //customers = dbContext.Customers.ToList();
+       // orders = dbContext.Orders.ToList();
+        //orderDetails = dbContext.OrderDetails.Include("Product").ToList();
+    }*/
+    private void OnClick(string text)
+    {
+        NotificationService.Notify(new NotificationMessage { Severity = NotificationSeverity.Info, Summary = "Button Clicked", Detail = text });
+    }
+}
+

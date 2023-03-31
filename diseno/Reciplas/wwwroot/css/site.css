@@ -14,8 +14,8 @@ a, .btn-link {
 
 .btn-primary {
     color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
+    background-color: yellow !important; 
+    border-color: green !important; 
 }
 
 .content {
@@ -62,3 +62,16 @@ a, .btn-link {
     .blazor-error-boundary::after {
         content: "An error has occurred."
     }
+
+:root{
+--rz-primary: #5499c7 !important;
+--rz-secondary:#8e44ad !important;
+--rz-series-1: #a569bd !important;
+--rz-series-2: #1abc9c !important;
+--rz-series-3: #DAF7A6 !important;
+--rz-series-1: #2874A6 !important;
+
+--rz-info: #C0392B  !important;
+--rz-success: #1abc9c !important;
+
+} 
