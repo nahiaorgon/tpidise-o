@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "DEikL34VuanGr0ubgM9TMbsveF49IyKXfvSvvm7mvco8U9AxYhb/+9HTdrRXHd2scKZszbhjnWiCPOLtMzmKkw==",
+  "dgSpecHash": "Eukw4yhlg0pFktg0hVVIpwgTc/EMqww7rxSq7FopsEk9JGjtYeZmzb/gyvd7TsUQxLV0BxTIwz7+EneeYu+CAQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Nahiara Orgoñ\\Documents\\GitHub\\tpidise-o\\diseno\\Reciplas\\Reciplas.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Nahiara Orgoñ\\.nuget\\packages\\blazored.modal\\7.1.0\\blazored.modal.7.1.0.nupkg.sha512",
     "C:\\Users\\Nahiara Orgoñ\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Nahiara Orgoñ\\.nuget\\packages\\libsassbuilder\\2.0.1\\libsassbuilder.2.0.1.nupkg.sha512",
     "C:\\Users\\Nahiara Orgoñ\\.nuget\\packages\\microsoft.aspnetcore.authorization\\7.0.0\\microsoft.aspnetcore.authorization.7.0.0.nupkg.sha512",
@@ -29,6 +30,7 @@
     "C:\\Users\\Nahiara Orgoñ\\.nuget\\packages\\microsoft.extensions.options\\7.0.0\\microsoft.extensions.options.7.0.0.nupkg.sha512",
     "C:\\Users\\Nahiara Orgoñ\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\Nahiara Orgoñ\\.nuget\\packages\\microsoft.jsinterop\\7.0.0\\microsoft.jsinterop.7.0.0.nupkg.sha512",
+    "C:\\Users\\Nahiara Orgoñ\\.nuget\\packages\\microsoft.jsinterop.webassembly\\6.0.3\\microsoft.jsinterop.webassembly.6.0.3.nupkg.sha512",
     "C:\\Users\\Nahiara Orgoñ\\.nuget\\packages\\radzen.blazor\\4.8.3\\radzen.blazor.4.8.3.nupkg.sha512",
     "C:\\Users\\Nahiara Orgoñ\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
     "C:\\Users\\Nahiara Orgoñ\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",

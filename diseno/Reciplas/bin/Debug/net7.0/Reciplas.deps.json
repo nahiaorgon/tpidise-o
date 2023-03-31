@@ -8,11 +8,26 @@
     ".NETCoreApp,Version=v7.0": {
       "Reciplas/1.0.0": {
         "dependencies": {
+          "Blazored.Modal": "7.1.0",
           "Microsoft.EntityFrameworkCore.Tools": "5.0.10",
           "Radzen.Blazor": "4.8.3"
         },
         "runtime": {
           "Reciplas.dll": {}
+        }
+      },
+      "Blazored.Modal/7.1.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "7.0.0",
+          "Microsoft.AspNetCore.Components.Web": "7.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0",
+          "Microsoft.JSInterop.WebAssembly": "6.0.3"
+        },
+        "runtime": {
+          "lib/net6.0/Blazored.Modal.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Humanizer.Core/2.8.26": {
@@ -153,6 +168,17 @@
       },
       "Microsoft.Extensions.Primitives/7.0.0": {},
       "Microsoft.JSInterop/7.0.0": {},
+      "Microsoft.JSInterop.WebAssembly/6.0.3": {
+        "dependencies": {
+          "Microsoft.JSInterop": "7.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.JSInterop.WebAssembly.dll": {
+            "assemblyVersion": "6.0.3.0",
+            "fileVersion": "6.0.322.12401"
+          }
+        }
+      },
       "Radzen.Blazor/4.8.3": {
         "dependencies": {
           "LibSassBuilder": "2.0.1",
@@ -186,6 +212,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Blazored.Modal/7.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ft5bX5barhyzpQc9jjU029ByrAQXgqSMItwhmEbr0pb7r+of8XH0E/OyS8K6O6Disq5R+p4wpt+W+NGg3/OTMA==",
+      "path": "blazored.modal/7.1.0",
+      "hashPath": "blazored.modal.7.1.0.nupkg.sha512"
     },
     "Humanizer.Core/2.8.26": {
       "type": "package",
@@ -361,6 +394,13 @@
       "sha512": "sha512-C9diwCnaWZ7PH3zOyf2zgcwFEqbSU11DzCnUPXCf5cqXMFeZDrEDP+M74TiCURKJ5vxImRvMtD7RiHYCtkxoXw==",
       "path": "microsoft.jsinterop/7.0.0",
       "hashPath": "microsoft.jsinterop.7.0.0.nupkg.sha512"
+    },
+    "Microsoft.JSInterop.WebAssembly/6.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4B7RdZ01eKShey9MllKrVjEJZN/Y1Hvku/qTwVKSwt/n+KgFmyYEkEMbSdKDWB7MbvCPZykCQbkKnKfLzML9sg==",
+      "path": "microsoft.jsinterop.webassembly/6.0.3",
+      "hashPath": "microsoft.jsinterop.webassembly.6.0.3.nupkg.sha512"
     },
     "Radzen.Blazor/4.8.3": {
       "type": "package",

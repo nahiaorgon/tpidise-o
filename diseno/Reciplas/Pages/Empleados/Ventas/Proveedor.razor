@@ -1,4 +1,4 @@
-@page "/ventasProveedor"
+@page "/Empleados/Ventas/ventasProveedor"
 @using Reciplas.Models;
 @inject NotificationService NotificationService 
 @inherits OwningComponentBase<Usuario>
@@ -6,9 +6,7 @@
 
 <PageTitle>Areas</PageTitle>
 
-<h2 class="text-primary rz-color-primary">Ventas</h2>
-
-<h5 class="text-primary rz-color-base-700">Proveedores</h5>
+<TituloPrincipal TextoPrincipal="Ventas" TextoSecundario="Proveedores" />
 
 
 <CListado TItem="Models.Proveedor" Data="@proveedores">

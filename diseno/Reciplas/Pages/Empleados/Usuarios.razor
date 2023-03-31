@@ -1,5 +1,8 @@
 ﻿@page "/usuarios"
 @inject NotificationService NotificationService
+@inject IModalService modal 
+@inject DialogService DialogService
+
 
 <PageTitle>Areas</PageTitle>
 
@@ -42,19 +45,36 @@
             <RadzenCard>
                 <RadzenText TextAlign="TextAlign.Center" TextStyle="TextStyle.H6" TagName="TagName.H3">Área de Ventas</RadzenText>
                 <RadzenButton Text="Ingresar" class="w-100"
-                    ButtonStyle="ButtonStyle.Info"
-                    Click=@(args => ShowNotification(new NotificationMessage { Severity = NotificationSeverity.Warning, Summary = "Warning Summary", Detail = "Warning Detail", Duration = 4000 })) />
-            </RadzenCard>
+                    ButtonStyle="ButtonStyle.Info" 
+                        Click=@ShowInlineDialog />
+                </RadzenCard>
     </div>
    </div>
    
-</div>
+</div> 
 
-
+ 
 @code {
-   void ShowNotification(NotificationMessage message)
+
+    async Task ShowInlineDialog()
+    {
+        var result = await DialogService.OpenAsync("Área de Ventas", ds =>
+        @<div>
+            <p class="mb-4">Indique en que listado quiere ingresar</p>
+            <div class="row">
+                <div class="col">
+                   <a href="Empleados/Ventas/ventasClientes"> <RadzenButton Style="background: var(--rz-series-7)" Text="Clientes" Click="() => ds.Close(false)" class="me-1"/></a>
+                    <RadzenButton Style="background: var(--rz-series-8)" Text="Proveedores" Click="() => ds.Close(false)"  class="me-1" />
+                    <RadzenButton Style="background: var(--rz-black)" Text="Cancelar" Click="() => ds.Close(false)"  class="me-1 float-end" />
+                </div>
+            </div>
+        </div>);
+    } 
+    
+    void ShowNotification(NotificationMessage message)
    {
       NotificationService.Notify(message);
-   }
+        DialogService.Close();
 
+   } 
 }

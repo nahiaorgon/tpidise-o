@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0M3w7kz+PhsF7NbHQz0h/dxjDX8IQ81iCzDpGMpmUOc=",
+  "Hash": "awp/v14quaIotme2HyS9pV1KF2q8goWjblONJ7/hfj8=",
   "Source": "Reciplas",
   "BasePath": "_content/Reciplas",
   "Mode": "Default",
@@ -16,6 +16,40 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\Nahiara Orgoñ\\.nuget\\packages\\blazored.modal\\7.1.0\\staticwebassets\\Blazored.Modal.bundle.scp.css",
+      "SourceId": "Blazored.Modal",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\Nahiara Orgoñ\\.nuget\\packages\\blazored.modal\\7.1.0\\staticwebassets\\",
+      "BasePath": "_content/Blazored.Modal",
+      "RelativePath": "Blazored.Modal.bundle.scp.css",
+      "AssetKind": "All",
+      "AssetMode": "Reference",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "ScopedCss",
+      "AssetTraitValue": "ProjectBundle",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\Nahiara Orgoñ\\.nuget\\packages\\blazored.modal\\7.1.0\\staticwebassets\\Blazored.Modal.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\Nahiara Orgoñ\\.nuget\\packages\\blazored.modal\\7.1.0\\staticwebassets\\BlazoredModal.razor.js",
+      "SourceId": "Blazored.Modal",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\Nahiara Orgoñ\\.nuget\\packages\\blazored.modal\\7.1.0\\staticwebassets\\",
+      "BasePath": "_content/Blazored.Modal",
+      "RelativePath": "BlazoredModal.razor.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\Nahiara Orgoñ\\.nuget\\packages\\blazored.modal\\7.1.0\\staticwebassets\\BlazoredModal.razor.js"
+    },
     {
       "Identity": "C:\\Users\\Nahiara Orgoñ\\.nuget\\packages\\radzen.blazor\\4.8.3\\staticwebassets\\css\\dark-base.css",
       "SourceId": "Radzen.Blazor",

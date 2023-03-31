@@ -38,3 +38,5 @@ C:\Users\Nahiara Orgoñ\Documents\GitHub\tpidise-o\diseno\Reciplas\obj\Debug\net
 C:\Users\Nahiara Orgoñ\Documents\GitHub\tpidise-o\diseno\Reciplas\obj\Debug\net7.0\Reciplas.genruntimeconfig.cache
 C:\Users\Nahiara Orgoñ\Documents\GitHub\tpidise-o\diseno\Reciplas\obj\Debug\net7.0\ref\Reciplas.dll
 C:\Users\Nahiara Orgoñ\Documents\GitHub\tpidise-o\diseno\Reciplas\obj\Debug\net7.0\scopedcss\Shared\NavMenu.razor.rz.scp.css
+C:\Users\Nahiara Orgoñ\Documents\GitHub\tpidise-o\diseno\Reciplas\bin\Debug\net7.0\Blazored.Modal.dll
+C:\Users\Nahiara Orgoñ\Documents\GitHub\tpidise-o\diseno\Reciplas\bin\Debug\net7.0\Microsoft.JSInterop.WebAssembly.dll

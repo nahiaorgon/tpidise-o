@@ -1,14 +1,12 @@
-@page "/ventasClientes"
+@page "/Empleados/Ventas/ventasClientes"
 @using Reciplas.Models;
 @inject NotificationService NotificationService 
 @inherits OwningComponentBase<Usuario>
 @using System.Collections.Generic;  
 
 <PageTitle>Areas</PageTitle>
+<TituloPrincipal TextoPrincipal="Ventas" TextoSecundario="Clientes" />
 
-<h2 class="text-primary rz-color-primary">Ventas</h2>
-
-<h5 class="text-primary rz-color-base-700">Clientes</h5>
 
 
 <CListado TItem="Models.Cliente" Data="@clientes">
@@ -22,23 +20,21 @@
 <br>
 
 <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="1rem" Wrap="FlexWrap.Wrap">
-    <RadzenButton Click=@(args => OnClick("Secondary button with text and icon")) Text="Nuevo" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Secondary" />
-    <RadzenButton Click=@(args => OnClick("Primary button with text and icon")) Text="Modificar" Icon="check_circle" ButtonStyle="ButtonStyle.Success"  />
-    <RadzenButton Click=@(args => OnClick("Light button with text and icon")) Text="Eliminar"  Icon="report" ButtonStyle="ButtonStyle.Danger" />
+    <a href="/Empleados/Ventas/ClienteFormulario"> <RadzenButton Click=@(args => OnClick("")) Text="Nuevo" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Secondary" /></a>
+    <RadzenButton Click=@(args => OnClick("")) Text="Modificar" Icon="check_circle" ButtonStyle="ButtonStyle.Success"  />
+    <RadzenButton Click=@(args => OnClick("")) Text="Eliminar"  Icon="report" ButtonStyle="ButtonStyle.Danger" />
 </RadzenStack>
 
 
-
 @code {
-    IEnumerable<Models.Cliente> clientes;  
-    IEnumerable<Models.Proveedor> proveedores;  
+    IEnumerable<Models.Cliente> clientes;   
     protected bool cargando = true;
     [Parameter] public bool SoloLectura { get; set; } = true;
     [Parameter] public string Nombre {get; set;}
     [Parameter] public string Direccion {get; set;}
     [Parameter] public int Dni {get; set;} 
-    [Parameter] public string Identificacion {get; set;}
-     [Parameter] public int Sucursal {get; set;} 
+    [Parameter] public int Telefono {get; set;} 
+
 
    /* protected override async Task OnInitializedAsync()
     {
