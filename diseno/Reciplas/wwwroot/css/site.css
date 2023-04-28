@@ -88,3 +88,16 @@ a, .btn-link {
 
 
 } 
+
+
+
+.red-editor .rz-html-editor-content {
+    background: red;
+    content: "HOLAAAAAAAAAAA";
+ }
+ 
+ .green-editor .rz-html-editor-content {
+            padding: 0.5rem;
+            font-family: Raleway;
+    content: "SI ";
+ }
