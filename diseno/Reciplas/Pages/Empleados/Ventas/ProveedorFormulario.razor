@@ -1,0 +1,111 @@
+@page "/Empleados/Ventas/ProveedorFormulario"
+@inject NotificationService NotificationService 
+@inherits OwningComponentBase<Usuario> 
+
+<TituloPrincipal TextoPrincipal="Ventas" TextoSecundario="Proveedores" />
+
+<style>
+    form .row {
+        margin-bottom: 16px;
+    }
+</style>
+
+@if (order == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <RadzenTemplateForm Data="@order" Submit="@((Order args) => { Submit(args); })">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <RadzenFieldset Text="Modificación">
+                    <div class="row">
+                        <div class="col-md-4 align-items-center d-flex">
+                            <RadzenLabel Text="Nombre y Apellido" />
+                        </div>
+                        <div class="col-md-10">
+                            <RadzenTextBox style="width: 100%;" Name="CardNr" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 align-items-center d-flex">
+                            <RadzenLabel Text="Dirección" />
+                        </div>
+                        <div class="col-md-10">
+                            <RadzenTextBox style="width: 100%;" Name="CardNr" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 align-items-center d-flex">
+                            <RadzenLabel Text="Fecha de Nacimiento" />
+                        </div>
+                        <div class="col-md-3">
+                            <RadzenDatePicker style="width: 100%;" Name="ExpiryDate" @bind-Value="order.ExpiryDate" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 align-items-center d-flex">
+                            <RadzenLabel Text="Teléfono" />
+                        </div>
+                        <div class="col-md-10">
+                            <RadzenTextBox style="width: 100%;" Name="CardNr" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 align-items-center d-flex">
+                            <RadzenLabel Text="Correo Electronico" />
+                        </div>
+                        <div class="col-md-10">
+                            <RadzenTextBox style="width: 100%;" Name="CardNr" />
+                        </div>
+                    </div>
+                </RadzenFieldset>
+
+
+        <br>
+        </div>
+            <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="1rem" Wrap="FlexWrap.Wrap">
+                <a href="/Empleados/Ventas/ventasProveedor"><RadzenButton Style="margin-left:70px" Click=@(() => EmployeeIDVisible = !EmployeeIDVisible)  Text="Modificar" Icon="check_circle" ButtonStyle="ButtonStyle.Success"  /></a>
+                <RadzenButton  Click=@(() => EmployeeIDVisible = !EmployeeIDVisible)  Text="Eliminar"  Icon="report" ButtonStyle="ButtonStyle.Danger" />
+                <a href="/Empleados/Ventas/ventasProveedor"><RadzenButton CClick=@(() => EmployeeIDVisible = !EmployeeIDVisible)  Text="Volver" Icon="history" ButtonStyle="ButtonStyle.Secondary" /></a>
+            </RadzenStack>
+            
+    </div>
+    </div>
+
+    </RadzenTemplateForm>
+}
+
+@code {
+    bool EmployeeIDVisible = false; 
+
+    public class Order
+    {       
+        public DateTime ExpiryDate { get; set; } 
+        public DateTime OrderDate { get; set; }
+        public DateTime ShipDate { get; set; }
+    }
+
+
+ 
+    Order order = new Order()
+    {
+        ExpiryDate = DateTime.Parse("10/10/2022"),
+        OrderDate = DateTime.Now,
+        ShipDate = DateTime.Now
+    };
+
+
+    void Submit(Order arg)
+    {
+        //
+    }
+    private void OnClick(string text)
+    {
+        NotificationService.Notify(new NotificationMessage { Severity = NotificationSeverity.Info, Summary = "Button Clicked", Detail = text });
+    }
+    
+
+}
