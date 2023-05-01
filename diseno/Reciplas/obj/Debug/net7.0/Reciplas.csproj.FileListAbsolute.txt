@@ -40,3 +40,14 @@ C:\Users\Nahiara Orgoñ\Documents\GitHub\tpidise-o\diseno\Reciplas\obj\Debug\net
 C:\Users\Nahiara Orgoñ\Documents\GitHub\tpidise-o\diseno\Reciplas\obj\Debug\net7.0\scopedcss\Shared\NavMenu.razor.rz.scp.css
 C:\Users\Nahiara Orgoñ\Documents\GitHub\tpidise-o\diseno\Reciplas\bin\Debug\net7.0\Blazored.Modal.dll
 C:\Users\Nahiara Orgoñ\Documents\GitHub\tpidise-o\diseno\Reciplas\bin\Debug\net7.0\Microsoft.JSInterop.WebAssembly.dll
+C:\Users\Nahiara Orgoñ\Documents\GitHub\tpidise-o\diseno\Reciplas\bin\Debug\net7.0\Data.dll
+C:\Users\Nahiara Orgoñ\Documents\GitHub\tpidise-o\diseno\Reciplas\bin\Debug\net7.0\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Users\Nahiara Orgoñ\Documents\GitHub\tpidise-o\diseno\Reciplas\bin\Debug\net7.0\Microsoft.Practices.EnterpriseLibrary.Data.dll
+C:\Users\Nahiara Orgoñ\Documents\GitHub\tpidise-o\diseno\Reciplas\bin\Debug\net7.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\Nahiara Orgoñ\Documents\GitHub\tpidise-o\diseno\Reciplas\bin\Debug\net7.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\Nahiara Orgoñ\Documents\GitHub\tpidise-o\diseno\Reciplas\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Nahiara Orgoñ\Documents\GitHub\tpidise-o\diseno\Reciplas\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Nahiara Orgoñ\Documents\GitHub\tpidise-o\diseno\Reciplas\bin\Debug\net7.0\Microsoft.Extensions.Logging.dll
+C:\Users\Nahiara Orgoñ\Documents\GitHub\tpidise-o\diseno\Reciplas\bin\Debug\net7.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Nahiara Orgoñ\Documents\GitHub\tpidise-o\diseno\Reciplas\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
+C:\Users\Nahiara Orgoñ\Documents\GitHub\tpidise-o\diseno\Reciplas\bin\Debug\net7.0\Microsoft.Extensions.Primitives.dll

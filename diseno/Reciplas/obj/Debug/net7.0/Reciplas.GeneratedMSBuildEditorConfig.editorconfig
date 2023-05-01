@@ -24,12 +24,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXEFyZWFBZG1pbmlzdHJhY2lvbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/Empleados/AreaCompras.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXEFyZWFDb21wcmFzLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/Empleados/AreaProduccion.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXEFyZWFQcm9kdWNjaW9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/Empleados/Compras/AreaCompras.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXENvbXByYXNcQXJlYUNvbXByYXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/Empleados/Usuarios.razor]

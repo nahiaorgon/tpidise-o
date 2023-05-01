@@ -3,46 +3,92 @@
 @inject NotificationService NotificationService 
 @inherits OwningComponentBase<Usuario>
 @using System.Collections.Generic;  
-@inject DialogService DialogService
+@inject DialogService DialogService   
 
 <PageTitle>Areas</PageTitle>
 <TituloPrincipal TextoPrincipal="Ventas" TextoSecundario="Clientes" />
  
-    
+  
+
 <CListado TItem="Models.Cliente" Data="@clientes">
        <Columns>
-        <RadzenDataGridColumn TItem=" Models.Cliente" Property="Nombre" Title="Nombre" Width="100px" />
-        <RadzenDataGridColumn TItem="Models.Cliente" Property="Direccion" Title="Direcci&oacute;n" Width="100px"/>
+        <RadzenDataGridColumn TItem=" Models.Cliente" Property="Nombre" Title="Nombre" Width="80px" />
+        <RadzenDataGridColumn TItem="Models.Cliente" Property="Direccion" Title="Direcci&oacute;n" Width="80px"/>
         <RadzenDataGridColumn TItem=" Models.Cliente" Property="Dni" Title="Dni" Width="100px"/> 
-        <RadzenDataGridColumn TItem=" Models.Cliente" Property="Telefono" Title="Telef&oacute;no" Width="100px"/> 
-    </Columns>                 
+        <RadzenDataGridColumn TItem=" Models.Cliente" Property="Telefono" Title="Telef&oacute;no" Width="80px"/> 
+        <RadzenDataGridColumn TItem=" Models.Cliente" Title="Pedidos" Width="60px">
+            <Template Context="item">
+                <RadzenButton Click="@(args => QuitarAdjunto(item.Id))" TextAlign="TextAlign.Center" Icon="list" ButtonStyle="ButtonStyle.Success" />
+                <RadzenButton Click="@(args => QuitarAdjunto(item.Id))" TextAlign="TextAlign.Center" Icon="add_circle_outline" Color="Color.Warning" />
+                <RadzenButton Click="@(args => QuitarAdjunto(item.Id))" TextAlign="TextAlign.Center" Icon="delete" ButtonStyle="ButtonStyle.Danger" /> 
+            </Template>
+        </RadzenDataGridColumn>  
+        <RadzenDataGridColumn TItem=" Models.Cliente" Title="Ventas" Width="80px">
+            <Template Context="data"> 
+                <RadzenCheckBox   @bind-Value=@data.PerfilAprobacion TValue="bool" Name=@($"CheckBoxNro{data.Id}")
+                    Disabled="true" Style="@($"height:{myheight}")"/>
+                <RadzenLabel Text="@(data.PerfilAprobacion ? "Si" : "No")" Component=@($"CheckBoxNro{data.Id}") />
+                
+                <RadzenButton CClick=@(() => EmployeeIDVisible = !EmployeeIDVisible) Icon="add_circle_outline" Color="Color.Warning" />
+            </Template>
+        </RadzenDataGridColumn> 
+                  
+</Columns>  
 </CListado> 
 <br> 
-
-
-
 <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="1rem" Wrap="FlexWrap.Wrap">
     <a href="/Empleados/Ventas/ClienteFormulario"> <RadzenButton Click=@(() => EmployeeIDVisible = !EmployeeIDVisible) Text="Nuevo" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Secondary" /></a>
     <RadzenButton Click=@(() => EmployeeIDVisible = !EmployeeIDVisible) Text="Modificar" Icon="check_circle" ButtonStyle="ButtonStyle.Success"  />
     <RadzenButton Click=@(() => EmployeeIDVisible = !EmployeeIDVisible) Text="Eliminar"  Icon="report" ButtonStyle="ButtonStyle.Danger" />
 </RadzenStack>
-
+<br> 
 
 @code {
     IEnumerable<Models.Cliente> clientes;   
-    protected bool cargando = true;
-
+    protected bool cargando = true;     
+    string myheight = "50px";
+    bool value;
     [Parameter] public bool SoloLectura { get; set; } = true;
     [Parameter] public string Nombre {get; set;}
     [Parameter] public string Direccion {get; set;}
     [Parameter] public int Dni {get; set;} 
-    [Parameter] public int Telefono {get; set;} 
+    [Parameter] public int Telefono {get; set;}  
+
 
     bool EmployeeIDVisible = false; 
 
     private void OnClick(string text)
     {
         NotificationService.Notify(new NotificationMessage { Severity = NotificationSeverity.Info, Summary = "Button Clicked", Detail = text });
+    }
+  protected async Task QuitarAdjunto(int id)
+    {
+      //
+    }
+    private int _count;
+    protected override Task OnInitializedAsync()
+    {
+        List<Models.Cliente> persons = new List<Models.Cliente>();
+        var person1 = new Models.Cliente {Nombre = "Chiara", Direccion = "Musmann", Telefono =123456, Dni=12398745};
+        var person2 = new Models.Cliente {Nombre = "Nahia", Direccion = "Orgoñ", Telefono =789456, Dni=45646587};
+        var person3 = new Models.Cliente {Nombre = "Valen", Direccion = "Sosa", Telefono =562316548, Dni=78912356};
+        var person4 = new Models.Cliente {Nombre = "Mariano", Direccion = "Gomez", Telefono =321987464, Dni=456547986};
+        var person5 = new Models.Cliente {Nombre = "Leandro", Direccion = "Espindola", Telefono =158726, Dni=451239876};
+        var person6 = new Models.Cliente {Nombre = "Bibiana ", Direccion = "Gonzalez", Telefono =1341897, Dni=46541356};
+        var person7 = new Models.Cliente {Nombre = "Mateo", Direccion = "Altamirano", Telefono =69786131, Dni=454563126};
+
+        persons.Add(person1);
+        persons.Add(person2);
+        persons.Add(person3);
+        persons.Add(person4);
+        persons.Add(person5);
+        persons.Add(person6);
+        persons.Add(person7);
+
+        clientes = persons;
+        _count = persons.Count;
+
+        return base.OnInitializedAsync();
     }
 
 }

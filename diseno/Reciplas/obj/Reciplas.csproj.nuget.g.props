@@ -13,11 +13,14 @@
     <SourceRoot Include="C:\Users\Nahiara Orgoñ\.nuget\packages\" />
   </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="$(NuGetPackageRoot)radzen.blazor\4.8.3\buildTransitive\Radzen.Blazor.props" Condition="Exists('$(NuGetPackageRoot)radzen.blazor\4.8.3\buildTransitive\Radzen.Blazor.props')" />
+    <Import Project="$(NuGetPackageRoot)radzen.blazor\4.10.1\buildTransitive\Radzen.Blazor.props" Condition="Exists('$(NuGetPackageRoot)radzen.blazor\4.10.1\buildTransitive\Radzen.Blazor.props')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore\8.0.0-preview.3.23174.2\buildTransitive\net6.0\Microsoft.EntityFrameworkCore.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore\8.0.0-preview.3.23174.2\buildTransitive\net6.0\Microsoft.EntityFrameworkCore.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore.design\5.0.10\build\netcoreapp3.0\Microsoft.EntityFrameworkCore.Design.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore.design\5.0.10\build\netcoreapp3.0\Microsoft.EntityFrameworkCore.Design.props')" />
     <Import Project="$(NuGetPackageRoot)blazored.modal\7.1.0\buildTransitive\Blazored.Modal.props" Condition="Exists('$(NuGetPackageRoot)blazored.modal\7.1.0\buildTransitive\Blazored.Modal.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">C:\Users\Nahiara Orgoñ\.nuget\packages\microsoft.entityframeworkcore.tools\5.0.10</PkgMicrosoft_EntityFrameworkCore_Tools>
+    <PkgEnterpriseLibrary_Common Condition=" '$(PkgEnterpriseLibrary_Common)' == '' ">C:\Users\Nahiara Orgoñ\.nuget\packages\enterpriselibrary.common\6.0.1304</PkgEnterpriseLibrary_Common>
+    <PkgEnterpriseLibrary_Data Condition=" '$(PkgEnterpriseLibrary_Data)' == '' ">C:\Users\Nahiara Orgoñ\.nuget\packages\enterpriselibrary.data\6.0.1304</PkgEnterpriseLibrary_Data>
   </PropertyGroup>
 </Project>

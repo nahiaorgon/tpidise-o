@@ -1,0 +1,123 @@
+@page "/Empleados/Compras/AreaCompras"
+@using Reciplas.Models; 
+@inject NotificationService NotificationService 
+@inherits OwningComponentBase<Usuario>
+@using System.Collections.Generic;  
+@inject DialogService DialogService 
+@using Microsoft.EntityFrameworkCore
+ 
+@*
+<div style="display: flex; align-items: center; margin-bottom: 16px">
+    <div style="white-space:nowrap; margin-right: 16px">ExpandMode:</div>
+    <RadzenSelectBar @bind-Value="@expandMode" TextProperty="Text" ValueProperty="Value" style="margin-right: 16px"
+                        Data="@(Enum.GetValues(typeof(DataGridExpandMode)).Cast<DataGridExpandMode>().Select(t => new { Text = $"{t}", Value = t }))" Size="ButtonSize.Small" />
+    <RadzenButton Text="Expand all rows" Click="@(args => ToggleRowsExpand(true))" style="margin-right: 16px" 
+        Disabled=@(allRowsExpanded == true || expandMode == DataGridExpandMode.Single) />
+    <RadzenButton Text="Collapse all rows" Click="@(args => ToggleRowsExpand(false))" 
+        Disabled=@(allRowsExpanded == false || expandMode == DataGridExpandMode.Single) />
+</div>
+ <Template>
+        <RadzenCard Style="margin-bottom:20px">
+            Company:
+            <b>@order.Customer?.CompanyName</b>
+        </RadzenCard>
+        <RadzenTabs>
+            <Tabs>
+                <RadzenTabsItem Text="Order Details">
+                    <RadzenDataGrid AllowFiltering="true" AllowPaging="true" AllowSorting="true" Data="@order.OrderDetails" TItem="OrderDetail">
+                        <Columns>
+                            <RadzenDataGridColumn TItem="OrderDetail" Property="Order.CustomerID" Title="Order" />
+                            <RadzenDataGridColumn TItem="OrderDetail" Property="Product.ProductName" Title="Product" />
+                            <RadzenDataGridColumn TItem="OrderDetail" Property="UnitPrice" Title="Unit Price">
+                                <Template Context="detail">
+                                    @String.Format(new System.Globalization.CultureInfo("en-US"), "{0:C}", detail.UnitPrice)
+                                </Template>
+                            </RadzenDataGridColumn>
+                            <RadzenDataGridColumn TItem="OrderDetail" Property="Quantity" Title="Quantity" />
+                            <RadzenDataGridColumn TItem="OrderDetail" Property="Discount" Title="Discount">
+                                <Template Context="detail">
+                                    @String.Format("{0}%", detail.Discount * 100)
+                                </Template>
+                            </RadzenDataGridColumn>
+                        </Columns>
+                    </RadzenDataGrid>
+                </RadzenTabsItem>
+                <RadzenTabsItem Text="Products">
+                    <RadzenDataList WrapItems="true" AllowPaging="true" Data="@order.OrderDetails" TItem="OrderDetail" PageSize="10">
+                        <Template Context="detail">
+                            <RadzenCard Style="width:100px; height:100px">
+                                <h4 class="text-thin">Product</h4>
+                                <b>@detail?.Product?.ProductName</b>
+                            </RadzenCard>
+                        </Template>
+                    </RadzenDataList>
+                </RadzenTabsItem>
+            </Tabs>
+        </RadzenTabs>
+    </Template>
+    <Columns>
+        <RadzenDataGridColumn TItem="Models.OrderDetail" Property="OrderID" Title="Order ID" Width="120px" />
+        <RadzenDataGridColumn TItem="Models.OrderDetail" Property="Customer.CompanyName" Title="Customer" Width="200px" />
+        <RadzenDataGridColumn TItem="Models.OrderDetail" Property="Employee.LastName" Title="Employee" Width="200px">
+            <Template Context="order">
+                <RadzenImage Path="@order.Employee?.Photo" style="width: 32px; height: 32px; border-radius: 16px; margin-right: 6px;" />
+                @order.Employee?.FirstName @order.Employee?.LastName
+            </Template>
+        </RadzenDataGridColumn>
+        <RadzenDataGridColumn TItem="Models.OrderDetail" Property="OrderDate" Title="Order Date" FormatString="{0:d}" Width="140px" />
+        <RadzenDataGridColumn TItem="Models.OrderDetail" Property="RequiredDate" Title="Required Date" FormatString="{0:d}" Width="140px" />
+        <RadzenDataGridColumn TItem="Models.OrderDetail" Property="ShippedDate" Title="Shipped Date" FormatString="{0:d}" Width="140px" />
+        <RadzenDataGridColumn TItem="Models.OrderDetail" Property="ShipName" Title="Ship Name" />
+        <RadzenDataGridColumn TItem="Models.OrderDetail" Property="ShipCountry" Title="Ship Country" />
+    </Columns>
+</RadzenDataGrid>
+
+@code {
+    DataGridExpandMode expandMode = DataGridExpandMode.Single;
+    bool? allRowsExpanded;
+
+    async Task ToggleRowsExpand(bool? value)
+    {
+        allRowsExpanded = value;
+
+        if (value == true)
+        {
+            await grid.ExpandRows(grid.PagedView);
+        }
+        else if (value == false)
+        { 
+            await grid.CollapseRows(grid.PagedView);
+        }
+    }
+    [Parameter] public int OrderID {get; set;}
+    
+    [Parameter] public DateTime OrderDate {get; set;}
+    [Parameter] public string UnitPrice {get; set;}
+    [Parameter] public string Discount {get; set;}
+    [Parameter] public string Product {get; set;} 
+    [Parameter] public string ProductName {get; set;}
+    IEnumerable<Models.OrderDetail> orders;
+    RadzenDataGrid<Models.OrderDetail> grid;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        orders = Orders.Include("Customer").Include("Employee").Include("OrderDetails").Include("OrderDetails.Product").ToList();
+    }
+
+    void RowRender(RowRenderEventArgs<Models.OrderDetail> args)
+    {
+        args.Expandable = args.Data.ShipCountry == "France" || args.Data.ShipCountry == "Brazil";
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+ 
+        if (firstRender)
+        {
+            await grid.ExpandRow(orders.FirstOrDefault());
+        }
+    }
+}*@
