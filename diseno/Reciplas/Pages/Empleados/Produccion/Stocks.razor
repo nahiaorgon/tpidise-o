@@ -1,0 +1,48 @@
+@page "/Empleados/Produccion/stocks"
+@using Reciplas.Models;
+@inject NotificationService NotificationService 
+@inherits OwningComponentBase<Usuario>
+@using System.Collections.Generic;  
+@inject DialogService DialogService
+
+<PageTitle>Areas</PageTitle>
+<TituloPrincipal TextoPrincipal="Produccion" TextoSecundario="Stocks" />
+ 
+    
+<CListado TItem="Models.Stocks" Data="@stocks">
+       <Columns>
+        <RadzenDataGridColumn TItem=" Models.Stocks" Property="ID" Title="ID" Width="100px" />
+        <RadzenDataGridColumn TItem="Models.Stocks" Property="Cantidad" Title="Cantidad" Width="100px"/>
+        <RadzenDataGridColumn TItem=" Models.Stocks" Property="FechaIngreso" Title="FechaIngreso" Width="100px"/> 
+        <RadzenDataGridColumn TItem=" Models.Stocks" Property="Descripcion" Title="Descripcion" Width="100px"/> 
+    </Columns>                 
+</CListado> 
+<br> 
+
+
+
+<RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="1rem" Wrap="FlexWrap.Wrap">
+    <a href="/Empleados/Ventas/StocksFormulario"> <RadzenButton Click=@(() => EmployeeIDVisible = !EmployeeIDVisible) Text="Nuevo" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Secondary" /></a>
+    <RadzenButton Click=@(() => EmployeeIDVisible = !EmployeeIDVisible) Text="Modificar" Icon="check_circle" ButtonStyle="ButtonStyle.Success"  />
+    <RadzenButton Click=@(() => EmployeeIDVisible = !EmployeeIDVisible) Text="Eliminar"  Icon="report" ButtonStyle="ButtonStyle.Danger" />
+</RadzenStack>
+
+
+@code {
+    IEnumerable<Models.Stocks> stocks;   
+    protected bool cargando = true;
+
+    [Parameter] public bool SoloLectura { get; set; } = true;
+    [Parameter] public decimal Cantidad { get; set; }
+    [Parameter] public string ID { get; set; }
+    [Parameter] public DateTime FechaIngreso { get; set; }
+    [Parameter] public string Descripcion { get; set; }
+
+    bool EmployeeIDVisible = false; 
+
+    private void OnClick(string text)
+    {
+        NotificationService.Notify(new NotificationMessage { Severity = NotificationSeverity.Info, Summary = "Button Clicked", Detail = text });
+    }
+
+}
