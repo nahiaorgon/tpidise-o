@@ -1,0 +1,48 @@
+@page "/Empleados/Produccion/PyR"
+@using Reciplas.Models;
+@inject NotificationService NotificationService 
+@inherits OwningComponentBase<Usuario>
+@using System.Collections.Generic;  
+@inject DialogService DialogService
+
+<PageTitle>Areas</PageTitle>
+<TituloPrincipal TextoPrincipal="Produccion" TextoSecundario="Pedidos" />
+ 
+    
+<CListado TItem="Models.Cliente" Data="@clientes">
+       <Columns>
+        <RadzenDataGridColumn TItem=" Models.Cliente" Property="Nombre" Title="Nombre" Width="100px" />
+        <RadzenDataGridColumn TItem="Models.Cliente" Property="Direccion" Title="Direcci&oacute;n" Width="100px"/>
+        <RadzenDataGridColumn TItem=" Models.Cliente" Property="FechaIngreso" Title="FechaIngreso" Width="100px"/> 
+        <RadzenDataGridColumn TItem=" Models.Cliente" Property="Telefono" Title="Telef&oacute;no" Width="100px"/> 
+    </Columns>                 
+</CListado> 
+<br> 
+
+
+
+<RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="1rem" Wrap="FlexWrap.Wrap">
+    <a href="/Empleados/Ventas/ClienteFormulario"> <RadzenButton Click=@(() => EmployeeIDVisible = !EmployeeIDVisible) Text="Nuevo" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Secondary" /></a>
+    <RadzenButton Click=@(() => EmployeeIDVisible = !EmployeeIDVisible) Text="Modificar" Icon="check_circle" ButtonStyle="ButtonStyle.Success"  />
+    <RadzenButton Click=@(() => EmployeeIDVisible = !EmployeeIDVisible) Text="Eliminar"  Icon="report" ButtonStyle="ButtonStyle.Danger" />
+</RadzenStack>
+
+
+@code {
+    IEnumerable<Models.Cliente> clientes;   
+    protected bool cargando = true;
+
+    [Parameter] public bool SoloLectura { get; set; } = true;
+    [Parameter] public string Nombre {get; set;}
+    [Parameter] public string Direccion {get; set;}
+    [Parameter] public int Dni {get; set;} 
+    [Parameter] public int Telefono {get; set;} 
+
+    bool EmployeeIDVisible = false; 
+
+    private void OnClick(string text)
+    {
+        NotificationService.Notify(new NotificationMessage { Severity = NotificationSeverity.Info, Summary = "Button Clicked", Detail = text });
+    }
+
+}
