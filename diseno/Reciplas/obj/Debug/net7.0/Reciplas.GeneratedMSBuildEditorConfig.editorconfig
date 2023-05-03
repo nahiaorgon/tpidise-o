@@ -9,105 +9,105 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Reciplas
 build_property.RootNamespace = Reciplas
-build_property.ProjectDir = C:\Users\Nahiara Orgoñ\Documents\GitHub\tpidise-o\diseno\Reciplas\
+build_property.ProjectDir = c:\Users\Nahiara Orgoñ\Documents\GitHub\tpidise-o\diseno\Reciplas\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Nahiara Orgoñ\Documents\GitHub\tpidise-o\diseno\Reciplas
+build_property.MSBuildProjectDirectory = c:\Users\Nahiara Orgoñ\Documents\GitHub\tpidise-o\diseno\Reciplas
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/App.razor]
+[c:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/Empleados/AreaAdministracion.razor]
+[c:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/Empleados/AreaAdministracion.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXEFyZWFBZG1pbmlzdHJhY2lvbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/Empleados/AreaProduccion.razor]
+[c:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/Empleados/AreaProduccion.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXEFyZWFQcm9kdWNjaW9uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/Empleados/Compras/AreaCompras.razor]
+[c:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/Empleados/Compras/AreaCompras.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXENvbXByYXNcQXJlYUNvbXByYXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/Empleados/Usuarios.razor]
+[c:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/Empleados/Usuarios.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXFVzdWFyaW9zLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/Empleados/Ventas/Cliente.razor]
+[c:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/Empleados/Ventas/Cliente.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXFZlbnRhc1xDbGllbnRlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/Empleados/Ventas/ClienteFormulario.razor]
+[c:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/Empleados/Ventas/ClienteFormulario.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXFZlbnRhc1xDbGllbnRlRm9ybXVsYXJpby5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/Empleados/Ventas/FacturarVenta.razor]
+[c:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/Empleados/Ventas/FacturarVenta.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXFZlbnRhc1xGYWN0dXJhclZlbnRhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/Empleados/Ventas/PedidosDetalles.razor]
+[c:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/Empleados/Ventas/PedidosDetalles.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXFZlbnRhc1xQZWRpZG9zRGV0YWxsZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/Empleados/Ventas/PedidosRegistrar.razor]
+[c:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/Empleados/Ventas/PedidosRegistrar.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXFZlbnRhc1xQZWRpZG9zUmVnaXN0cmFyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/Empleados/Ventas/Proveedor.razor]
+[c:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/Empleados/Ventas/Proveedor.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXFZlbnRhc1xQcm92ZWVkb3IucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/Empleados/Ventas/ProveedorFormulario.razor]
+[c:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/Empleados/Ventas/ProveedorFormulario.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXFZlbnRhc1xQcm92ZWVkb3JGb3JtdWxhcmlvLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/FetchData.razor]
+[c:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/FetchData.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/Index.razor]
+[c:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/PagPrincipal.razor]
+[c:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/PagPrincipal.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFnUHJpbmNpcGFsLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Shared/SurveyPrompt.razor]
+[c:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Shared/TituloPrincipal.razor]
+[c:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Shared/TituloPrincipal.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFRpdHVsb1ByaW5jaXBhbC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Shared/TituloSecundario.razor]
+[c:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Shared/TituloSecundario.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFRpdHVsb1NlY3VuZGFyaW8ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/_Imports.razor]
+[c:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Shared/MainLayout.razor]
+[c:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-vhm5d7460y
 
-[C:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Shared/NavMenu.razor]
+[c:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-f6952bgt9o
 
-[C:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/Error.cshtml]
+[c:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/_Host.cshtml]
+[c:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/_Host.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/_Layout.cshtml]
+[c:/Users/Nahiara Orgoñ/Documents/GitHub/tpidise-o/diseno/Reciplas/Pages/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
