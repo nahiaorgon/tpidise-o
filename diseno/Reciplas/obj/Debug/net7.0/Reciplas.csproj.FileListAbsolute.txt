@@ -105,3 +105,4 @@ C:\Users\mvelazco\Documents\GitHub\tpidise-o\diseno\Reciplas\obj\Debug\net7.0\Re
 C:\Users\mvelazco\Documents\GitHub\tpidise-o\diseno\Reciplas\obj\Debug\net7.0\Reciplas.genruntimeconfig.cache
 C:\Users\mvelazco\Documents\GitHub\tpidise-o\diseno\Reciplas\obj\Debug\net7.0\ref\Reciplas.dll
 C:\Users\mvelazco\Documents\GitHub\tpidise-o\diseno\Reciplas\bin\Debug\net7.0\MessageDialogService.dll
+C:\Users\Nahiara Orgoñ\Documents\GitHub\tpidise-o\diseno\Reciplas\bin\Debug\net7.0\MessageDialogService.dll
