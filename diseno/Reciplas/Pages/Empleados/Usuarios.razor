@@ -2,6 +2,8 @@
 @inject NotificationService NotificationService
 @inject IModalService modal 
 @inject DialogService DialogService
+@inject NavigationManager NavigationManager
+
 
 
 <PageTitle>Areas</PageTitle>
@@ -16,7 +18,7 @@
                 <RadzenText TextAlign="TextAlign.Center" TextStyle="TextStyle.H6" TagName="TagName.H3">Área de Administración</RadzenText>
                     <RadzenButton Text="Ingresar" class="w-100"
                     ButtonStyle="ButtonStyle.Primary"
-                        Click=@(args => ShowNotification(new NotificationMessage { Severity = NotificationSeverity.Info, Summary = "Info Summary", Detail = "Info Detail", Duration = 4000 })) />
+                         Click="@(args => NavigationManager.NavigateTo("/Empleados/Administracion/Consultas"))" />
                     </RadzenCard>
                 
         </div>
@@ -26,7 +28,7 @@
                 <RadzenText TextAlign="TextAlign.Center" TextStyle="TextStyle.H6" TagName="TagName.H3">Área de Compras</RadzenText>
                 <RadzenButton Text="Ingresar" class="w-100"
                     ButtonStyle="ButtonStyle.Success"
-                    Click=@(args => ShowNotification(new NotificationMessage { Severity = NotificationSeverity.Warning, Summary = "Warning Summary", Detail = "Warning Detail", Duration = 4000 })) />
+                    Click="@(args => NavigationManager.NavigateTo("/Empleados/Compras/Stock"))" />
             </RadzenCard>
     </div>
     </div>
