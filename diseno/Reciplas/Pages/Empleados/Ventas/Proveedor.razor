@@ -11,10 +11,10 @@
 
 <CListado TItem="Models.Proveedor" Data="@proveedores">
        <Columns>
-        <RadzenDataGridColumn TItem=" Models.Proveedor" Property="Identifiacion" Title="Identificaci&oacute;n" Width="100px" />
-        <RadzenDataGridColumn TItem="Models.Proveedor" Property="Direccion" Title="Direcci&oacute;n" Width="100px" />
-        <RadzenDataGridColumn TItem=" Models.Proveedor" Property="Sucursal" Title="Sucursal" Width="100px"/> 
-        <RadzenDataGridColumn TItem=" Models.Proveedor" Property="Telefono" Title="Telef&oacute;no" Width="100px"/> 
+        <RadzenDataGridColumn TItem=" Models.Proveedor" TextAlign="TextAlign.Center" Property="Sucursal" Title="Sucursal" Width="100px"/>       
+        <RadzenDataGridColumn TItem=" Models.Proveedor" TextAlign="TextAlign.Center" Property="Identificacion" Title="Identificaci&oacute;n" Width="100px" />
+        <RadzenDataGridColumn TItem=" Models.Proveedor" TextAlign="TextAlign.Center" Property="Nombre" Title="Nombre" Width="100px"/> 
+        <RadzenDataGridColumn TItem="Models.Proveedor" TextAlign="TextAlign.Center" Property="Direccion" Title="Direcci&oacute;n" Width="100px" />
     </Columns>                 
 </CListado>
 <br>
@@ -34,20 +34,39 @@
     [Parameter] public bool SoloLectura { get; set; } = true;
     [Parameter] public string Nombre {get; set;}
     [Parameter] public string Direccion {get; set;}
-    [Parameter] public string Identificacion {get; set;}
+    [Parameter] public int Identificacion {get; set;}
      [Parameter] public int Sucursal {get; set;} 
-
-   /* protected override async Task OnInitializedAsync()
-    {
-        await base.OnInitializedAsync();
-
-        //customers = dbContext.Customers.ToList();
-       // orders = dbContext.Orders.ToList();
-        //orderDetails = dbContext.OrderDetails.Include("Product").ToList();
-    }*/
     private void OnClick(string text)
     {
         NotificationService.Notify(new NotificationMessage { Severity = NotificationSeverity.Info, Summary = "Button Clicked", Detail = text });
     }
+
+
+     private int _count;
+    protected override Task OnInitializedAsync()
+    {
+        List<Models.Proveedor> persons = new List<Models.Proveedor>();
+        var person1 = new Models.Proveedor {Sucursal=1, Nombre = "Chiara", Direccion = "Calle gualaby 42 Sydney", Identificacion =12};
+        var person2 = new Models.Proveedor {Sucursal=1, Nombre = "Nahia", Direccion = "French 414", Identificacion =7};
+        var person3 = new Models.Proveedor {Sucursal=4, Nombre = "Valen", Direccion = "Av. Sarmiento", Identificacion =5};
+        var person4 = new Models.Proveedor {Sucursal=6, Nombre = "Mariano", Direccion = "Calle importante", Identificacion =32};
+        var person5 = new Models.Proveedor {Sucursal=4, Nombre = "Leandro", Direccion = "ni idea", Identificacion =15};
+        var person6 = new Models.Proveedor {Sucursal=19, Nombre = "Bibiana ", Direccion = "ejemplo 6", Identificacion =13};
+        var person7 = new Models.Proveedor {Sucursal=20, Nombre = "Mateo", Direccion = "otra calle importante", Identificacion =69};
+
+        persons.Add(person1);
+        persons.Add(person2);
+        persons.Add(person3);
+        persons.Add(person4);
+        persons.Add(person5);
+        persons.Add(person6);
+        persons.Add(person7);
+
+        proveedores = persons;
+        _count = persons.Count;
+
+        return base.OnInitializedAsync();
+    }
+
 }
 

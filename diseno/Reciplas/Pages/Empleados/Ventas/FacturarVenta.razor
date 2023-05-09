@@ -1,0 +1,68 @@
+@page "/Empleados/Ventas/FacturarVentaCliente"
+@using Reciplas.Models;
+@inject NotificationService NotificationService 
+@inherits OwningComponentBase<Usuario>
+@using System.Collections.Generic;  
+@inject DialogService DialogService  
+@inject NavigationManager NavigationManager  
+
+
+<PageTitle>Areas</PageTitle>
+<TituloPrincipal TextoPrincipal="Ventas" TextoSecundario="Facturación" />
+
+<div Class="rz-p-0 rz-p-md-12">
+    <RadzenStack Orientation="Orientation.Vertical" Gap="1rem" Class="rz-p-4 rz-mb-6 rz-border-radius-1" >
+        <RadzenStack Gap="0.5rem" Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center">
+            <RadzenLabel Text="Venta Realizada:" />
+            <RadzenSwitch @bind-Value="disabled" />
+        </RadzenStack>
+    </RadzenStack>
+
+    <RadzenStack Orientation="Orientation.Horizontal" Wrap="FlexWrap.Wrap" Gap="1rem">
+        <RadzenFormField Text="Nombre del Cliente" Variant="@variant" Style="flex: 1;">
+            <RadzenTextBox @bind-Value="@valueN" Disabled="@disabled" />
+        </RadzenFormField>
+        <RadzenFormField Text="Direccion" Variant="@variant" Style="flex: 1;">
+            <RadzenTextBox @bind-Value="@valueD" Disabled="@disabled" />
+        </RadzenFormField>
+        <RadzenFormField Text="DNI" Variant="@variant" Style="flex: 1;">
+            <RadzenNumeric @bind-Value="@intValueD" Disabled="@disabled" />
+        </RadzenFormField> 
+        <RadzenFormField Text="N° Pedido" Variant="@variant" Style="flex: 1;">
+            <RadzenNumeric @bind-Value="@intValueP" Disabled="@disabled" />
+        </RadzenFormField> 
+        <RadzenFormField Text="Total Factura" Variant="@variant" Style="flex: 1;">
+            <RadzenNumeric @bind-Value="@intValueT" Disabled="@disabled" />
+        </RadzenFormField>
+    </RadzenStack>
+
+    <br> 
+<RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="1rem" Wrap="FlexWrap.Wrap">
+   <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ventasClientes"))" Text="Guardar" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Primary" /> 
+    <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ventasClientes"))" Text="Volver" Icon="refresh" ButtonStyle="ButtonStyle.Primary" /> 
+</RadzenStack>
+</div>
+
+
+
+@code {
+    bool disabled = true;
+    Variant variant = Variant.Outlined; 
+
+    string valueN = "Chiara";
+    string valueD = "French 414";
+    int intValueD = 12365445;
+    int intValueP = 456;
+    int intValueT = 78000;
+    string dropDownValue = "Around the Horn";
+
+    IEnumerable<string> companyNames;
+
+    protected override async Task OnInitializedAsync()
+    {
+       await base.OnInitializedAsync();
+
+        //companyNames = dbContext.Customers.Select(c => c.CompanyName).Distinct();
+    }
+     
+}
