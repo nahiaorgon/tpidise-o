@@ -25,7 +25,7 @@
                                                     <RadzenText TextStyle="TextStyle.Caption" Class="rz-mb-0">@(order.ShipName)</RadzenText>
                                                 </RadzenColumn>
                                                 <RadzenColumn Size="4" Class="rz-text-align-right">
-                                                    <RadzenBadge BadgeStyle="BadgeStyle.Secondary" Shade="Shade.Lighter" Text=@($"{String.Format(new System.Globalization.CultureInfo("en-US"), "{0:C}", order.Freight)}") IsPill="true" />
+                                                    <RadzenBadge BadgeStyle="BadgeStyle.Secondary" Text=@($"{order.Freight}") Class="rz-mr-1" IsPill="true"/>
                                                 </RadzenColumn>
                                             </RadzenRow>
                                             <hr style="border: none; background-color: rgba(0,0,0,.08); height: 1px; margin: 1rem 0;" />
@@ -41,23 +41,104 @@
                                 </RadzenDataList>
                             </RadzenTabsItem>
                             <RadzenTabsItem Text="Ventas">
+                                <RadzenDataList PageSize="6" WrapItems="true" AllowPaging="true" Data="@pedidos" TItem="Pedidos">
+                                    <Template Context="order">
+                                        <RadzenCard Style="width: 250px;" Class="rz-border-radius-3">
+                                            <RadzenRow Gap="0.5rem">
+                                                <RadzenColumn Size="8" Class="rz-text-truncate">
+                                                    <RadzenBadge BadgeStyle="BadgeStyle.Light" Text=@($" N° de pedido: {order.NumPedido}") Class="rz-mr-1" IsPill="true" />
+                                                </RadzenColumn>
+                                                <RadzenColumn Size="4" Class="rz-text-align-right">
+                                                    <RadzenText TextStyle="TextStyle.Caption" Class="rz-mb-0">ID Empleado</RadzenText>
+
+                                                    <RadzenBadge BadgeStyle="BadgeStyle.Secondary" Shade="Shade.Lighter" Text=@($"{order.IDEmpleado}") IsPill="true" />
+                                                </RadzenColumn>
+                                            </RadzenRow>
+                                            <hr style="border: none; background-color: rgba(0,0,0,.08); height: 1px; margin: 1rem 0;" />
+                                            <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="1rem">
+                                                <RadzenStack Gap="0">
+                                                    <RadzenText TextStyle="TextStyle.Body1" Class="rz-mb-0">Pedido: @order.Ped</RadzenText>
+                                                    <RadzenText TextStyle="TextStyle.Caption" Class="rz-mb-0">Fecha de Venta: @order.Fecha</RadzenText> 
+                                                    <RadzenText TextStyle="TextStyle.Caption" Class="rz-mb-0">Codigo de Venta: @order.CodVenta</RadzenText> 
+                                                    <RadzenText TextStyle="TextStyle.Caption" Class="rz-mb-0">@(order.Descripcion)</RadzenText>
+                                                </RadzenStack>
+                                            </RadzenStack>
+                                        </RadzenCard>
+                                    </Template>
+                                </RadzenDataList>
+                            </RadzenTabsItem> 
+                             <RadzenTabsItem Text="Deudores">
+                                <RadzenDataList PageSize="6" WrapItems="true" AllowPaging="true" Data="@reportes" TItem="Reporte">
+                                    <Template Context="order">
+                                        <RadzenCard Style="width: 250px;" Class="rz-border-radius-3">
+                                            <RadzenRow Gap="0.5rem">
+                                                <RadzenColumn Size="8" Class="rz-text-truncate">
+                                                    <RadzenBadge BadgeStyle="BadgeStyle.Light" Text=@($" ID Deudor: {order.ID}") Class="rz-mr-1" IsPill="true" /> <br>
+                                                    <RadzenText TextStyle="TextStyle.Caption" Class="rz-mb-0"> DNI: @(order.dni)</RadzenText>
+                                                </RadzenColumn> 
+                                            </RadzenRow>
+                                            <hr style="border: none; background-color: rgba(0,0,0,.08); height: 1px; margin: 1rem 0;" />
+                                            <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="1rem">
+                                                <RadzenStack Gap="0">
+                                                    <RadzenText TextStyle="TextStyle.Body2" Class="rz-mb-0">@order.nya</RadzenText>
+                                                    <RadzenText TextStyle="TextStyle.Body2" Class="rz-mb-0">@order.Direccion</RadzenText>
+                                                    <RadzenText TextStyle="TextStyle.Body2" Class="rz-mb-0">@order.Telefono</RadzenText>
+                                                    <RadzenText TextStyle="TextStyle.Body2" Class="rz-mb-0">@order.Notas</RadzenText>
+                                                    <RadzenText TextStyle="TextStyle.Caption" Class="rz-mb-0">@(order.Ciudad)</RadzenText>
+                                                    <RadzenText TextStyle="TextStyle.Caption" Class="rz-mb-0">@(order.Descripcion)</RadzenText>
+                                                </RadzenStack>
+                                            </RadzenStack>
+                                        </RadzenCard>
+                                    </Template>
+                                </RadzenDataList>
+                            </RadzenTabsItem>
+                        </Tabs>
+                    </RadzenTabs>
+            </RadzenAccordionItem>
+            <RadzenAccordionItem Text="Reportes" Icon="account_box">
+                <RadzenTabs TabPosition="@tabPosition" RenderMode="TabRenderMode.Client" >
+                        <Tabs>
+                            <RadzenTabsItem Text="Clientes">
+                                <RadzenDataGrid ColumnWidth="150px" AllowFiltering="true" AllowPaging="true" PageSize="5" AllowSorting="true" Data="@orders" TItem="Order">
+                                    <Columns> 
+                                        <RadzenDataGridColumn TItem="Order" Property="OrderID" Title="N° de Orden" Width="100px"/>
+                                        <RadzenDataGridColumn TItem="Order" Property="ShipName" Title="Pedido" Width="100px"/>  
+                                        <RadzenDataGridColumn TItem="Order" Property="ShipAddress" Title="Descripcion" Width="180px"/>
+                                        <RadzenDataGridColumn TItem="Order" Property="ShipCity" Title="Detalles" Width="150px" />
+                                        <RadzenDataGridColumn TItem="Order" Property="Freight" Title="Falta enviar" Width="100px"/>
+                                    </Columns>
+                                </RadzenDataGrid>
+                            </RadzenTabsItem> 
+                            <RadzenTabsItem Text="Ventas">
                                 <RadzenDataGrid ColumnWidth="150px" AllowFiltering="true" AllowPaging="true" PageSize="5" AllowSorting="true" Data="@pedidos" TItem="Pedidos">
                                     <Columns> 
                                         <RadzenDataGridColumn TItem="Pedidos" Property="NumPedido" Title="N° de Pedido" /> 
                                         <RadzenDataGridColumn TItem="Pedidos" Property="Descripcion" Title="Descripcion" />
                                         <RadzenDataGridColumn TItem="Pedidos" Property="IDEmpleado" Title="ID Empleado" />
                                         <RadzenDataGridColumn TItem="Pedidos" Property="CodVenta" Title="Cod de Venta" />
-                                        <RadzenDataGridColumn TItem="Pedidos" Property="Fecha" Title="Fecha"/>
+                                        <RadzenDataGridColumn TItem="Pedidos" Property="Fecha" Title="Fecha" FormatString="{0:d}"/>
                                     </Columns>
                                 </RadzenDataGrid>
                             </RadzenTabsItem> 
+                                <RadzenTabsItem Text="Deudores">
+                                    <RadzenDataGrid ColumnWidth="150px" AllowFiltering="true" AllowPaging="true" PageSize="5" AllowSorting="true" Data="@pedidos" TItem="Pedidos">
+                                        <Columns> 
+                                            <RadzenDataGridColumn TItem="Reporte" Property="ID" Title="ID Cliente" /> 
+                                            <RadzenDataGridColumn TItem="Reporte" Property="nya" Title="Nombre y Apellido" />
+                                            <RadzenDataGridColumn TItem="Reporte" Property="dni" Title="DNI" />
+                                            <RadzenDataGridColumn TItem="Reporte" Property="Telefono" Title="Telefono" />
+                                            <RadzenDataGridColumn TItem="Reporte" Property="Direccion" Title="Direccion"/> 
+                                            <RadzenDataGridColumn TItem="Reporte" Property="Ciudad" Title="Ciudad"/>
+                                            <RadzenDataGridColumn TItem="Reporte" Property="Notas" Title="Notas"/>
+                                            <RadzenDataGridColumn TItem="Reporte" Property="TotalDebe" Title="Lo que debe"/>
+                                            <RadzenDataGridColumn TItem="Reporte" Property="TotalPagado" Title="Total Pagado"/>
+                                        </Columns>
+                                    </RadzenDataGrid>
+                                </RadzenTabsItem> 
                         </Tabs>
                     </RadzenTabs>
             </RadzenAccordionItem>
-            <RadzenAccordionItem Text="Reportes" Icon="account_box">
-                Details for Employees
-            </RadzenAccordionItem>
-            <RadzenAccordionItem Text="Deudores" Icon="accessibility">
+            <RadzenAccordionItem Text="Stock" Icon="accessibility">
                 Details for Customers
             </RadzenAccordionItem>
             <RadzenAccordionItem Text="Usuario" Icon="accessibility">
@@ -73,6 +154,7 @@
 @code { 
     IEnumerable<Order> orders;
     IEnumerable<Pedidos> pedidos; 
+    IEnumerable<Reporte> reportes; 
 
     TabPosition tabPosition = TabPosition.Top; 
       DateTime? Fecha = DateTime.Now;
@@ -80,13 +162,12 @@
     protected override Task OnInitializedAsync()
     {
         List<Order> ordenes = new List<Order>();
-        var person1 = new Order {ShipName="Cartón", ShipAddress="Corrugado", ShipCity="Para envio a deposito", Freight="no", OrderID=2840};
+        var person1 = new Order {ShipName="Cartón", ShipAddress="Corrugado", ShipCity="Para envio a deposito", Freight="No", OrderID=2840};
         var person2 = new Order {ShipName="Bolsa de Plástico",ShipAddress="De supermercado renovable", ShipCity="Falta recibir", Freight="Si", OrderID=1050};
-        var person3 = new Order {ShipName="Metal",ShipAddress="Para deposito", ShipCity="Falta recibir", Freight="si", OrderID=5451};
-        var person4 = new Order {ShipName="Vidrio",ShipAddress="Para espejos de colores", ShipCity="Para envio a deposito", Freight="no", OrderID=1625};
-        var person5 = new Order {ShipName="Botellas",ShipAddress="De shampoo y acondicionador", ShipCity="Para envio a deposito", Freight="no", OrderID=885};
-        var person6 = new Order {ShipName="Tapas de Plástico",ShipAddress="De gaseosa", ShipCity="Falta recibir", Freight="si", OrderID=1533};
-        var person7 = new Order {ShipName="Envases de Yogurt",ShipAddress="Para individuales", ShipCity="Falta recibir", Freight="si", OrderID=1960};
+        var person3 = new Order {ShipName="Metal",ShipAddress="Para deposito", ShipCity="Falta recibir", Freight="Si", OrderID=5451};
+        var person4 = new Order {ShipName="Vidrio",ShipAddress="Para espejos de colores", ShipCity="Para envio a deposito", Freight="No", OrderID=1625};
+        var person5 = new Order {ShipName="Botellas",ShipAddress="De shampoo y acondicionador", ShipCity="Para envio a deposito", Freight="No", OrderID=885};
+        var person6 = new Order {ShipName="Tapas de Plástico",ShipAddress="De gaseosa", ShipCity="Falta recibir", Freight="Si", OrderID=1533};
  
         ordenes.Add(person1);
         ordenes.Add(person2); 
@@ -94,7 +175,6 @@
         ordenes.Add(person4);
         ordenes.Add(person5);
         ordenes.Add(person6);
-        ordenes.Add(person7);
 
         orders = ordenes;
         _count = ordenes.Count;
@@ -103,13 +183,12 @@
 
 
         List<Pedidos> empleados = new List<Pedidos>();
-        var emp1 = new Pedidos {IDEmpleado=1234, CodVenta=0001, Descripcion="cosas importantes", NumPedido=2840};
-        var emp2 = new Pedidos {IDEmpleado=0025, CodVenta=0002, Descripcion="same", NumPedido=1050};
-        var emp3 = new Pedidos {IDEmpleado=5524, CodVenta=0003, Descripcion="como", NumPedido=5451};
-        var emp4 = new Pedidos {IDEmpleado=0004, CodVenta=0004, Descripcion="como", NumPedido=1625};
-        var emp5 = new Pedidos {IDEmpleado=0078, CodVenta=0005, Descripcion="como", NumPedido=885};
-        var emp6 = new Pedidos {IDEmpleado=7865, CodVenta=0006, Descripcion="como", NumPedido=1533};
-        var emp7 = new Pedidos {IDEmpleado=4520, CodVenta=0006, Descripcion="como", NumPedido=1960};
+        var emp1 = new Pedidos {Ped="Carton", IDEmpleado=1234, CodVenta=1200, Descripcion="cosas importantes", NumPedido=2840};
+        var emp2 = new Pedidos {Ped="Carton", IDEmpleado=0025, CodVenta=1201, Descripcion="same", NumPedido=1050};
+        var emp3 = new Pedidos {Ped="Carton", IDEmpleado=5524, CodVenta=1300, Descripcion="aca va el detalle", NumPedido=5451};
+        var emp4 = new Pedidos {Ped="Carton", IDEmpleado=0004, CodVenta=1350, Descripcion="como", NumPedido=1625};
+        var emp5 = new Pedidos {Ped="Carton", IDEmpleado=0078, CodVenta=1356, Descripcion="como", NumPedido=885};
+        var emp6 = new Pedidos {Ped="Carton", IDEmpleado=7865, CodVenta=1359, Descripcion="como", NumPedido=1533};
  
         empleados.Add(emp1);
         empleados.Add(emp2); 
@@ -117,11 +196,27 @@
         empleados.Add(emp4);
         empleados.Add(emp5);
         empleados.Add(emp6);
-        empleados.Add(emp7);
 
         pedidos = empleados;
         _count = empleados.Count;
 
+         List<Reporte> reports = new List<Reporte>();
+        var deud1 = new Reporte {ID=189, nya="Nahiara Orgoñ", dni=12345687, Telefono=4569874, Direccion="calle importante", Ciudad="Corrientes", Notas="todavia no abono todo el total", TotalDebe=12345, TotalPagado=1500};
+        var deud2 = new Reporte {ID=512, nya="Nahiara Orgoñ", dni=12345687, Telefono=4569874, Direccion="calle importante", Ciudad="Corrientes", Notas="todavia no abono todo el total", TotalDebe=12345, TotalPagado=1500};
+        var deud3 = new Reporte {ID=160, nya="Nahiara Orgoñ", dni=12345687, Telefono=4569874, Direccion="calle importante", Ciudad="Corrientes", Notas="todavia no abono todo el total", TotalDebe=12345, TotalPagado=1500};
+        var deud4 = new Reporte {ID=841, nya="Nahiara Orgoñ", dni=12345687, Telefono=4569874, Direccion="calle importante", Ciudad="Corrientes", Notas="todavia no abono todo el total", TotalDebe=12345, TotalPagado=1500};
+        var deud5 = new Reporte {ID=651, nya="Nahiara Orgoñ", dni=12345687, Telefono=4569874, Direccion="calle importante", Ciudad="Corrientes", Notas="todavia no abono todo el total", TotalDebe=12345, TotalPagado=1500};
+        var deud6 = new Reporte {ID=100, nya="Nahiara Orgoñ", dni=12345687, Telefono=4569874, Direccion="calle importante", Ciudad="Corrientes", Notas="todavia no abono todo el total", TotalDebe=12345, TotalPagado=1500};
+ 
+        reports.Add(deud1);
+        reports.Add(deud2); 
+        reports.Add(deud3);
+        reports.Add(deud4);
+        reports.Add(deud5);
+        reports.Add(deud6);
+
+        reportes = reports;
+        _count = reports.Count;
  
         return base.OnInitializedAsync();
     }
