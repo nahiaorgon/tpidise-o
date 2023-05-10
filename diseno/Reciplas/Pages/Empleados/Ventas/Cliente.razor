@@ -8,12 +8,15 @@
 
 
 <PageTitle>Areas</PageTitle>
+<RadzenButton Class="float-end" Click="@(args => NavigationManager.NavigateTo("/Empleados/Administracion/Consultas"))" Variant="Variant.Outlined" Shade="Shade.Darker" Text="Area Administracion" Icon="assignment" ButtonStyle="ButtonStyle.Secondary"/>
+
 <TituloPrincipal TextoPrincipal="Ventas" TextoSecundario="Clientes" />
  
-  
 
-<CListado TItem="Models.Cliente" Data="@clientes">
+
+<CListado TItem="Models.Cliente" Data="@clientes" PageSize="5">
        <Columns>
+
         <RadzenDataGridColumn TItem=" Models.Cliente" TextAlign="TextAlign.Center"  Property="Nombre" Title="Nombre" Width="80px" />
         <RadzenDataGridColumn TItem="Models.Cliente" TextAlign="TextAlign.Center"  Property="Direccion" Title="Direcci&oacute;n" Width="80px"/>
         <RadzenDataGridColumn TItem=" Models.Cliente" TextAlign="TextAlign.Center" Property="DNI" Title="DNI" Width="80px"/> 
@@ -39,9 +42,11 @@
 </CListado> 
 <br> 
 <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="1rem" Wrap="FlexWrap.Wrap">
-   <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ClienteFormulario"))" Text="Nuevo" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Secondary" />
-    <RadzenButton Click=@(() => EmployeeIDVisible = !EmployeeIDVisible) Text="Modificar" Icon="check_circle" ButtonStyle="ButtonStyle.Success"  />
-    <RadzenButton Click=@(() => EmployeeIDVisible = !EmployeeIDVisible) Text="Eliminar"  Icon="report" ButtonStyle="ButtonStyle.Danger" />
+   <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ClienteFormulario"))" Variant="Variant.Flat" Shade="Shade.Lighter"  Text="Nuevo" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Secondary" />
+    <RadzenButton Click=@(() => EmployeeIDVisible = !EmployeeIDVisible) Variant="Variant.Flat" Shade="Shade.Lighter"  Text="Modificar" Icon="check_circle" ButtonStyle="ButtonStyle.Success"  />
+    <RadzenButton Click=@(() => EmployeeIDVisible = !EmployeeIDVisible) Variant="Variant.Flat" Shade="Shade.Lighter" Text="Eliminar"  Icon="report" ButtonStyle="ButtonStyle.Danger" />
+    <RadzenButton Style="margin-left:auto" Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ventasProveedor"))" Variant="Variant.Outlined" Text="Proveedores" Icon="assignment" ButtonStyle="ButtonStyle.Info"/>
+
 </RadzenStack>
 <br> 
 

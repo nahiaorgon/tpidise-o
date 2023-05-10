@@ -99,9 +99,9 @@
                 <RadzenTabs TabPosition="@tabPosition" RenderMode="TabRenderMode.Client" >
                         <Tabs>
                             <RadzenTabsItem Text="Clientes">
-                                <RadzenDataGrid ColumnWidth="150px" AllowFiltering="true" AllowPaging="true" PageSize="5" AllowSorting="true" Data="@orders" TItem="Order">
+                                <RadzenDataGrid ColumnWidth="150px" AllowPaging="true" PageSize="5" AllowSorting="true" Data="@orders" TItem="Order" AllowColumnResize="true" AllowAlternatingRows="false" Frozen="true" >
                                     <Columns> 
-                                        <RadzenDataGridColumn TItem="Order" Property="OrderID" Title="N° de Orden" Width="100px"/>
+                                        <RadzenDataGridColumn TItem="Order" Property="OrderID" Title="N° de Orden" Width="100px" Frozen="true"/>
                                         <RadzenDataGridColumn TItem="Order" Property="ShipName" Title="Pedido" Width="100px"/>  
                                         <RadzenDataGridColumn TItem="Order" Property="ShipAddress" Title="Descripcion" Width="180px"/>
                                         <RadzenDataGridColumn TItem="Order" Property="ShipCity" Title="Detalles" Width="150px" />
@@ -110,9 +110,9 @@
                                 </RadzenDataGrid>
                             </RadzenTabsItem> 
                             <RadzenTabsItem Text="Ventas">
-                                <RadzenDataGrid ColumnWidth="150px" AllowFiltering="true" AllowPaging="true" PageSize="5" AllowSorting="true" Data="@pedidos" TItem="Pedidos">
+                                <RadzenDataGrid ColumnWidth="150px" AllowPaging="true" PageSize="5" AllowSorting="true" Data="@pedidos" TItem="Pedidos" AllowColumnResize="true" AllowAlternatingRows="false" Frozen="true" >
                                     <Columns> 
-                                        <RadzenDataGridColumn TItem="Pedidos" Property="NumPedido" Title="N° de Pedido" /> 
+                                        <RadzenDataGridColumn TItem="Pedidos" Property="NumPedido" Title="N° de Pedido" Frozen="true"/> 
                                         <RadzenDataGridColumn TItem="Pedidos" Property="Descripcion" Title="Descripcion" />
                                         <RadzenDataGridColumn TItem="Pedidos" Property="IDEmpleado" Title="ID Empleado" />
                                         <RadzenDataGridColumn TItem="Pedidos" Property="CodVenta" Title="Cod de Venta" />
@@ -121,17 +121,16 @@
                                 </RadzenDataGrid>
                             </RadzenTabsItem> 
                                 <RadzenTabsItem Text="Deudores">
-                                    <RadzenDataGrid ColumnWidth="150px" AllowFiltering="true" AllowPaging="true" PageSize="5" AllowSorting="true" Data="@pedidos" TItem="Pedidos">
+                                    <RadzenDataGrid ColumnWidth="150px" AllowPaging="true" AllowSorting="true" PageSize="5" Data="@reportes" TItem="Reporte" AllowColumnResize="true" AllowAlternatingRows="false" Frozen="true">
                                         <Columns> 
-                                            <RadzenDataGridColumn TItem="Reporte" Property="ID" Title="ID Cliente" /> 
-                                            <RadzenDataGridColumn TItem="Reporte" Property="nya" Title="Nombre y Apellido" />
-                                            <RadzenDataGridColumn TItem="Reporte" Property="dni" Title="DNI" />
-                                            <RadzenDataGridColumn TItem="Reporte" Property="Telefono" Title="Telefono" />
-                                            <RadzenDataGridColumn TItem="Reporte" Property="Direccion" Title="Direccion"/> 
-                                            <RadzenDataGridColumn TItem="Reporte" Property="Ciudad" Title="Ciudad"/>
-                                            <RadzenDataGridColumn TItem="Reporte" Property="Notas" Title="Notas"/>
-                                            <RadzenDataGridColumn TItem="Reporte" Property="TotalDebe" Title="Lo que debe"/>
-                                            <RadzenDataGridColumn TItem="Reporte" Property="TotalPagado" Title="Total Pagado"/>
+                                            <RadzenDataGridColumn TItem="Reporte" Property="ID" Title="ID" Width="55px" Frozen="true"/> 
+                                            <RadzenDataGridColumn TItem="Reporte" Property="nya" Title="Nombre y Apellido" Width="150px"/>
+                                            <RadzenDataGridColumn TItem="Reporte" Property="dni" Title="DNI" Width="90px"/>
+                                            <RadzenDataGridColumn TItem="Reporte" Property="Telefono" Title="Telefono"  Width="90px"/>
+                                            <RadzenDataGridColumn TItem="Reporte" Property="Direccion" Title="Direccion" Width="130px"/> 
+                                            <RadzenDataGridColumn TItem="Reporte" Property="Notas" Title="Notas" Width="150px"/>
+                                            <RadzenDataGridColumn TItem="Reporte" Property="TotalDebe" Title="Debe" Width="100px" FormatString="{0:c}"/>
+                                            <RadzenDataGridColumn TItem="Reporte" Property="TotalPagado" Title="Total Pagado" Width="120px" FormatString="{0:c}"/>
                                         </Columns>
                                     </RadzenDataGrid>
                                 </RadzenTabsItem> 
@@ -139,11 +138,27 @@
                     </RadzenTabs>
             </RadzenAccordionItem>
             <RadzenAccordionItem Text="Stock" Icon="accessibility">
-                Details for Customers
+                 <RadzenText Style="margin-left: 15px" TextStyle="TextStyle.Body1" Class="rz-mb-0" >Direccionando al Área de Producción </RadzenText> <br> 
+
+                 <RadzenText Style="margin-left: 15px; padding:15px" TextStyle="TextStyle.Body1" Class="rz-mb-0" >Stock de Materia Prima</RadzenText>  
+                <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ClienteFormulario"))" Variant="Variant.Flat" Shade="Shade.Lighter" Text="Nuevo" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Secondary" Style="margin-left: 30px"/>
+                <RadzenButton Style="margin-left: 15px" Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ventasClientes"))" Variant="Variant.Flat" Shade="Shade.Lighter" Text="Modificar" Icon="check_circle" ButtonStyle="ButtonStyle.Success"  /> <br>
+                    <br>
+                 <RadzenText Style="margin-left: 15px; padding:15px" TextStyle="TextStyle.Body1" Class="rz-mb-0" >Productos Fabricados</RadzenText> 
+                <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ClienteFormulario"))" Variant="Variant.Flat" Shade="Shade.Lighter" Text="Nuevo" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Secondary" Style="margin-left: 30px"/>
+                <RadzenButton Style="margin-left: 15px" Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ventasClientes"))" Variant="Variant.Flat" Shade="Shade.Lighter" Text="Modificar" Icon="check_circle" ButtonStyle="ButtonStyle.Success"  />
+                <RadzenButton Class="float-end" Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ventasClientes"))" Variant="Variant.Outlined" Text="Area Producción" Icon="assignment" ButtonStyle="ButtonStyle.Secondary"  />
+
             </RadzenAccordionItem>
+
             <RadzenAccordionItem Text="Usuario" Icon="accessibility">
-                <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ClienteFormulario"))"  Text="Nuevo" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Secondary" Style="margin-left: 15px"/>
-                <RadzenButton Style="margin-left: 15px" Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ventasClientes"))"  Text="Modificar" Icon="check_circle" ButtonStyle="ButtonStyle.Success"  />
+                <RadzenText Style="margin-left: 15px" TextStyle="TextStyle.Body1" Class="rz-mb-0" >Direccionando al Área de Ventas </RadzenText> <br>
+
+                <RadzenText Style="margin-left: 15px; padding:15px" TextStyle="TextStyle.Body1" Class="rz-mb-0" >Usuarios</RadzenText>  
+
+                <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ClienteFormulario"))" Variant="Variant.Flat" Shade="Shade.Lighter" Text="Nuevo" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Secondary" Style="margin-left: 30px"/>
+                <RadzenButton Style="margin-left: 15px" Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ventasClientes"))" Variant="Variant.Flat" Shade="Shade.Lighter" Text="Modificar" Icon="check_circle" ButtonStyle="ButtonStyle.Success"  />
+                <RadzenButton Class="float-end" Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ventasClientes"))" Variant="Variant.Outlined" Text="Area Ventas" Icon="assignment" ButtonStyle="ButtonStyle.Info"  />
             </RadzenAccordionItem>
         </Items>
     </RadzenAccordion></RadzenColumn>
@@ -155,7 +170,6 @@
     IEnumerable<Order> orders;
     IEnumerable<Pedidos> pedidos; 
     IEnumerable<Reporte> reportes; 
-
     TabPosition tabPosition = TabPosition.Top; 
       DateTime? Fecha = DateTime.Now;
      private int _count;
@@ -201,12 +215,12 @@
         _count = empleados.Count;
 
          List<Reporte> reports = new List<Reporte>();
-        var deud1 = new Reporte {ID=189, nya="Nahiara Orgoñ", dni=12345687, Telefono=4569874, Direccion="calle importante", Ciudad="Corrientes", Notas="todavia no abono todo el total", TotalDebe=12345, TotalPagado=1500};
-        var deud2 = new Reporte {ID=512, nya="Nahiara Orgoñ", dni=12345687, Telefono=4569874, Direccion="calle importante", Ciudad="Corrientes", Notas="todavia no abono todo el total", TotalDebe=12345, TotalPagado=1500};
-        var deud3 = new Reporte {ID=160, nya="Nahiara Orgoñ", dni=12345687, Telefono=4569874, Direccion="calle importante", Ciudad="Corrientes", Notas="todavia no abono todo el total", TotalDebe=12345, TotalPagado=1500};
-        var deud4 = new Reporte {ID=841, nya="Nahiara Orgoñ", dni=12345687, Telefono=4569874, Direccion="calle importante", Ciudad="Corrientes", Notas="todavia no abono todo el total", TotalDebe=12345, TotalPagado=1500};
-        var deud5 = new Reporte {ID=651, nya="Nahiara Orgoñ", dni=12345687, Telefono=4569874, Direccion="calle importante", Ciudad="Corrientes", Notas="todavia no abono todo el total", TotalDebe=12345, TotalPagado=1500};
-        var deud6 = new Reporte {ID=100, nya="Nahiara Orgoñ", dni=12345687, Telefono=4569874, Direccion="calle importante", Ciudad="Corrientes", Notas="todavia no abono todo el total", TotalDebe=12345, TotalPagado=1500};
+        var deud1 = new Reporte {ID=189, nya="Nahiara Orgoñ", dni=12345687, Telefono=4569874, Direccion="calle importante", Ciudad="Corrientes", Notas="No abono el total", TotalDebe=8135, TotalPagado=1500};
+        var deud2 = new Reporte {ID=512, nya="Nemo Buscando", dni=23682387, Telefono=4569874, Direccion="wallaby 42 sidney", Ciudad="Chaco", Notas="Vencido", TotalDebe=13825, TotalPagado=1981};
+        var deud3 = new Reporte {ID=160, nya="LaCeni Cienta", dni=98138187, Telefono=4569874, Direccion="niu yorc 123", Ciudad="Corrientes", Notas="Mes atrasado", TotalDebe=9385, TotalPagado=1681};
+        var deud4 = new Reporte {ID=841, nya="Mateo Messi", dni=31829887, Telefono=4569874, Direccion="holiwud 456", Ciudad="Goya", Notas="Vencido", TotalDebe=81345, TotalPagado=3281};
+        var deud5 = new Reporte {ID=651, nya="Elton Yon", dni=12819233, Telefono=4569874, Direccion="mi casa 789", Ciudad="Mburucuya", Notas="Vencido", TotalDebe=1284, TotalPagado=571};
+        var deud6 = new Reporte {ID=100, nya="Mar Chese", dni=91358268, Telefono=4569874, Direccion="nueva yersei 985", Ciudad="Rosario", Notas="No abono el total", TotalDebe=145, TotalPagado=623};
  
         reports.Add(deud1);
         reports.Add(deud2); 

@@ -65,7 +65,7 @@ a, .btn-link {
 
 :root{
 --rz-primary: #5499c7 !important;
---rz-secondary:#8e44ad !important;
+--rz-secondary:#2F4F4F !important;
 --rz-series-1: #a569bd !important;
 --rz-series-2: #1abc9c !important;
 --rz-series-3: #DAF7A6 !important;
@@ -106,3 +106,15 @@ a, .btn-link {
  .rz-accordion-header{
     padding: 10px;
  }
+ .sidebar[b-vhm5d7460y]{
+    background-image:linear-gradient(200deg, rgb(144, 152, 223) 10%, #F5F5F5 50%) !important;
+ }
+ 
+ .nav-item[b-f6952bgt9o] a {
+    color: black !important;
+ }
+
+ main[b-vhm5d7460y] {
+    flex: 1;
+    background-color: #F5F5F5 !important;
+}

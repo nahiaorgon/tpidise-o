@@ -3,27 +3,36 @@
 @inject NotificationService NotificationService 
 @inherits OwningComponentBase<Usuario>
 @using System.Collections.Generic;  
+@inject NavigationManager NavigationManager
+
 
 <PageTitle>Areas</PageTitle>
+<RadzenButton Class="float-end" Click="@(args => NavigationManager.NavigateTo("/Empleados/Administracion/Consultas"))" Variant="Variant.Outlined" Shade="Shade.Darker" Text="Area Administracion" Icon="assignment" ButtonStyle="ButtonStyle.Secondary"/>
 
 <TituloPrincipal TextoPrincipal="Ventas" TextoSecundario="Proveedores" />
 
 
-<CListado TItem="Models.Proveedor" Data="@proveedores">
+<CListado TItem="Models.Proveedor" Data="@proveedores" PageSize="7" AllowColumnResize="true" AllowAlternatingRows="false" Frozen="true">
+    
        <Columns>
-        <RadzenDataGridColumn TItem=" Models.Proveedor" TextAlign="TextAlign.Center" Property="Sucursal" Title="Sucursal" Width="100px"/>       
-        <RadzenDataGridColumn TItem=" Models.Proveedor" TextAlign="TextAlign.Center" Property="Identificacion" Title="Identificaci&oacute;n" Width="100px" />
-        <RadzenDataGridColumn TItem=" Models.Proveedor" TextAlign="TextAlign.Center" Property="Nombre" Title="Nombre" Width="100px"/> 
-        <RadzenDataGridColumn TItem="Models.Proveedor" TextAlign="TextAlign.Center" Property="Direccion" Title="Direcci&oacute;n" Width="100px" />
-    </Columns>                 
+        <RadzenDataGridColumn TItem=" Models.Proveedor" TextAlign="TextAlign.Center" Property="Sucursal" Title="Sucursal" Width="80px" Frozen="true"/>       
+        <RadzenDataGridColumn TItem=" Models.Proveedor" TextAlign="TextAlign.Center" Property="ID" Title="ID" Width="80px" Frozen="true" />
+        <RadzenDataGridColumn TItem=" Models.Proveedor" Property="Nombre" Title="Nombre" Width="100px"/> 
+        <RadzenDataGridColumn TItem="Models.Proveedor" Property="DNI" Title="DNI" Width="100px" />
+        <RadzenDataGridColumn TItem="Models.Proveedor" Property="Direccion" Title="Direcci&oacute;n" Width="150px" />
+        <RadzenDataGridColumn TItem="Models.Proveedor" Property="Ciudad" Title="Ciudad" Width="130px" />
+    </Columns>   
+ 
+              
 </CListado>
 <br>
-<RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="1rem" Wrap="FlexWrap.Wrap">
-    <a href="/Empleados/Ventas/ProveedorFormulario">  <RadzenButton Click=@(() => EmployeeIDVisible = !EmployeeIDVisible)  Text="Nuevo" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Secondary" /></a>
-    <RadzenButton Click=@(() => EmployeeIDVisible = !EmployeeIDVisible)  Text="Modificar" Icon="check_circle" ButtonStyle="ButtonStyle.Success"  />
-    <RadzenButton Click=@(() => EmployeeIDVisible = !EmployeeIDVisible)  Text="Eliminar"  Icon="report" ButtonStyle="ButtonStyle.Danger" />
-</RadzenStack>
+<RadzenStack Orientation="Orientation.Horizontal" >
+    <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ProveedorFormulario"))" Variant="Variant.Flat" Shade="Shade.Lighter"  Text="Nuevo" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Secondary" />
+    <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ProveedorFormulario"))" Variant="Variant.Flat" Shade="Shade.Lighter"  Text="Modificar" Icon="check_circle" ButtonStyle="ButtonStyle.Success"  />
+    <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ProveedorFormulario"))" Variant="Variant.Flat" Shade="Shade.Lighter"  Text="Eliminar"  Icon="report" ButtonStyle="ButtonStyle.Danger" />
+        <RadzenButton Style="margin-left:auto" Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ventasClientes"))" Variant="Variant.Outlined" Text="Clientes" Icon="assignment" ButtonStyle="ButtonStyle.Info"/>
 
+    </RadzenStack>
 
 
 @code {
@@ -34,7 +43,7 @@
     [Parameter] public bool SoloLectura { get; set; } = true;
     [Parameter] public string Nombre {get; set;}
     [Parameter] public string Direccion {get; set;}
-    [Parameter] public int Identificacion {get; set;}
+    [Parameter] public int ID {get; set;}
      [Parameter] public int Sucursal {get; set;} 
     private void OnClick(string text)
     {
@@ -46,13 +55,13 @@
     protected override Task OnInitializedAsync()
     {
         List<Models.Proveedor> persons = new List<Models.Proveedor>();
-        var person1 = new Models.Proveedor {Sucursal=1, Nombre = "Chiara", Direccion = "Calle gualaby 42 Sydney", Identificacion =12};
-        var person2 = new Models.Proveedor {Sucursal=1, Nombre = "Nahia", Direccion = "French 414", Identificacion =7};
-        var person3 = new Models.Proveedor {Sucursal=4, Nombre = "Valen", Direccion = "Av. Sarmiento", Identificacion =5};
-        var person4 = new Models.Proveedor {Sucursal=6, Nombre = "Mariano", Direccion = "Calle importante", Identificacion =32};
-        var person5 = new Models.Proveedor {Sucursal=4, Nombre = "Leandro", Direccion = "ni idea", Identificacion =15};
-        var person6 = new Models.Proveedor {Sucursal=19, Nombre = "Bibiana ", Direccion = "ejemplo 6", Identificacion =13};
-        var person7 = new Models.Proveedor {Sucursal=20, Nombre = "Mateo", Direccion = "otra calle importante", Identificacion =69};
+        var person1 = new Models.Proveedor {Sucursal=1, Nombre = "Chiara Madelein", DNI=98138187, Direccion = "Calle gualaby 42 Sydney", ID =12, Ciudad="Corrientes" };
+        var person2 = new Models.Proveedor {Sucursal=1, Nombre = "Nahia Orgoñ", DNI=12345687, Direccion = "French 414", ID =7,  Ciudad="Resistencia - Chaco"};
+        var person3 = new Models.Proveedor {Sucursal=4, Nombre = "Valen Sosa", DNI=23682387, Direccion = "Av. Sarmiento", ID =5,  Ciudad="Goya - Ctes"};
+        var person4 = new Models.Proveedor {Sucursal=6, Nombre = "Mariano Gonzalez", DNI=98138187, Direccion = "Calle importante", ID =32,  Ciudad="Barranqueras - Chaco"};
+        var person5 = new Models.Proveedor {Sucursal=4, Nombre = "Leandro Martinez", DNI=31829887, Direccion = "ni idea", ID =15,  Ciudad="Mburucuya - Ctes"};
+        var person6 = new Models.Proveedor {Sucursal=19, Nombre = "Bibiana Altamirano", DNI=12819233, Direccion = "ejemplo 6", ID =13,  Ciudad="Corrientes"};
+        var person7 = new Models.Proveedor {Sucursal=20, Nombre = "Mateo Messi", DNI=91358268, Direccion = "otra calle importante", ID =69,  Ciudad="Paso de los Libres - Ctes"};
 
         persons.Add(person1);
         persons.Add(person2);
