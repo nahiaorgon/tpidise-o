@@ -65,8 +65,8 @@
             <p class="mb-4">Indique en que listado quiere ingresar</p>
             <div class="row">
                 <div class="col">
-                   <a href="Empleados/Ventas/ventasClientes"> <RadzenButton Style="background: var(--rz-series-7)" Text="Clientes" Click="() => ds.Close(false)" class="me-1"/></a>
-                   <a href="Empleados/Ventas/ventasProveedor"><RadzenButton Style="background: var(--rz-series-8)" Text="Proveedores" Click="() => ds.Close(false)"  class="me-1" /></a> 
+                  <RadzenButton ButtonStyle="ButtonStyle.Primary" Text="Clientes" Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ventasClientes"))"  Variant="Variant.Flat" Shade="Shade.Lighter" class="me-1"/>
+                   <RadzenButton ButtonStyle="ButtonStyle.Success" Text="Proveedores" Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ventasProveedor"))"  Variant="Variant.Flat" Shade="Shade.Lighter"  class="me-1" /> 
                     <RadzenButton Style="background: var(--rz-black)" Text="Cancelar" Click="() => ds.Close(false)"  class="me-1 float-end" />
                 </div>
             </div>
