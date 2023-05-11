@@ -73,7 +73,7 @@
                                         <RadzenCard Style="width: 250px;" Class="rz-border-radius-3">
                                             <RadzenRow Gap="0.5rem">
                                                 <RadzenColumn Size="8" Class="rz-text-truncate">
-                                                    <RadzenBadge BadgeStyle="BadgeStyle.Light" Text=@($" ID Deudor: {order.ID}") Class="rz-mr-1" IsPill="true" /> <br>
+                                                    <RadzenBadge BadgeStyle="BadgeStyle.Light" Text=@($" IDCliente: {order.ID}") Class="rz-mr-1" IsPill="true" /> <br>
                                                     <RadzenText TextStyle="TextStyle.Caption" Class="rz-mb-0"> DNI: @(order.dni)</RadzenText>
                                                 </RadzenColumn> 
                                             </RadzenRow>
@@ -156,8 +156,8 @@
 
                 <RadzenText Style="margin-left: 15px; padding:15px" TextStyle="TextStyle.Body1" Class="rz-mb-0" >Usuarios</RadzenText>  
 
-                <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ClienteFormulario"))" Variant="Variant.Flat" Shade="Shade.Lighter" Text="Nuevo" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Secondary" Style="margin-left: 30px"/>
-                <RadzenButton Style="margin-left: 15px" Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ventasClientes"))" Variant="Variant.Flat" Shade="Shade.Lighter" Text="Modificar" Icon="check_circle" ButtonStyle="ButtonStyle.Success"  />
+                <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/NuevoClienteFormulario"))" Variant="Variant.Flat" Shade="Shade.Lighter" Text="Nuevo" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Secondary" Style="margin-left: 30px"/>
+                <RadzenButton Style="margin-left: 15px" Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ClienteFormulario"))" Variant="Variant.Flat" Shade="Shade.Lighter" Text="Modificar" Icon="check_circle" ButtonStyle="ButtonStyle.Success"  />
                 <RadzenButton Class="float-end" Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ventasClientes"))" Variant="Variant.Outlined" Text="Area Ventas" Icon="assignment" ButtonStyle="ButtonStyle.Info"  />
             </RadzenAccordionItem>
         </Items>

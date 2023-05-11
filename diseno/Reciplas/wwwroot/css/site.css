@@ -65,15 +65,17 @@ a, .btn-link {
 
 :root{
 --rz-primary: #5499c7 !important;
---rz-secondary:#2F4F4F !important;
---rz-series-1: #a569bd !important;
---rz-series-2: #1abc9c !important;
+--rz-secondary:#3CB371 !important;
+--rz-series-1: #a569bd !important; 
 --rz-series-3: #DAF7A6 !important;
 --rz-series-4: #2874A6 !important;
 
---rz-info: #C0392B  !important;
+--rz-info: #6659c0e3 !important;
 --rz-success: #1abc9c !important;
---rz-danger: black !important;
+--rz-danger: red !important;
+--rz-Dark: black !important;
+--rz-Warning: #5499c7 !important;
+
 
 
 /*para los botones administracion*/
@@ -118,4 +120,9 @@ a, .btn-link {
  main[b-vhm5d7460y] {
     flex: 1;
     background-color: #F5F5F5 !important;
+}
+
+.label {
+    cursor: default;
+    
 }

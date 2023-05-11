@@ -147,9 +147,8 @@ else
 }
 <br>
         <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="1rem" Wrap="FlexWrap.Wrap">
-            <RadzenButton Style="margin-left: 15px" Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ventasClientes"))" Text="Agregar"
-            Icon="add_circle_outline" ButtonStyle="ButtonStyle.Primary" />
-            <RadzenButton ButtonStyle="ButtonStyle.Light" Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ventasClientes"))" Variant="Variant.Flat" Icon="cancel" Text="Cancel"/>
+            <a href="/Empleados/Ventas/ventasClientes"><RadzenButton Style="margin-left: 15px" Click=@(args => OnClick("Registro Agregado")) Text="Agregar" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Primary"/></a>
+            <a href="/Empleados/Ventas/ventasClientes"><RadzenButton Click=@(args => OnClick("No se guardo el Registro")) ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Icon="cancel" Text="Cancel"/></a> 
         </RadzenStack>
         <br>
 
@@ -158,9 +157,7 @@ else
     public class Order
     {
         public DateTime ExpiryDate { get; set; }
-        public int Country { get; set; }
-        public DateTime OrderDate { get; set; }
-        public DateTime ShipDate { get; set; }
+        public int Country { get; set; } 
     }
 
     public class Country
@@ -169,11 +166,12 @@ else
         public string Name { get; set; }
     }
 
+    private void OnClick(string text)
+    {
+        NotificationService.Notify(new NotificationMessage { Severity = NotificationSeverity.Info, Detail = text });
+    }
     Order order = new Order()
-        {
-            ExpiryDate = DateTime.Parse("10/10/2022"),
-            OrderDate = DateTime.Now,
-            ShipDate = DateTime.Now
+        { 
         };
 
     List<Country> countries = new List<Country>()

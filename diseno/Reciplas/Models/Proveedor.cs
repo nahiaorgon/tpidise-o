@@ -8,4 +8,6 @@ public class Proveedor : EntidadBase{
     public string Ciudad {get; set;}
     public string Direccion {get; set;}
     
+    public bool PerfilAprobacion { get; set; }
+    
 }

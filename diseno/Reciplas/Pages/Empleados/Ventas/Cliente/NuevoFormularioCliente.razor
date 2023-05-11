@@ -1,6 +1,7 @@
-@page "/Empleados/Ventas/ClienteFormulario"
+@page "/Empleados/Ventas/NuevoClienteFormulario"
 @inject NotificationService NotificationService 
 @inherits OwningComponentBase<Usuario> 
+@inject NavigationManager NavigationManager
 
 <TituloPrincipal TextoPrincipal="Ventas" TextoSecundario="Clientes" />
 
@@ -19,7 +20,7 @@ else
     <RadzenTemplateForm Data="@order" Submit="@((Order args) => { Submit(args); })">
     <div class="container-fluid">
             <div class="col-md-6">
-                <RadzenFieldset Text="Modificación">
+                <RadzenFieldset Text="Nuevo">
                     <div class="row">
                         <div class="col-md align-items-center d-flex">
                             <RadzenLabel Text="Nombre y Apellido" />
@@ -65,10 +66,9 @@ else
 
 
         <br>
-            <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="1rem" Wrap="FlexWrap.Wrap">
-                <a href="/Empleados/Ventas/ventasClientes"><RadzenButton Style="margin-left:45px" Click=@(() => EmployeeIDVisible = !EmployeeIDVisible)  Text="Modificar" Icon="check_circle" ButtonStyle="ButtonStyle.Success"  /></a>
-                <RadzenButton  Click=@(() => EmployeeIDVisible = !EmployeeIDVisible)  Text="Eliminar"  Icon="report" ButtonStyle="ButtonStyle.Danger" />
-                <a href="/Empleados/Ventas/ventasClientes"><RadzenButton CClick=@(() => EmployeeIDVisible = !EmployeeIDVisible)  Text="Volver" Icon="history" ButtonStyle="ButtonStyle.Secondary" /></a>
+            <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="1rem" Wrap="FlexWrap.Wrap">            
+            <a href="/Empleados/Ventas/ventasClientes"><RadzenButton Style="margin-left:70px" Click=@(args => OnClick("Registro Guardado")) Variant="Variant.Flat" Shade="Shade.Lighter"  Text="Guardar" Icon="check_circle" ButtonStyle="ButtonStyle.Success"  /></a>
+            <a href="/Empleados/Ventas/ventasClientes"><RadzenButton Style="margin-left:100px" Click=@(args => OnClick("Registro sin guardar")) Variant="Variant.Flat" Shade="Shade.Lighter"  Text="Volver" Icon="history" ButtonStyle="ButtonStyle.Secondary" /></a>
             </RadzenStack>
             
     </div>
@@ -77,19 +77,11 @@ else
     </RadzenTemplateForm>
 }
 
-@code {
-    bool EmployeeIDVisible = false; 
- IEnumerable<int> values = new int[] { 1 };
-    public class Order
-    {        
-    }
-
-    DateTime value = DateTime.Now;
- 
+@code { 
+    DateTime value = DateTime.Now; 
     Order order = new Order()
     { 
-    };
-
+    }; 
 
     void Submit(Order arg)
     {
@@ -97,7 +89,7 @@ else
     }
     private void OnClick(string text)
     {
-        NotificationService.Notify(new NotificationMessage { Severity = NotificationSeverity.Info, Summary = "Button Clicked", Detail = text });
+        NotificationService.Notify(new NotificationMessage { Severity = NotificationSeverity.Warning, Detail = text });
     }
     
 
