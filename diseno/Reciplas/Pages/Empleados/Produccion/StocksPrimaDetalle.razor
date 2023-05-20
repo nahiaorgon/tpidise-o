@@ -1,0 +1,44 @@
+@page "/Empleados/Produccion/stocksPrimaDetalles"
+@using Reciplas.Models;
+@inject NotificationService NotificationService
+@inherits OwningComponentBase<Usuario> 
+@inject DialogService DialogService
+@inject NavigationManager NavigationManager  
+
+
+
+<RadzenCard Class="rz-my-12 rz-mx-auto" Style="max-width: 420px">
+    <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Start" Gap="1rem" Class="rz-p-4">
+        <RadzenStack Gap="0">
+            <RadzenText TextStyle="TextStyle.Overline" class="rz-display-flex rz-mt-2 rz-my-0">Fecha</RadzenText>
+            <RadzenText TextStyle="TextStyle.Body1"><b>2023-05-12</b></RadzenText>
+            <RadzenText TextStyle="TextStyle.Overline" class="rz-display-flex rz-mt-4 rz-mb-0">Hora</RadzenText>
+            <RadzenText TextStyle="TextStyle.Body1"><b>14:30</b></RadzenText>
+            <RadzenText TextStyle="TextStyle.Overline" class="rz-display-flex rz-mt-2 rz-my-0">Proveedor</RadzenText>
+            <RadzenText TextStyle="TextStyle.Body1"><b>Proveedor ABC</b></RadzenText>
+            <RadzenText TextStyle="TextStyle.Overline" class="rz-display-flex rz-mt-4 rz-mb-0">Peso en Kg de Materia Prima</RadzenText>
+            <RadzenText TextStyle="TextStyle.Body1"><b>500</b></RadzenText>
+            <RadzenText TextStyle="TextStyle.Overline" class="rz-display-flex rz-mt-2 rz-my-0">Calidad de Materia Prima</RadzenText>
+            <RadzenText TextStyle="TextStyle.Body1"><b>Alta</b></RadzenText>
+            <RadzenText TextStyle="TextStyle.Overline" class="rz-display-flex rz-mt-4 rz-mb-0">Descripción</RadzenText>
+            <RadzenText TextStyle="TextStyle.Body1"><b>Materia prima *redacted*</b></RadzenText>
+            <RadzenText TextStyle="TextStyle.Overline" class="rz-display-flex rz-mt-2 rz-my-0">Responsable de Recepción</RadzenText>
+            <RadzenText TextStyle="TextStyle.Body1"><b>Juan Pérez</b></RadzenText>
+        </RadzenStack>
+    </RadzenStack>
+    <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.End" Gap="0">
+        <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Produccion/Stocks"))" Variant="Variant.Text" class="rz-text-secondary-color" Text="Volver" /> 
+    </RadzenStack>
+</RadzenCard>
+
+
+@code {
+  //  Order order;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+       //order = dbContext.Orders.Include("Customer").Include("Employee").FirstOrDefault();
+    }
+}

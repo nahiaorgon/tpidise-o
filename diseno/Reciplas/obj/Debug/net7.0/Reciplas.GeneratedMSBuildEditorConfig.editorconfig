@@ -32,12 +32,48 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXEFyZWFQcm9kdWNjaW9uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[W:/Proyectos Git/tpidise-o/diseno/Reciplas/Pages/Empleados/Produccion/PyR.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXFByb2R1Y2Npb25cUHlSLnJhem9y
+[W:/Proyectos Git/tpidise-o/diseno/Reciplas/Pages/Empleados/Produccion/FormularioFabricados.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXFByb2R1Y2Npb25cRm9ybXVsYXJpb0ZhYnJpY2Fkb3MucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[W:/Proyectos Git/tpidise-o/diseno/Reciplas/Pages/Empleados/Produccion/Stocks.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXFByb2R1Y2Npb25cU3RvY2tzLnJhem9y
+[W:/Proyectos Git/tpidise-o/diseno/Reciplas/Pages/Empleados/Produccion/FormularioMateriaPrima.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXFByb2R1Y2Npb25cRm9ybXVsYXJpb01hdGVyaWFQcmltYS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[W:/Proyectos Git/tpidise-o/diseno/Reciplas/Pages/Empleados/Produccion/NuevoFormularioFabricados.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXFByb2R1Y2Npb25cTnVldm9Gb3JtdWxhcmlvRmFicmljYWRvcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[W:/Proyectos Git/tpidise-o/diseno/Reciplas/Pages/Empleados/Produccion/NuevoFormularioMateriaPrima.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXFByb2R1Y2Npb25cTnVldm9Gb3JtdWxhcmlvTWF0ZXJpYVByaW1hLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[W:/Proyectos Git/tpidise-o/diseno/Reciplas/Pages/Empleados/Produccion/NuevoStocks.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXFByb2R1Y2Npb25cTnVldm9TdG9ja3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[W:/Proyectos Git/tpidise-o/diseno/Reciplas/Pages/Empleados/Produccion/Pedidos.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXFByb2R1Y2Npb25cUGVkaWRvcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[W:/Proyectos Git/tpidise-o/diseno/Reciplas/Pages/Empleados/Produccion/PedidosAgregar.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXFByb2R1Y2Npb25cUGVkaWRvc0FncmVnYXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[W:/Proyectos Git/tpidise-o/diseno/Reciplas/Pages/Empleados/Produccion/PedidosDetalles.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXFByb2R1Y2Npb25cUGVkaWRvc0RldGFsbGVzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[W:/Proyectos Git/tpidise-o/diseno/Reciplas/Pages/Empleados/Produccion/PedidosModificar.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXFByb2R1Y2Npb25cUGVkaWRvc01vZGlmaWNhci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[W:/Proyectos Git/tpidise-o/diseno/Reciplas/Pages/Empleados/Produccion/StocksFabricadoDetalle.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXFByb2R1Y2Npb25cU3RvY2tzRmFicmljYWRvRGV0YWxsZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[W:/Proyectos Git/tpidise-o/diseno/Reciplas/Pages/Empleados/Produccion/StocksPrimaDetalle.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW1wbGVhZG9zXFByb2R1Y2Npb25cU3RvY2tzUHJpbWFEZXRhbGxlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [W:/Proyectos Git/tpidise-o/diseno/Reciplas/Pages/Empleados/Usuarios.razor]
