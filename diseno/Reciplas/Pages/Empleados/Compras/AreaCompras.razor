@@ -2,16 +2,20 @@
 @using Reciplas.Models;
 @inject NotificationService NotificationService 
 @inherits OwningComponentBase<Usuario>  
- 
+@inject DialogService DialogService
 @inject NavigationManager NavigationManager
 
+
  <PageTitle>Areas</PageTitle>
+
+ <RadzenButton Class="float-end" Click=@ShowInlineDialogProduccion Variant="Variant.Outlined" Shade="Shade.Darker" Text="Area Producción" Icon="assignment" ButtonStyle="ButtonStyle.Secondary"  Width="100px"/>
+
 <TituloPrincipal TextoPrincipal="Compras" TextoSecundario="Stock Materia Prima" />
 
 <br>
     <RadzenDataList AllowVirtualization=@allowVirtualization Style="@(allowVirtualization ? "height:400px;overflow:auto;" : "")" 
                     WrapItems="@(!allowVirtualization)" AllowPaging="@(!allowVirtualization)"
-                    Data="@products" TItem="Product" PageSize="5" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true">
+                    Data="@products" TItem="Product" PageSize="3" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true">
         <Template Context="product"> 
             <RadzenCard Style="width: 100%; padding: 15px;">
                 <RadzenRow Gap="0"> 
@@ -42,7 +46,7 @@
                     <RadzenColumn Size="12" SizeLG="4" Class="rz-p-4 rz-text-align-start rz-text-align-lg-end">
                         
                         <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Compras/ModificarCompra"))" Text="Editar" TextAlign="TextAlign.Center" Icon="list" ButtonStyle="ButtonStyle.Success" Style="margin-left: 15px" />
-                        <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/AgregarPedidoCliente"))" Text="Abonar" TextAlign="TextAlign.Center" Icon="add_circle_outline" Color="Color.Warning" Style="margin-left: 5px" />
+                        <RadzenButton Click=@(args => OnClick("Compra Abonada")) Text="Abonar" TextAlign="TextAlign.Center" Icon="add_circle_outline" Color="Color.Warning" Style="margin-left: 5px" />
                     </RadzenColumn>
                 </RadzenRow>
             </RadzenCard>
@@ -95,6 +99,23 @@
         return base.OnInitializedAsync();
     }
 
-
+async Task ShowInlineDialogProduccion()
+    {
+        var result = await DialogService.OpenAsync("Área de Producción", ds =>
+        @<div>
+            <p class="mb-4">Indique en que listado quiere ingresar</p>
+            <div class="row">
+                <div class="col">
+                   <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Produccion/Stocks"))" ButtonStyle="ButtonStyle.Info" Variant="Variant.Flat" Shade="Shade.Lighter" Text="Stocks" class="me-1"/>
+                   <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Produccion/Pedidos"))" ButtonStyle="ButtonStyle.Secondary" Shade="Shade.Lighter" Text="Pedidos" class="me-1" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Dark" Shade="Shade.Lighter" Text="Cancelar" Click="() => ds.Close(false)"  class="me-1 float-end" />
+                </div>
+            </div>
+        </div>);
+    } 
+    private void OnClick(string text)
+    {
+        NotificationService.Notify(new NotificationMessage { Severity = NotificationSeverity.Info, Detail = text });
+    }
 
 }

@@ -1,0 +1,92 @@
+﻿@page "/usuarios"
+@inject NotificationService NotificationService
+@inject IModalService modal 
+@inject DialogService DialogService
+@inject NavigationManager NavigationManager  
+
+
+
+<PageTitle>Areas</PageTitle>
+
+<TituloPrincipal TextoPrincipal="Empleados" TextoSecundario="Areas" />
+
+<br>
+<div class="container-fluid ">
+    <div class="row px-3">
+        <div  class="col-lg-6 col-xl-4 p-4" style="margin-left: 130px;">
+            <RadzenCard>
+                <RadzenText TextAlign="TextAlign.Center" TextStyle="TextStyle.H6" TagName="TagName.H3">Área de Administración</RadzenText>
+                <RadzenButton Text="Ingresar" class="w-100" ButtonStyle="ButtonStyle.Primary" Shade="Shade.Lighter"
+                         Click="@(args => NavigationManager.NavigateTo("/Empleados/Administracion/Consultas"))" />
+            </RadzenCard>
+        </div>
+   
+    <div class="col-lg-6 col-xl-4 p-4" style="margin-left: 80px;">
+            <RadzenCard>
+                <RadzenText TextAlign="TextAlign.Center" TextStyle="TextStyle.H6" TagName="TagName.H3">Área de Compras</RadzenText>
+               <RadzenButton Text="Ingresar" class="w-100" ButtonStyle="ButtonStyle.Success" Shade="Shade.Lighter"
+                    Click="@(args => NavigationManager.NavigateTo("/Empleados/Compras/Stock"))" />
+            </RadzenCard>
+    </div>
+    </div>
+
+    <div class="row px-3">
+
+    <div class="col-lg-6 col-xl-4 p-4" style="margin-left: 130px; ">
+            <RadzenCard>
+                <RadzenText TextAlign="TextAlign.Center" TextStyle="TextStyle.H6" TagName="TagName.H3">Área de Producción</RadzenText>
+                <RadzenButton RadzenButton Text="Ingresar" class="w-100" Shade="Shade.Lighter" ButtonStyle="ButtonStyle.Secondary"
+                    Click=@ShowInlineDialogProduccion />
+            </RadzenCard>
+    </div> 
+
+     <div class="col-lg-6 col-xl-4 p-4" style="margin-left: 80px;">
+            <RadzenCard>
+                <RadzenText TextAlign="TextAlign.Center" TextStyle="TextStyle.H6" TagName="TagName.H3">Área de Ventas</RadzenText>
+                <RadzenButton Text="Ingresar" class="w-100"  Shade="Shade.Lighter" ButtonStyle="ButtonStyle.Info" Click=@ShowInlineDialog />
+                </RadzenCard>
+    </div>
+   </div>
+   
+</div> 
+
+ 
+@code {
+
+    async Task ShowInlineDialog()
+    {
+        var result = await DialogService.OpenAsync("Área de Ventas", ds =>
+        @<div>
+            <p class="mb-4">Indique en que listado quiere ingresar</p>
+            <div class="row">
+                <div class="col">
+                   <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ventasClientes"))" ButtonStyle="ButtonStyle.Info" Variant="Variant.Flat" Shade="Shade.Lighter" Text="Clientes" class="me-1"/>
+                   <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ventasProveedor"))" ButtonStyle="ButtonStyle.Secondary" Shade="Shade.Lighter" Text="Proveedores"  class="me-1" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Dark" Text="Cancelar" Click="() => ds.Close(false)" Shade="Shade.Lighter" class="me-1 float-end" />
+                </div>
+            </div>
+        </div>);
+    } 
+
+    async Task ShowInlineDialogProduccion()
+    {
+        var result = await DialogService.OpenAsync("Área de Producción", ds =>
+        @<div>
+            <p class="mb-4">Indique en que listado quiere ingresar</p>
+            <div class="row">
+                <div class="col">
+                   <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Produccion/Stocks"))" ButtonStyle="ButtonStyle.Info" Variant="Variant.Flat" Shade="Shade.Lighter" Text="Stocks" class="me-1"/>
+                   <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Produccion/Pedidos"))" ButtonStyle="ButtonStyle.Secondary" Shade="Shade.Lighter" Text="Pedidos" class="me-1" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Dark" Shade="Shade.Lighter" Text="Cancelar" Click="() => ds.Close(false)"  class="me-1 float-end" />
+                </div>
+            </div>
+        </div>);
+    } 
+    
+    void ShowNotification(NotificationMessage message)
+   {
+      NotificationService.Notify(message);
+        DialogService.Close();
+
+   } 
+}
