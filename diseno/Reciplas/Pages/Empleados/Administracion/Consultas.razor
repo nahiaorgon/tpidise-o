@@ -6,9 +6,7 @@
 @inject IModalService modal 
 @inject DialogService DialogService 
 
-<TituloPrincipal TextoPrincipal="Administracion" TextoSecundario="Consultas" />
-<br>
-
+<TituloPrincipal TextoPrincipal="Administracion" TextoSecundario="Consultas" /> 
 <div class="rz-p-12">
     <RadzenColumn Size="12" SizeMD="6">
     <RadzenAccordion>
@@ -157,7 +155,7 @@
                 <RadzenText Style="margin-left: 15px; padding:15px" TextStyle="TextStyle.Body1" Class="rz-mb-0" >Usuarios</RadzenText>  
 
                 <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/NuevoClienteFormulario"))" Variant="Variant.Flat" Shade="Shade.Lighter" Text="Nuevo" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Secondary" Style="margin-left: 30px"/>
-                <RadzenButton Class="float-end" Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ventasClientes"))" Variant="Variant.Outlined" Text="Area Ventas" Icon="assignment" ButtonStyle="ButtonStyle.Info"  />
+                <RadzenButton Class="float-end" Click=@ShowInlineDialog Variant="Variant.Outlined" Text="Area Ventas" Icon="assignment" ButtonStyle="ButtonStyle.Info"  />
             </RadzenAccordionItem>
         </Items>
     </RadzenAccordion></RadzenColumn>
@@ -249,4 +247,18 @@
         </div>);
     } 
  
+  async Task ShowInlineDialog()
+    {
+        var result = await DialogService.OpenAsync("Área de Ventas", ds =>
+        @<div>
+            <p class="mb-4">Indique en que listado quiere ingresar</p>
+            <div class="row">
+                <div class="col">
+                   <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ventasClientes"))" ButtonStyle="ButtonStyle.Info" Variant="Variant.Flat" Shade="Shade.Lighter" Text="Clientes" class="me-1"/>
+                   <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ventasProveedor"))" ButtonStyle="ButtonStyle.Secondary" Shade="Shade.Lighter" Text="Proveedores"  class="me-1" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Dark" Text="Cancelar" Click="() => ds.Close(false)" Shade="Shade.Lighter" class="me-1 float-end" />
+                </div>
+            </div>
+        </div>);
+    } 
 }
