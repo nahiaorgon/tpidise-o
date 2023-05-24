@@ -34,6 +34,9 @@
     <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Produccion/NuevoStockFabricadosFormulario"))" Variant="Variant.Flat" Shade="Shade.Lighter"  Text="Nuevo" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Secondary" />
     <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Produccion/StockFabricadosFormulario"))" Variant="Variant.Flat" Shade="Shade.Lighter"  Text="Modificar" Icon="check_circle" ButtonStyle="ButtonStyle.Success"  />
     <RadzenButton Click=@(args => OnClick("Registro Eliminado")) Variant="Variant.Flat" Shade="Shade.Lighter"  Text="Eliminar"  Icon="report" ButtonStyle="ButtonStyle.Danger"/>
+
+            <RadzenButton Style="margin-left:auto" Click=@(args => OnClick("Excel Descargado")) Variant="Variant.Outlined" Text="Excel" Icon="assignment_returned" ButtonStyle="ButtonStyle.Success"/>
+
 </RadzenStack>
               
 
@@ -61,15 +64,18 @@
     <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Produccion/NuevoStockPrimaFormulario"))" Variant="Variant.Flat" Shade="Shade.Lighter"  Text="Nuevo" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Secondary" />
     <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Produccion/StockPrimaFormulario"))" Variant="Variant.Flat" Shade="Shade.Lighter"  Text="Modificar" Icon="check_circle" ButtonStyle="ButtonStyle.Success"  />
     <RadzenButton Click=@(args => OnClick("Registro Eliminado")) Variant="Variant.Flat" Shade="Shade.Lighter"  Text="Eliminar"  Icon="report" ButtonStyle="ButtonStyle.Danger"/>
+
+            <RadzenButton Style="margin-left:auto" Click=@(args => OnClick("Excel Descargado")) Variant="Variant.Outlined" Text="Excel" Icon="assignment_returned" ButtonStyle="ButtonStyle.Success"/>
+
 </RadzenStack>
                 
             </RadzenAccordionItem>
         </Items>
     </RadzenAccordion></RadzenColumn>
-</div>
-<br>
-<RadzenButton Class="float-end" Click="@(args => NavigationManager.NavigateTo("/Empleados/Produccion/Pedidos"))" Variant="Variant.Flat" Shade="Shade.Lighter" Icon="chrome_reader_mode"  Text="Pedidos" ButtonStyle="ButtonStyle.Secondary"/>
 
+<br> 
+    <RadzenButton Class="float-end" Click="@(args => NavigationManager.NavigateTo("/Empleados/Produccion/Pedidos"))" Variant="Variant.Outlined" Text="Pedidos" Icon="compare_arrows" ButtonStyle="ButtonStyle.Info"/>
+ </div>
  @code {
     IEnumerable<Models.StocksFabricados> stocksfabricados;   
 
@@ -124,7 +130,7 @@
 
     private void OnClick(string text)
     {
-        NotificationService.Notify(new NotificationMessage { Severity = NotificationSeverity.Error, Detail = text });
+        NotificationService.Notify(new NotificationMessage { Severity = NotificationSeverity.Warning, Detail = text });
     }
 
     protected override Task OnInitializedAsync()

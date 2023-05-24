@@ -10,7 +10,7 @@
 <PageTitle>Areas</PageTitle>
 <RadzenButton Class="float-end" Click="@(args => NavigationManager.NavigateTo("/Empleados/Administracion/Consultas"))" Variant="Variant.Outlined" Shade="Shade.Darker" Text="Area Administración" Icon="assignment" ButtonStyle="ButtonStyle.Primary"  Width="100px"/>
 
-<TituloPrincipal TextoPrincipal="Produccion" TextoSecundario="Pedidos" />
+<TituloPrincipal TextoPrincipal="Produccion" TextoSecundario="Clientes" />
  
 
 
@@ -36,11 +36,14 @@
                 <RadzenLabel Text="@(data.PerfilAprobacion ? "Finalizo" : "No Finalizo")" Component=@($"CheckBoxNro{data.Id}") /> 
             </Template>
         </RadzenDataGridColumn> 
-         
+                     
 </Columns>  
 </CListado> 
 <br>
- <RadzenButton Class="float-end" Click="@(args => NavigationManager.NavigateTo("/Empleados/Produccion/Stocks"))" ButtonStyle="ButtonStyle.Info" Variant="Variant.Flat" Shade="Shade.Lighter" Icon="chrome_reader_mode" Text="Stock"  Width="100px"/>
+<RadzenButton Style="margin-left:auto" Click=@(args => OnClick("Excel Descargado")) Variant="Variant.Outlined" Text="Excel" Icon="assignment_returned" ButtonStyle="ButtonStyle.Success"/>
+<RadzenButton Class="float-end" Click="@(args => NavigationManager.NavigateTo("/Empleados/Produccion/Stocks"))" Variant="Variant.Outlined" Text="Stocks" Icon="compare_arrows" ButtonStyle="ButtonStyle.Info"/>
+  <br>      
+
 
 
 @code {

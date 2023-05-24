@@ -127,3 +127,6 @@ a, .btn-link {
     cursor: default;
     
 }
+.rz-login .rz-form .rz-form-row .rz-label{
+    content: "Referenciar" !important;
+}
