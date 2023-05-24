@@ -1,5 +1,6 @@
 ﻿@page "/"
 @inject DialogService DialogService
+@inject NavigationManager NavigationManager
 
 <PageTitle>Pagina Principal</PageTitle>
 <br>
@@ -19,9 +20,43 @@
             <RadzenText TextAlign="TextAlign.Center" TextStyle="TextStyle.H5" TagName="TagName.H2" Class="rz-mb-6">
                 Registro
             </RadzenText>
-            <RadzenTemplateForm Data=@("SimpleLogin") Action="http://www.google.com">
-                <RadzenLogin AllowRegister="false" AllowResetPassword="false" />
+            <RadzenTemplateForm Data=@("SimpleLogin") Action="">
+                <RadzenLogin AllowRegister="false" AllowResetPassword="false" Login=@OnLogin/>
             </RadzenTemplateForm>
         </RadzenCard>
     </RadzenColumn>
 </RadzenRow>
+
+@if (!string.IsNullOrEmpty(ErrorMessage))
+{
+    <p class="text-danger">@ErrorMessage</p>
+}
+
+@code {  
+    private string Username { get; set; } = string.Empty;
+    private string Password { get; set; } = string.Empty;
+    private string ErrorMessage { get; set; } = string.Empty;
+    private bool ShowMessage { get; set; }  
+
+    private async Task OnLogin(LoginArgs args)
+    {
+        if (args.Username == "ventas" && args.Password == "ventas")
+        {
+            NavigationManager.NavigateTo("/usuarios");
+
+        }else if (args.Username == "admin" && args.Password == "admin")
+        { 
+            NavigationManager.NavigateTo("/usuarios");
+        }else if (args.Username == "prod" && args.Password == "prod")
+        { 
+            NavigationManager.NavigateTo("/usuarios");
+        }else if (args.Username == "compras" && args.Password == "compras")
+        { 
+            NavigationManager.NavigateTo("/usuarios");
+        }else{
+            ShowMessage = true;
+            ErrorMessage = "Credenciales inválidas";
+        }
+        await InvokeAsync(StateHasChanged); 
+    }
+}
