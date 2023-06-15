@@ -8,11 +8,11 @@
 
 
 <PageTitle>Areas</PageTitle>
-<RadzenButton Class="float-end" Click="@(args => NavigationManager.NavigateTo("/Empleados/Administracion/Consultas"))" Variant="Variant.Outlined" Shade="Shade.Darker" Text="Area Administración" Icon="assignment" ButtonStyle="ButtonStyle.Primary"  Width="100px"/>
-
-<TituloPrincipal TextoPrincipal="Produccion" TextoSecundario="Clientes" />
+<TituloPrincipal TextoPrincipal="Producción" TextoSecundario="Clientes" /> 
  
-
+<RadzenButton Class="float-end" Click="@(args => NavigationManager.NavigateTo("/Empleados/Administracion/Consultas"))" Variant="Variant.Flat" Shade="Shade.Dark" Text="Área Administración" Icon="assignment" ButtonStyle="ButtonStyle.Light"/>
+<RadzenButton Click=@(args => OnClick("Excel Descargado")) Variant="Variant.Flat" Shade="Shade.Dark"  Text="Excel" Icon="assignment_returned" ButtonStyle="ButtonStyle.Success"/>
+<br><br>
 
 <CListado TItem="Models.Cliente" Data="@clientes" PageSize="5" AllowColumnResize="true" AllowAlternatingRows="false" Frozen="true">
        <Columns>
@@ -40,8 +40,7 @@
 </Columns>  
 </CListado> 
 <br>
-<RadzenButton Style="margin-left:auto" Click=@(args => OnClick("Excel Descargado")) Variant="Variant.Outlined" Text="Excel" Icon="assignment_returned" ButtonStyle="ButtonStyle.Success"/>
-<RadzenButton Class="float-end" Click="@(args => NavigationManager.NavigateTo("/Empleados/Produccion/Stocks"))" Variant="Variant.Outlined" Text="Stocks" Icon="compare_arrows" ButtonStyle="ButtonStyle.Info"/>
+<RadzenButton Class="float-end" Click="@(args => NavigationManager.NavigateTo("/Empleados/Produccion/Stocks"))" Text="Stocks" Variant="Variant.Outlined"  Icon="compare_arrows" ButtonStyle="ButtonStyle.Primary"/>
   <br>      
 
 

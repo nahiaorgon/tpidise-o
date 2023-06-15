@@ -8,18 +8,18 @@
 
  <PageTitle>Areas</PageTitle>
 
- <RadzenButton Class="float-end" Click=@ShowInlineDialogProduccion Variant="Variant.Outlined" Shade="Shade.Darker" Text="Area Producción" Icon="assignment" ButtonStyle="ButtonStyle.Secondary"  Width="100px"/>
+<TituloPrincipal TextoPrincipal="Compras" TextoSecundario="Stock Materia Prima" /> <br>
+ <RadzenButton Class="float-end" Click=@ShowInlineDialogProduccion Variant="Variant.Flat" Shade="Shade.Dark" Text="Área Producción" Icon="assignment" ButtonStyle="ButtonStyle.Light"/>
+<RadzenButton style="margin-left: 10px;" Click=@(args => OnClick("Excel Descargado")) Variant="Variant.Flat" Shade="Shade.Dark"  Text="Excel" Icon="assignment_returned" ButtonStyle="ButtonStyle.Success"/>
 
-<TituloPrincipal TextoPrincipal="Compras" TextoSecundario="Stock Materia Prima" />
-
-<br>
+<br> <br>
     <RadzenDataList AllowVirtualization=@allowVirtualization Style="@(allowVirtualization ? "height:400px;overflow:auto;" : "")" 
                     WrapItems="@(!allowVirtualization)" AllowPaging="@(!allowVirtualization)"
                     Data="@products" TItem="Product" PageSize="3" PagerHorizontalAlign="HorizontalAlign.Left" ShowPagingSummary="true">
         <Template Context="product"> 
-            <RadzenCard Style="width: 100%; padding: 15px;">
+            <RadzenCard Style="width: auto; padding: 15px;">
                 <RadzenRow Gap="0"> 
-                    <br><RadzenColumn Size="8" SizeLG="2" Class="rz-p-4 product-title"><br>
+                    <br><RadzenColumn Size="12" SizeLG="2" Class="rz-p-4 product-title"><br>
                         <RadzenText TextStyle="TextStyle.H6" TextAlign="TextAlign.Center" TagName="TagName.H2" class="rz-color-black">@product.ProductName </RadzenText>
                     </RadzenColumn>
                     <RadzenColumn Size="12" SizeLG="6" Class="rz-p-5">
@@ -44,7 +44,8 @@
                         </RadzenRow>
                     </RadzenColumn>
                     <RadzenColumn Size="12" SizeLG="4" Class="rz-p-4 rz-text-align-start rz-text-align-lg-end">
-                        
+                        <RadzenText Style="width:70%" >Opciones</RadzenText>
+                        <br>
                         <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Compras/ModificarCompra"))" Text="Editar" TextAlign="TextAlign.Center" Icon="list" ButtonStyle="ButtonStyle.Success" Style="margin-left: 15px" />
                         <RadzenButton Click=@(args => OnClick("Compra Abonada")) Text="Abonar" TextAlign="TextAlign.Center" Icon="add_circle_outline" Color="Color.Warning" Style="margin-left: 5px" />
                     </RadzenColumn>
@@ -52,8 +53,7 @@
             </RadzenCard>
         </Template>
     </RadzenDataList>
-            <RadzenButton Class="float-end" Click=@(args => OnClick("Excel Descargado")) Variant="Variant.Outlined" Text="Excel" Icon="assignment_returned" ButtonStyle="ButtonStyle.Success"/>
-
+ 
 <style>
 .product-title {
     min-height: 50px;

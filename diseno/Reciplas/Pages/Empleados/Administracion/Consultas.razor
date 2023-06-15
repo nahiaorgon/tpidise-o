@@ -3,7 +3,7 @@
 @inject NotificationService NotificationService 
 @inject NavigationManager NavigationManager
 @inherits OwningComponentBase<Usuario> 
-@inject IModalService modal 
+@inject IModalService modal  
 @inject DialogService DialogService 
    
 <TituloPrincipal TextoPrincipal="Administracion" TextoSecundario="Consultas" /> 
@@ -16,7 +16,11 @@
                     <RadzenTabs TabPosition="@tabPosition" RenderMode="TabRenderMode.Client" >
                         <Tabs>
                             <RadzenTabsItem Text="Compras">
-                                <RadzenDataList PageSize="6" WrapItems="true" AllowPaging="true" Data="@orders" TItem="Order">
+                                <RadzenButton Click=@(args => OnClick("Excel Descargado")) Variant="Variant.Flat" Shade="Shade.Dark"  Text="Excel" Icon="assignment_returned" ButtonStyle="ButtonStyle.Success"/>
+                                    
+                                    <RadzenTextBox Change=@(args => OnChange(args, "TextBox")) Placeholder="Buscar" class="w-40 rz-border-radius-3 rz-border-black float-end" />
+
+                                <RadzenDataList PageSize="6" WrapItems="true" AllowPaging="true" Data="@orders" TItem="Order" >
                                     <Template Context="order">
                                         <RadzenCard Style="width: 250px;" Class="rz-border-radius-3">
                                             <RadzenRow Gap="0.5rem">
@@ -40,10 +44,12 @@
                                     </Template>
 
                                 </RadzenDataList>   
-                                <RadzenButton Style="margin-left:auto" Click=@(args => OnClick("Excel Descargado")) Variant="Variant.Outlined" Text="Excel" Icon="assignment_returned" ButtonStyle="ButtonStyle.Success"/>
 
                             </RadzenTabsItem>
                             <RadzenTabsItem Text="Ventas">
+                                <RadzenButton Click=@(args => OnClick("Excel Descargado")) Variant="Variant.Flat" Shade="Shade.Dark"  Text="Excel" Icon="assignment_returned" ButtonStyle="ButtonStyle.Success"/>
+                                    
+                                    <RadzenTextBox Change=@(args => OnChange(args, "TextBox")) Placeholder="Buscar" class="w-40 rz-border-radius-3 rz-border-black float-end" />
                                 <RadzenDataList PageSize="6" WrapItems="true" AllowPaging="true" Data="@pedidos" TItem="Pedidos">
                                     <Template Context="order">
                                         <RadzenCard Style="width: 250px;" Class="rz-border-radius-3">
@@ -68,11 +74,13 @@
                                             </RadzenStack>
                                         </RadzenCard>
                                     </Template>
-                                </RadzenDataList>
-                                <RadzenButton Style="margin-left:auto" Click=@(args => OnClick("Excel Descargado")) Variant="Variant.Outlined" Text="Excel" Icon="assignment_returned" ButtonStyle="ButtonStyle.Success"/>
-
+                                </RadzenDataList> 
                             </RadzenTabsItem> 
                              <RadzenTabsItem Text="Deudores">
+                                <RadzenButton Click=@(args => OnClick("Excel Descargado")) Variant="Variant.Flat" Shade="Shade.Dark"  Text="Excel" Icon="assignment_returned" ButtonStyle="ButtonStyle.Success"/>
+                                    
+                                    <RadzenTextBox Change=@(args => OnChange(args, "TextBox")) Placeholder="Buscar" class="w-40 rz-border-radius-3 rz-border-black float-end" />
+                                        <br>
                                 <RadzenDataList PageSize="6" WrapItems="true" AllowPaging="true" Data="@reportes" TItem="Reporte">
                                     <Template Context="order">
                                         <RadzenCard Style="width: 250px;" Class="rz-border-radius-3">
@@ -96,8 +104,7 @@
                                         </RadzenCard>
                                     </Template>
                                 </RadzenDataList>
-                                <RadzenButton Style="margin-left:auto" Click=@(args => OnClick("Excel Descargado")) Variant="Variant.Outlined" Text="Excel" Icon="assignment_returned" ButtonStyle="ButtonStyle.Success"/>
-
+ 
                             </RadzenTabsItem>
                         </Tabs>
                     </RadzenTabs>
@@ -106,6 +113,10 @@
                 <RadzenTabs TabPosition="@tabPosition" RenderMode="TabRenderMode.Client" >
                         <Tabs>
                             <RadzenTabsItem Text="Clientes">
+                                    <RadzenButton Click=@(args => OnClick("Excel Descargado")) Variant="Variant.Flat" Shade="Shade.Dark"  Text="Excel" Icon="assignment_returned" ButtonStyle="ButtonStyle.Success"/>
+                                    
+                                    <RadzenTextBox Change=@(args => OnChange(args, "TextBox")) Placeholder="Buscar" class="w-40 rz-border-radius-3 rz-border-black float-end" />
+                                <br><br>
                                 <RadzenDataGrid ColumnWidth="150px" AllowPaging="true" PageSize="5" AllowSorting="true" Data="@orders" TItem="Order" AllowColumnResize="true" AllowAlternatingRows="false" Frozen="true" >
                                     <Columns> 
                                         <RadzenDataGridColumn TItem="Order" Property="OrderID" Title="N° de Orden" Width="100px" Frozen="true"/>
@@ -115,10 +126,13 @@
                                         <RadzenDataGridColumn TItem="Order" Property="Freight" Title="Falta enviar" Width="100px"/>
                                     </Columns>
                                 </RadzenDataGrid>                                                    
-                                <RadzenButton Class="float-end" Click=@(args => OnClick("Excel Descargado")) Variant="Variant.Outlined" Text="Excel" Icon="assignment_returned" ButtonStyle="ButtonStyle.Success"/>
-
+ 
                             </RadzenTabsItem> 
                             <RadzenTabsItem Text="Ventas">
+                                    <RadzenButton Click=@(args => OnClick("Excel Descargado")) Variant="Variant.Flat" Shade="Shade.Dark"  Text="Excel" Icon="assignment_returned" ButtonStyle="ButtonStyle.Success"/>
+                                    
+                                    <RadzenTextBox Change=@(args => OnChange(args, "TextBox")) Placeholder="Buscar" class="w-40 rz-border-radius-3 rz-border-black float-end" />
+                                        <br><br>
                                 <RadzenDataGrid ColumnWidth="150px" AllowPaging="true" PageSize="5" AllowSorting="true" Data="@pedidos" TItem="Pedidos" AllowColumnResize="true" AllowAlternatingRows="false" Frozen="true" >
                                     <Columns> 
                                         <RadzenDataGridColumn TItem="Pedidos" Property="NumPedido" Title="N° de Pedido" Frozen="true"/> 
@@ -128,10 +142,13 @@
                                         <RadzenDataGridColumn TItem="Pedidos" Property="Fecha" Title="Fecha" FormatString="{0:d}"/>
                                     </Columns>
                                 </RadzenDataGrid>
-                                <RadzenButton Class="float-end" Click=@(args => OnClick("Excel Descargado")) Variant="Variant.Outlined" Text="Excel" Icon="assignment_returned" ButtonStyle="ButtonStyle.Success"/>
-
+ 
                             </RadzenTabsItem> 
                                 <RadzenTabsItem Text="Deudores">
+                                        <RadzenButton Click=@(args => OnClick("Excel Descargado")) Variant="Variant.Flat" Shade="Shade.Dark"  Text="Excel" Icon="assignment_returned" ButtonStyle="ButtonStyle.Success"/>
+                                    
+                                    <RadzenTextBox Change=@(args => OnChange(args, "TextBox")) Placeholder="Buscar" class="w-40 rz-border-radius-3 rz-border-black float-end" />
+                                        <br> <br>
                                     <RadzenDataGrid ColumnWidth="150px" AllowPaging="true" AllowSorting="true" PageSize="5" Data="@reportes" TItem="Reporte" AllowColumnResize="true" AllowAlternatingRows="false" Frozen="true">
                                         <Columns> 
                                             <RadzenDataGridColumn TItem="Reporte" Property="ID" Title="ID" Width="55px" Frozen="true"/> 
@@ -144,8 +161,7 @@
                                             <RadzenDataGridColumn TItem="Reporte" Property="TotalPagado" Title="Total Pagado" Width="120px" FormatString="{0:c}"/>
                                         </Columns>
                                     </RadzenDataGrid> 
-                                <RadzenButton Class="float-end" Click=@(args => OnClick("Excel Descargado")) Variant="Variant.Outlined" Text="Excel" Icon="assignment_returned" ButtonStyle="ButtonStyle.Success"/>
-
+ 
                                 </RadzenTabsItem>     
                                 
                         </Tabs>
@@ -154,41 +170,48 @@
             </RadzenAccordionItem>
             <RadzenAccordionItem Text="Stock" Icon="accessibility">
                  <RadzenText Style="margin-left: 15px" TextStyle="TextStyle.Body1" Class="rz-mb-0" >Direccionando al Área de Producción </RadzenText> <br> 
-                <RadzenButton Class="float-end" Click=@(args => OnClick("Excel Descargado")) Variant="Variant.Outlined" Text="Excel" Icon="assignment_returned" ButtonStyle="ButtonStyle.Success"/>
+                <RadzenButton Class="float-end" Click=@(args => OnClick("Excel Descargado")) Variant="Variant.Flat" Shade="Shade.Dark"  Text="Excel" Icon="assignment_returned" ButtonStyle="ButtonStyle.Success"/>
+
 
                  <RadzenText Style="margin-left: 15px; padding:15px" TextStyle="TextStyle.Body1" Class="rz-mb-0" >Stock de Materia Prima</RadzenText>  
-                <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Produccion/NuevoStockPrimaFormulario"))" Variant="Variant.Flat" Shade="Shade.Lighter" Text="Nuevo" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Secondary" Style="margin-left: 30px"/>
+                <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Produccion/NuevoStockPrimaFormulario"))" Text="Nuevo" Variant="Variant.Flat" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Secondary"  Style="margin-left: 30px"/>
                     <br>
                  <RadzenText Style="margin-left: 15px; padding:15px" TextStyle="TextStyle.Body1" Class="rz-mb-0" >Productos Fabricados</RadzenText> 
-                <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Produccion/NuevoStockFabricadosFormulario"))" Variant="Variant.Flat" Shade="Shade.Lighter" Text="Nuevo" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Secondary" Style="margin-left: 30px"/>
-                <RadzenButton Class="float-end" Click=@ShowInlineDialogProduccion Variant="Variant.Outlined" Text="Area Producción" Icon="assignment" ButtonStyle="ButtonStyle.Secondary"  />
+                <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Produccion/NuevoStockFabricadosFormulario"))" Text="Nuevo"Variant="Variant.Flat" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Secondary"  Style="margin-left: 30px"/>
+                <RadzenButton Class="float-end" Click=@ShowInlineDialogProduccion  Variant="Variant.Flat" Shade="Shade.Dark" Text="Área Producción" Icon="assignment" ButtonStyle="ButtonStyle.Light"/>
+                
             </RadzenAccordionItem>
 
             <RadzenAccordionItem Text="Usuario" Icon="accessibility">
                 <RadzenText Style="margin-left: 15px" TextStyle="TextStyle.Body1" Class="rz-mb-0" >Direccionando al Área de Ventas </RadzenText> <br>
-                <RadzenButton Class="float-end" Click=@(args => OnClick("Excel Descargado")) Variant="Variant.Outlined" Text="Excel" Icon="assignment_returned" ButtonStyle="ButtonStyle.Success"/>
+                                        <RadzenButton Class="float-end" Click=@(args => OnClick("Excel Descargado")) Variant="Variant.Flat" Shade="Shade.Dark"  Text="Excel" Icon="assignment_returned" ButtonStyle="ButtonStyle.Success"/>
 
 
                 <RadzenText Style="margin-left: 15px; padding:15px" TextStyle="TextStyle.Body1" Class="rz-mb-0" >Usuarios</RadzenText>  
 
-                <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/NuevoClienteFormulario"))" Variant="Variant.Flat" Shade="Shade.Lighter" Text="Nuevo" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Secondary" Style="margin-left: 30px"/>
-                <RadzenButton Class="float-end" Click=@ShowInlineDialog Variant="Variant.Outlined" Text="Area Ventas" Icon="assignment" ButtonStyle="ButtonStyle.Info"  />
+                <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/NuevoClienteFormulario"))" Text="Nuevo" Variant="Variant.Flat" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Secondary"  Style="margin-left: 30px"/>
+                <RadzenButton Class="float-end" Click=@ShowInlineDialog  Variant="Variant.Flat" Shade="Shade.Dark" Text="Área Ventas" Icon="assignment" ButtonStyle="ButtonStyle.Light" />
             </RadzenAccordionItem>
         </Items>
     </RadzenAccordion></RadzenColumn>
-</div>
-
- 
-
+    
+    
+</div>  
 @code { 
     IEnumerable<Order> orders;
     IEnumerable<Pedidos> pedidos; 
     IEnumerable<Reporte> reportes; 
     TabPosition tabPosition = TabPosition.Top; 
-      DateTime? Fecha = DateTime.Now;
-     private int _count;
-    protected override Task OnInitializedAsync()
+      DateTime? Fecha = DateTime.Now; 
+    private int _count;
+     string value; 
+    void OnChange(string value, string name)
     {
+       // console.Log($"{name} value changed to {value}");
+    }
+    protected override Task OnInitializedAsync()
+    { 
+
         List<Order> ordenes = new List<Order>();
         var person1 = new Order {ShipName="Cartón", ShipAddress="Corrugado", ShipCity="Para envio a deposito", Freight="No", OrderID=2840};
         var person2 = new Order {ShipName="Bolsa de Plástico",ShipAddress="De supermercado renovable", ShipCity="Falta recibir", Freight="Si", OrderID=1050};

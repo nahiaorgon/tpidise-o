@@ -42,17 +42,17 @@
     {
         if (args.Username == "ventas" && args.Password == "ventas")
         {
-            NavigationManager.NavigateTo("/usuarios");
+            NavigationManager.NavigateTo("/ventas");
 
         }else if (args.Username == "admin" && args.Password == "admin")
         { 
-            NavigationManager.NavigateTo("/usuarios");
+            NavigationManager.NavigateTo("/Empleados/Administracion/Consultas");
         }else if (args.Username == "prod" && args.Password == "prod")
         { 
-            NavigationManager.NavigateTo("/usuarios");
+            NavigationManager.NavigateTo("/produccion");
         }else if (args.Username == "compras" && args.Password == "compras")
         { 
-            NavigationManager.NavigateTo("/usuarios");
+            NavigationManager.NavigateTo("/Empleados/Compras/Stock");
         }else{
             ShowMessage = true;
             ErrorMessage = "Credenciales inválidas";

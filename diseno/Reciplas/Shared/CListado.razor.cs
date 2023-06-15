@@ -4,10 +4,7 @@ public class CListado<TItem> : Radzen.Blazor.RadzenDataGrid<TItem>
 {
     public CListado()
     {
-        AllowAlternatingRows = true;
-        AllowColumnPicking = true;
-        AllowColumnResize = true;
-        AllowColumnReorder = true;
+       
         AllowFiltering = true;
         AllowSorting = true;
         AllowPaging = true;

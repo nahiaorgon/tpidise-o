@@ -1,0 +1,46 @@
+@page "/ventas"
+@inject NotificationService NotificationService
+@inject IModalService modal 
+@inject DialogService DialogService
+@inject NavigationManager NavigationManager  
+
+
+
+<PageTitle>Áreas</PageTitle>
+
+<TituloPrincipal TextoPrincipal="Empleados" TextoSecundario="Áreas" />
+
+<br>
+<div class="container-fluid ">
+     
+
+    <div class="row px-3">
+
+    <div class="col-lg-6 col-xl-4 p-4" style="margin-left: 130px; ">
+            <RadzenCard>
+                <RadzenText TextAlign="TextAlign.Center" TextStyle="TextStyle.H6" TagName="TagName.H3">Proveedores</RadzenText>
+                <RadzenButton RadzenButton Text="Ingresar" class="w-100" Shade="Shade.Lighter" ButtonStyle="ButtonStyle.Light"
+                     Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ventasProveedor"))"  />
+            </RadzenCard>
+    </div> 
+
+     <div class="col-lg-6 col-xl-4 p-4" style="margin-left: 80px;">
+            <RadzenCard>
+                <RadzenText TextAlign="TextAlign.Center" TextStyle="TextStyle.H6" TagName="TagName.H3">Clientes</RadzenText>
+                <RadzenButton Text="Ingresar" class="w-100"  Shade="Shade.Lighter" ButtonStyle="ButtonStyle.Primary"  
+                Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ventasClientes"))" />
+                </RadzenCard>
+    </div>
+   </div>
+   
+</div> 
+
+ 
+@code { 
+    void ShowNotification(NotificationMessage message)
+   {
+      NotificationService.Notify(message);
+        DialogService.Close();
+
+   } 
+}

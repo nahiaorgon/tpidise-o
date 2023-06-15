@@ -64,22 +64,20 @@ a, .btn-link {
     }
 
 :root{
---rz-primary: #5499c7 !important;
---rz-secondary:#3CB371 !important;
---rz-series-1: #a569bd !important; 
---rz-series-3: #DAF7A6 !important;
---rz-series-4: #2874A6 !important;
+--rz-primary: #122943 !important;
+--rz-secondary:#344668 !important;
+--rz-error: #736c9e !important; 
+--rz-warning: #52868b !important;
+--rz-light: #0f3b43 !important;
 
---rz-info: #6659c0e3 !important;
---rz-error: red !important;
+
 --rz-success: #1abc9c !important;
+--rz-Dark: #cadfdb !important; 
 --rz-danger: red !important;
---rz-Dark: black !important;
---rz-Warning: #5499c7 !important;
-
-
-
-/*para los botones administracion*/
+ 
+ 
+/*
+para los botones administracion*/
 --rz-series-5: #7FFFD4 !important;
 --rz-series-6: #7CB9E8 !important;
 
@@ -110,17 +108,17 @@ a, .btn-link {
  .rz-accordion-header{
     padding: 10px;
  }
- .sidebar[b-vhm5d7460y]{
-    background-image:linear-gradient(200deg, rgb(144, 152, 223) 10%, #F5F5F5 50%) !important;
+ .sidebar{
+    background:#414e7049 40% !important;
  }
  
- .nav-item[b-f6952bgt9o] a {
+ .nav-item a {
     color: black !important;
  }
 
- main[b-vhm5d7460y] {
+ main {
     flex: 1;
-    background-color: #F5F5F5 !important;
+    background-color: #f5f5f5d8 !important;
 }
 
 .label {
@@ -130,3 +128,23 @@ a, .btn-link {
 .rz-login .rz-form .rz-form-row .rz-label{
     content: "Referenciar" !important;
 }
+
+
+
+.text-primary {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-weight: 500 !important;
+    letter-spacing: ".0075" !important;
+    font-display: inherit !important;
+    text-shadow: 2px 2px lightgray !important;
+    height:30px !important;
+    width: 1000px !important;
+}
+
+/*.mud-typography-h2 {
+    font-size: 50px;
+    font-family: Arial, Helvetica, sans-serif !important;
+    text-shadow: 2px 2px lightgray !important;
+    text-underline-position: above;
+
+}*/

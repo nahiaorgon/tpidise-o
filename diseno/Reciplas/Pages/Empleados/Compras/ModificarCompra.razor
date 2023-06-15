@@ -11,8 +11,7 @@
 <div Class="rz-p-0 rz-p-md-12">
     <RadzenStack Orientation="Orientation.Vertical" Gap="1rem" Class="rz-p-4 rz-mb-6 rz-border-radius-1" >
         <RadzenStack Gap="0.5rem" Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center">
-            <RadzenLabel Text="Modificar Stock Disponible:" />
-            <RadzenSwitch @bind-Value="disabled" />
+            <RadzenLabel Text="Modificar Stock Disponible:" /> 
         </RadzenStack>
     </RadzenStack>
 
@@ -37,7 +36,7 @@
     <br> 
 <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="1rem" Wrap="FlexWrap.Wrap">
    <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Compras/Stock"))" Text="Guardar" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Primary" /> 
-   <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Compras/Stock"))" Text="Volver" Icon="refresh" ButtonStyle="ButtonStyle.Primary" /> 
+   <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Compras/Stock"))" Text="Volver" Variant="Variant.Flat" Icon="history" ButtonStyle="ButtonStyle.Light" /> 
 </RadzenStack>
 </div>
 
