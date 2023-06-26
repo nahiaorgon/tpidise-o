@@ -27,7 +27,7 @@
             <Template Context="item">
                 <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/PedidosDetalles"))" TextAlign="TextAlign.Center" Icon="list" ButtonStyle="ButtonStyle.Success" Style="margin-left: 5px" />
                 <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/AgregarPedidoCliente"))" TextAlign="TextAlign.Center" Icon="add_circle_outline" Color="Color.Warning" Style="margin-left: 5px" />
-                <RadzenButton Click=@(args => OnClick("Registro Eliminado"))  TextAlign="TextAlign.Center" Icon="delete" ButtonStyle="ButtonStyle.Danger" Style="margin-left: 5px"/>
+                <RadzenButton Click=@RegisterEliminado  TextAlign="TextAlign.Center" Icon="delete" ButtonStyle="ButtonStyle.Danger" Style="margin-left: 5px"/>
             </Template>
         </RadzenDataGridColumn>  
         <RadzenDataGridColumn TItem=" Models.Cliente" Title="Ventas" Width="80px" Context="clientes" Filterable="false" Sortable="false">
@@ -97,6 +97,19 @@
 
         return base.OnInitializedAsync();
     }
+
+
+ async Task RegisterEliminado()
+    {
+        var result = await DialogService.OpenAsync("Está seguro de que desea eliminar el Pedido?", ds =>
+        @<div>
+            <div class="row">
+                <div class="col">
+                   <a href="/Empleados/Ventas/ventasClientes"><RadzenButton Click=@(args => OnClick("Registro Eliminado")) TextAlign="TextAlign.Center" Icon="delete" ButtonStyle="ButtonStyle.Danger" Style="margin-left: 5px" Text="Eliminar" class="me-1"/></a>
+                   <RadzenButton Click="() => ds.Close(false)" TextAlign="TextAlign.Center" Icon="delete" ButtonStyle="ButtonStyle.Light" Style="margin-left: 5px" Text="Cancelar"  class="me-1 float-end" />                </div>
+            </div>
+        </div>);
+    } 
 
 }
 
