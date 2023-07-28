@@ -6,7 +6,13 @@ using System.Threading;
 using MySql.Data.MySqlClient;
 
 namespace Reciplas.Clases
-{
+{  
+    using System;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using Microsoft.EntityFrameworkCore;
+ 
+    [Keyless]
+    [NotMapped]
     public class LineaVenta{
         public int id_venta {get; set;}
         public int linea {get; set;}

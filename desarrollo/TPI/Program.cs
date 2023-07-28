@@ -1,10 +1,25 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.Extensions.Hosting;
+
 using Reciplas.Data;
 using Radzen;
 using Blazored.Modal;
+using System.Configuration;
+using Reciplas.Clases;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+
+
+builder.Services.AddDbContextFactory<ApplicationDbContext>(options =>
+    options.UseSqlServer("Server = 127.0.0.1; Database = pedro_bar; User ID= root; Password = nahiaorgon"));
+
+
+
+
 
 // Add services to the container.
 builder.Services.AddRazorPages();

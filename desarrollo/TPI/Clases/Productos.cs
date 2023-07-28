@@ -11,6 +11,7 @@ namespace Reciplas.Clases
         public int id {get; set;}
         public string nombre {get; set;} = null;
         public int stock {get; set;}
+        [System.ComponentModel.DataAnnotations.Schema.Column(TypeName = "decimal(12, 2)")]
         public decimal precio {get; set;}
         public string categoria {get; set;} = null;
         public DateTime fecha_actualizacion {get; set;}  
