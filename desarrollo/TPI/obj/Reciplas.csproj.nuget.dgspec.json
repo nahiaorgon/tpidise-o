@@ -86,6 +86,14 @@
             "Radzen.Blazor": {
               "target": "Package",
               "version": "[4.10.1, )"
+            },
+            "System.DirectoryServices": {
+              "target": "Package",
+              "version": "[8.0.0-preview.6.23329.7, )"
+            },
+            "System.Net.Http.Json": {
+              "target": "Package",
+              "version": "[8.0.0-preview.6.23329.7, )"
             }
           },
           "imports": [

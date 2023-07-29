@@ -150,3 +150,9 @@ D:\Usuarios\niorgon\Mis Documentos\GitHub\desadesof\desarrollo\TPI\bin\Debug\net
 D:\Usuarios\niorgon\Mis Documentos\GitHub\desadesof\desarrollo\TPI\bin\Debug\net7.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\Usuarios\niorgon\Mis Documentos\GitHub\desadesof\desarrollo\TPI\bin\Debug\net7.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\Usuarios\niorgon\Mis Documentos\GitHub\desadesof\desarrollo\TPI\bin\Debug\net7.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+D:\Usuarios\niorgon\Mis Documentos\GitHub\desadesof\desarrollo\TPI\bin\Debug\net7.0\System.DirectoryServices.dll
+D:\Usuarios\niorgon\Mis Documentos\GitHub\desadesof\desarrollo\TPI\bin\Debug\net7.0\System.Net.Http.Json.dll
+D:\Usuarios\niorgon\Mis Documentos\GitHub\desadesof\desarrollo\TPI\bin\Debug\net7.0\System.Text.Encodings.Web.dll
+D:\Usuarios\niorgon\Mis Documentos\GitHub\desadesof\desarrollo\TPI\bin\Debug\net7.0\System.Text.Json.dll
+D:\Usuarios\niorgon\Mis Documentos\GitHub\desadesof\desarrollo\TPI\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.DirectoryServices.dll
+D:\Usuarios\niorgon\Mis Documentos\GitHub\desadesof\desarrollo\TPI\bin\Debug\net7.0\runtimes\browser\lib\net7.0\System.Text.Encodings.Web.dll
