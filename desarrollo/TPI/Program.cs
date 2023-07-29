@@ -15,7 +15,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddDbContextFactory<ApplicationDbContext>(options =>
-    options.UseSqlServer("Server = 127.0.0.1; Database = pedro_bar; User ID= root; Password = nahiaorgon"));
+    options.UseSqlServer("Data Source=localhost\\sqlexpress;Initial Catalog=PedroBar;Integrated Security=True;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False;Connection Timeout=30;"));
+
 
 
 

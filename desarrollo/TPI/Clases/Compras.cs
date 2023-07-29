@@ -11,6 +11,8 @@ namespace Reciplas.Clases
         public int id {get; set;}
         public DateTime fecha {get; set;}
         public string proveedor {get; set;} = null;
+    public readonly IEnumerable<LineaCompra> LineaCompras = new List<LineaCompra>();
+
     }
 
 }

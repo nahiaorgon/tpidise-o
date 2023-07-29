@@ -42,6 +42,56 @@ namespace Reciplas.Migrations
                     b.ToTable("Compras");
                 });
 
+            modelBuilder.Entity("Reciplas.Clases.LineaCompra", b =>
+                {
+                    b.Property<int>("Comprasid")
+                        .HasColumnType("int");
+
+                    b.Property<int>("cantidad")
+                        .HasColumnType("int");
+
+                    b.Property<int>("id_compra")
+                        .HasColumnType("int");
+
+                    b.Property<int>("id_producto")
+                        .HasColumnType("int");
+
+                    b.Property<int>("linea")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("precio_unitario")
+                        .HasColumnType("decimal(12, 2)");
+
+                    b.HasIndex("Comprasid");
+
+                    b.ToTable("LineaCompras");
+                });
+
+            modelBuilder.Entity("Reciplas.Clases.LineaVenta", b =>
+                {
+                    b.Property<int>("Ventasid")
+                        .HasColumnType("int");
+
+                    b.Property<int>("cantidad")
+                        .HasColumnType("int");
+
+                    b.Property<int>("id_producto")
+                        .HasColumnType("int");
+
+                    b.Property<int>("id_venta")
+                        .HasColumnType("int");
+
+                    b.Property<int>("linea")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("precio_unitario")
+                        .HasColumnType("decimal(12, 2)");
+
+                    b.HasIndex("Ventasid");
+
+                    b.ToTable("LineaVentas");
+                });
+
             modelBuilder.Entity("Reciplas.Clases.Productos", b =>
                 {
                     b.Property<int>("id")
@@ -62,7 +112,7 @@ namespace Reciplas.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("precio")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(12, 2)");
 
                     b.Property<int>("stock")
                         .HasColumnType("int");
@@ -90,6 +140,28 @@ namespace Reciplas.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Ventas");
+                });
+
+            modelBuilder.Entity("Reciplas.Clases.LineaCompra", b =>
+                {
+                    b.HasOne("Reciplas.Clases.Compras", "Compras")
+                        .WithMany()
+                        .HasForeignKey("Comprasid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Compras");
+                });
+
+            modelBuilder.Entity("Reciplas.Clases.LineaVenta", b =>
+                {
+                    b.HasOne("Reciplas.Clases.Ventas", "Ventas")
+                        .WithMany()
+                        .HasForeignKey("Ventasid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Ventas");
                 });
 #pragma warning restore 612, 618
         }
