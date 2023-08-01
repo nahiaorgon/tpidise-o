@@ -51,6 +51,15 @@
               "target": "Package",
               "version": "[0.6.0-dev.58, )"
             },
+            "Microsoft.AspNetCore.Blazor.HttpClient": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.0.0-preview9.19465.2, )"
+            },
+            "Microsoft.AspNetCore.Components": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.4, )"
@@ -75,6 +84,14 @@
               "target": "Package",
               "version": "[7.0.4, )"
             },
+            "Microsoft.Extensions.Logging.Debug": {
+              "target": "Package",
+              "version": "[8.0.0-preview.6.23329.7, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
             "MySql.Data": {
               "target": "Package",
               "version": "[8.1.0, )"
@@ -87,13 +104,17 @@
               "target": "Package",
               "version": "[4.10.1, )"
             },
+            "Serilog.Expressions": {
+              "target": "Package",
+              "version": "[3.4.1, )"
+            },
             "System.DirectoryServices": {
               "target": "Package",
               "version": "[8.0.0-preview.6.23329.7, )"
             },
             "System.Net.Http.Json": {
               "target": "Package",
-              "version": "[8.0.0-preview.6.23329.7, )"
+              "version": "[7.0.0, )"
             }
           },
           "imports": [

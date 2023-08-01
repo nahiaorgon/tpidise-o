@@ -1,34 +1,45 @@
-using System.Net;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
-using Microsoft.Extensions.Hosting;
-
 using Reciplas.Data;
 using Radzen;
 using Blazored.Modal;
-using System.Configuration;
 using Reciplas.Clases;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Reciplas.Repositorio;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
+
 
 var builder = WebApplication.CreateBuilder(args); 
-builder.Services.AddHttpClient();
-
 
 builder.Services.AddDbContextFactory<ApplicationDbContext>(options =>
     options.UseSqlServer("Data Source=localhost\\sqlexpress;Initial Catalog=PedroBar;Integrated Security=True;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False;Connection Timeout=30;"));
-
+System.Net.ServicePointManager.SecurityProtocol = 
+    System.Net.SecurityProtocolType.Tls12;
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
+
+//aca
 builder.Services.AddScoped<DialogService>();
 builder.Services.AddScoped<NotificationService>();
 builder.Services.AddScoped<TooltipService>();
 builder.Services.AddScoped<ContextMenuService>();
 builder.Services.AddBlazoredModal();   
-builder.Services.AddControllers();
+builder.Services.AddControllers(); 
+builder.Services.AddHttpClient();
+//aca
+
+
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+builder.Services.AddSingleton<WeatherForecastService>();
+builder.Services.AddSingleton(new HttpClient{
+        BaseAddress = new Uri("https://localhost:44331/")
+        });
+
+
+builder.Services.AddScoped<IRepositorioCompras, RepositorioCompras>();
+builder.Services.AddScoped<IRepositorioVentas, RepositorioVentas>();
+builder.Services.AddScoped<IRepositorioProductos, RepositorioProductos>();
 
 var app = builder.Build();
 

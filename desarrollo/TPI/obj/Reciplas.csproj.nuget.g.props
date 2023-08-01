@@ -19,6 +19,8 @@
     <Import Project="$(NuGetPackageRoot)blazored.modal\7.1.0\buildTransitive\Blazored.Modal.props" Condition="Exists('$(NuGetPackageRoot)blazored.modal\7.1.0\buildTransitive\Blazored.Modal.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Users\niorgon\.nuget\packages\microsoft.codeanalysis.analyzers\3.3.3</PkgMicrosoft_CodeAnalysis_Analyzers>
+    <PkgMicrosoft_CodeAnalysis_AnalyzerUtilities Condition=" '$(PkgMicrosoft_CodeAnalysis_AnalyzerUtilities)' == '' ">C:\Users\niorgon\.nuget\packages\microsoft.codeanalysis.analyzerutilities\3.3.0</PkgMicrosoft_CodeAnalysis_AnalyzerUtilities>
     <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">C:\Users\niorgon\.nuget\packages\microsoft.entityframeworkcore.tools\7.0.4</PkgMicrosoft_EntityFrameworkCore_Tools>
     <PkgEnterpriseLibrary_Common Condition=" '$(PkgEnterpriseLibrary_Common)' == '' ">C:\Users\niorgon\.nuget\packages\enterpriselibrary.common\6.0.1304</PkgEnterpriseLibrary_Common>
     <PkgEnterpriseLibrary_Data Condition=" '$(PkgEnterpriseLibrary_Data)' == '' ">C:\Users\niorgon\.nuget\packages\enterpriselibrary.data\6.0.1304</PkgEnterpriseLibrary_Data>

@@ -3,10 +3,15 @@
 @inject NotificationService NotificationService 
 @inherits OwningComponentBase<Usuario>
 @using System.Collections.Generic;  
+@using System.Net.Http.Json;
+@using System.Net.Http;
 @inject DialogService DialogService   
 @inject NavigationManager NavigationManager
 @inject HttpClient Http
-@inject IJSRuntime JS
+@inject IJSRuntime JS 
+@using Reciplas.Repositorio
+@inject IRepositorioVentas RepositorioVentas
+
 
 
 <PageTitle>Areas</PageTitle>
@@ -18,28 +23,28 @@
 {
     @: Cargando datos....
 }else{
-    if (ventas.Count == 0){
-        @: No existen registros en la Base de datos
-    }
-    else{
         @foreach (var venta in ventas)
         {
             
        
 <br>
 <br>
-<CListado TItem="Clases.Ventas" Data="@ventas" PageSize="5"  Frozen="true">
+
+
+
+<CListado TItem="Clases.Ventas" Data="@ventas" PageSize="5" Frozen="true" >
        <Columns>
-        <RadzenDataGridColumn TItem=" Clases.Ventas" TextAlign="TextAlign.Center" Property="ID" Title="ID" Width="35px" Frozen="true" /> @venta.id
-        <RadzenDataGridColumn TItem=" Clases.Ventas"  Property="Fecha" Title="Fecha" Width="80px" />@venta.fecha
-        <RadzenDataGridColumn TItem="Clases.Ventas"  Property="Cliente" Title="Cliente" Width="80px">
-            <Template Context="item">
+        
+        <RadzenDataGridColumn TItem=" Clases.Ventas" TextAlign="TextAlign.Center"  Title="ID" Width="35px" Frozen="true" @bind-Value="venta.id" /> 
+        <RadzenDataGridColumn TItem=" Clases.Ventas"   Title="Fecha" Width="80px"  @bind-Value="venta.fecha" /> 
+        <RadzenDataGridColumn TItem="Clases.Ventas"  Title="Cliente" Width="80px" @bind-Value="@venta.cliente" >
+            <Template Context="venta">
                 <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/PedidosDetalles"))" TextAlign="TextAlign.Center" Icon="list" ButtonStyle="ButtonStyle.Success" Style="margin-left: 5px" />
                 <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/AgregarPedidoCliente"))" TextAlign="TextAlign.Center" Icon="add_circle_outline" Color="Color.Warning" Style="margin-left: 5px" />
-                @*<RadzenButton onclick="@(() => Eliminaritem(venta.id))"  TextAlign="TextAlign.Center" Icon="delete" ButtonStyle="ButtonStyle.Danger" Style="margin-left: 5px"/>*@
+                <RadzenButton onclick="@(() => Eliminaritem(venta.id))"  TextAlign="TextAlign.Center" Icon="delete" ButtonStyle="ButtonStyle.Danger" Style="margin-left: 5px"/>
             </Template>
-        </RadzenDataGridColumn>@venta.cliente
-         
+        </RadzenDataGridColumn> 
+    
 </Columns>  
 </CListado> 
 <br> 
@@ -51,14 +56,19 @@
 <br> 
  }
     }
-}
+
 
 
 @code {
-    List<Clases.Ventas> ventas {get; set;} = null!;
-    private bool isLoading = false;
+        private List<Clases.Ventas> ventas = new List<Ventas>();
+        
+        public void Eliminaritem(int ventasId){
 
-    protected bool cargando = true;    
+        }
+    
+
+
+    @*private bool isLoading = false;   
     bool value;
     [Parameter] public bool SoloLectura { get; set; } = true;
 
@@ -69,10 +79,11 @@
   
     async Task CargarDatos(int pagina =1, int regs =10){
         isLoading = true;
-        ventas = await Http.GetFromJsonAsync<List<Ventas>>("clases/ventas");
+        
+        ventas = await Http.GetFromJsonAsync<List<Clases.Ventas>>("api/venta"); 
         isLoading = false;
     }
- @*async Task RegisterEliminado()
+ async Task RegisterEliminado()
     {
         var result = await DialogService.OpenAsync("Está seguro de que desea eliminar el Pedido?", ds =>
         @<div>
