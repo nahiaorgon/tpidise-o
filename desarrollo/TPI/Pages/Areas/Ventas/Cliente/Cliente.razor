@@ -11,7 +11,10 @@
 @inject IJSRuntime JS 
 @using Reciplas.Repositorio
 @inject IRepositorioVentas RepositorioVentas
-
+@inject Reciplas.Clases.ApplicationDbContext _contexto 
+@inject AuthenticationStateProvider AuthenticationStateProvider
+ @using System.Globalization
+@using System.Reflection
 
 
 <PageTitle>Areas</PageTitle>
@@ -23,8 +26,7 @@
 {
     @: Cargando datos....
 }else{
-        @foreach (var venta in ventas)
-        {
+         
             
        
 <br>
@@ -35,35 +37,45 @@
 <CListado TItem="Clases.Ventas" Data="@ventas" PageSize="5" Frozen="true" >
        <Columns>
         
-        <RadzenDataGridColumn TItem=" Clases.Ventas" TextAlign="TextAlign.Center"  Title="ID" Width="35px" Frozen="true" @bind-Value="venta.id" /> 
-        <RadzenDataGridColumn TItem=" Clases.Ventas"   Title="Fecha" Width="80px"  @bind-Value="venta.fecha" /> 
-        <RadzenDataGridColumn TItem="Clases.Ventas"  Title="Cliente" Width="80px" @bind-Value="@venta.cliente" >
+        <RadzenDataGridColumn TItem=" Clases.Ventas" TextAlign="TextAlign.Center"  Title="ID" Width="35px" Frozen="true" Property="id"/> 
+        <RadzenDataGridColumn TItem=" Clases.Ventas"   Title="Fecha" Width="80px"  Property="fecha" /> 
+        <RadzenDataGridColumn TItem="Clases.Ventas"  Title="Cliente" Width="80px" Property="cliente" />
+        <RadzenDataGridColumn TItem="Clases.Ventas"  Title="Acciones" Width="80px" >
             <Template Context="venta">
-                <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/PedidosDetalles"))" TextAlign="TextAlign.Center" Icon="list" ButtonStyle="ButtonStyle.Success" Style="margin-left: 5px" />
-                <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/AgregarPedidoCliente"))" TextAlign="TextAlign.Center" Icon="add_circle_outline" Color="Color.Warning" Style="margin-left: 5px" />
+                <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Ventas/EditarVenta/@venta.id"))" TextAlign="TextAlign.Center" Icon="list" ButtonStyle="ButtonStyle.Success" Style="margin-left: 5px" />
+                <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Ventas/NuevaVenta"))" TextAlign="TextAlign.Center" Icon="add_circle_outline" Color="Color.Warning" Style="margin-left: 5px" />
                 <RadzenButton onclick="@(() => Eliminaritem(venta.id))"  TextAlign="TextAlign.Center" Icon="delete" ButtonStyle="ButtonStyle.Danger" Style="margin-left: 5px"/>
             </Template>
         </RadzenDataGridColumn> 
     
-</Columns>  
+</Columns>   
 </CListado> 
 <br> 
 <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="1rem" Wrap="FlexWrap.Wrap">
-   <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/NuevoClienteFormulario"))" Variant="Variant.Flat"  Text="Nuevo" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Secondary" />
-    <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ClienteFormulario"))" Variant="Variant.Flat"  Text="Modificar" Icon="check_circle" ButtonStyle="ButtonStyle.Success"  />
+   <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Ventas/EditarVenta/@venta.id"))" Variant="Variant.Flat"  Text="Modificar" Icon="check_circle" ButtonStyle="ButtonStyle.Success"/>
+    <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Ventas/NuevaVenta"))" Variant="Variant.Flat"  Text="Nuevo" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Secondary"   />
  
 </RadzenStack>
 <br> 
  }
-    }
+    
 
 
 
 @code {
         private List<Clases.Ventas> ventas = new List<Ventas>();
         
-        public void Eliminaritem(int ventasId){
+        protected override async Task OnInitializedAsync(){
+            ventas = await RepositorioVentas.GetVentas();
+        }
 
+
+        public async Task Eliminaritem(int ventasId){
+            await RepositorioVentas.EliminarVenta(ventasId);
+
+            //actualizar la venta para que recargue la lista de la pagina
+
+            ventas = await RepositorioVentas.GetVentas();
         }
     
 

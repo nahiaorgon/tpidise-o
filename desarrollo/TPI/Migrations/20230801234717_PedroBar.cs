@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Reciplas.Migrations
 {
     /// <inheritdoc />
-    public partial class BarPedro : Migration
+    public partial class PedroBar : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,7 +18,7 @@ namespace Reciplas.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     fecha = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    proveedor = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    proveedor = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -31,10 +31,10 @@ namespace Reciplas.Migrations
                 {
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     stock = table.Column<int>(type: "int", nullable: false),
                     precio = table.Column<decimal>(type: "decimal(12,2)", nullable: false),
-                    categoria = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    categoria = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     fecha_actualizacion = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -65,7 +65,7 @@ namespace Reciplas.Migrations
                     id_producto = table.Column<int>(type: "int", nullable: false),
                     cantidad = table.Column<int>(type: "int", nullable: false),
                     precio_unitario = table.Column<decimal>(type: "decimal(12,2)", nullable: false),
-                    Comprasid = table.Column<int>(type: "int", nullable: false)
+                    Comprasid = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -73,8 +73,7 @@ namespace Reciplas.Migrations
                         name: "FK_LineaCompras_Compras_Comprasid",
                         column: x => x.Comprasid,
                         principalTable: "Compras",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "id");
                 });
 
             migrationBuilder.CreateTable(
@@ -86,7 +85,7 @@ namespace Reciplas.Migrations
                     id_producto = table.Column<int>(type: "int", nullable: false),
                     cantidad = table.Column<int>(type: "int", nullable: false),
                     precio_unitario = table.Column<decimal>(type: "decimal(12,2)", nullable: false),
-                    Ventasid = table.Column<int>(type: "int", nullable: false)
+                    Ventasid = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -94,8 +93,7 @@ namespace Reciplas.Migrations
                         name: "FK_LineaVentas_Ventas_Ventasid",
                         column: x => x.Ventasid,
                         principalTable: "Ventas",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "id");
                 });
 
             migrationBuilder.CreateIndex(

@@ -12,8 +12,8 @@ using Reciplas.Clases;
 namespace Reciplas.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230729125729_BarPedro")]
-    partial class BarPedro
+    [Migration("20230801234717_PedroBar")]
+    partial class PedroBar
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,7 +37,6 @@ namespace Reciplas.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("proveedor")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
@@ -47,7 +46,7 @@ namespace Reciplas.Migrations
 
             modelBuilder.Entity("Reciplas.Clases.LineaCompra", b =>
                 {
-                    b.Property<int>("Comprasid")
+                    b.Property<int?>("Comprasid")
                         .HasColumnType("int");
 
                     b.Property<int>("cantidad")
@@ -72,7 +71,7 @@ namespace Reciplas.Migrations
 
             modelBuilder.Entity("Reciplas.Clases.LineaVenta", b =>
                 {
-                    b.Property<int>("Ventasid")
+                    b.Property<int?>("Ventasid")
                         .HasColumnType("int");
 
                     b.Property<int>("cantidad")
@@ -104,14 +103,12 @@ namespace Reciplas.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
                     b.Property<string>("categoria")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("fecha_actualizacion")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("nombre")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("precio")
@@ -149,9 +146,7 @@ namespace Reciplas.Migrations
                 {
                     b.HasOne("Reciplas.Clases.Compras", "Compras")
                         .WithMany()
-                        .HasForeignKey("Comprasid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("Comprasid");
 
                     b.Navigation("Compras");
                 });
@@ -160,9 +155,7 @@ namespace Reciplas.Migrations
                 {
                     b.HasOne("Reciplas.Clases.Ventas", "Ventas")
                         .WithMany()
-                        .HasForeignKey("Ventasid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("Ventasid");
 
                     b.Navigation("Ventas");
                 });

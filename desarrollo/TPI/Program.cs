@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Components.Web;
 var builder = WebApplication.CreateBuilder(args); 
 
 builder.Services.AddDbContextFactory<ApplicationDbContext>(options =>
-    options.UseSqlServer("Data Source=localhost\\sqlexpress;Initial Catalog=PedroBar;Integrated Security=True;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False;Connection Timeout=30;"));
+    options.UseSqlServer("Server=localhost\\sqlexpress;Initial Catalog=PedroBar;Integrated Security=True;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False;Trusted_Connection=True;"));
 System.Net.ServicePointManager.SecurityProtocol = 
     System.Net.SecurityProtocolType.Tls12;
 // Add services to the container.

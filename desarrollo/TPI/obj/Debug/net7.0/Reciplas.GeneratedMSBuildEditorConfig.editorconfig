@@ -48,16 +48,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXJlYXNcVmVudGFzXENsaWVudGVcQ2xpZW50ZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Usuarios/niorgon/Mis Documentos/GitHub/desadesof/desarrollo/TPI/Pages/Areas/Ventas/Cliente/ClienteFormulario.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXJlYXNcVmVudGFzXENsaWVudGVcQ2xpZW50ZUZvcm11bGFyaW8ucmF6b3I=
+[D:/Usuarios/niorgon/Mis Documentos/GitHub/desadesof/desarrollo/TPI/Pages/Areas/Ventas/Cliente/EditarVenta.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXJlYXNcVmVudGFzXENsaWVudGVcRWRpdGFyVmVudGEucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Usuarios/niorgon/Mis Documentos/GitHub/desadesof/desarrollo/TPI/Pages/Areas/Ventas/Cliente/FacturarVenta.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXJlYXNcVmVudGFzXENsaWVudGVcRmFjdHVyYXJWZW50YS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Usuarios/niorgon/Mis Documentos/GitHub/desadesof/desarrollo/TPI/Pages/Areas/Ventas/Cliente/NuevoFormularioCliente.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXJlYXNcVmVudGFzXENsaWVudGVcTnVldm9Gb3JtdWxhcmlvQ2xpZW50ZS5yYXpvcg==
+[D:/Usuarios/niorgon/Mis Documentos/GitHub/desadesof/desarrollo/TPI/Pages/Areas/Ventas/Cliente/NuevaVenta.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXJlYXNcVmVudGFzXENsaWVudGVcTnVldmFWZW50YS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Usuarios/niorgon/Mis Documentos/GitHub/desadesof/desarrollo/TPI/Pages/Areas/Ventas/Cliente/PedidosDetalles.razor]

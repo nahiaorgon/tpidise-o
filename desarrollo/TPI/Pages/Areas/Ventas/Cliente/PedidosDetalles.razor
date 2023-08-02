@@ -4,36 +4,54 @@
 @inherits OwningComponentBase<Usuario> 
 @inject DialogService DialogService
 @inject NavigationManager NavigationManager  
+@using Reciplas.Clases;
+@using Reciplas.Repositorio;
+@inject IRepositorioVentas RepositorioVentas;
+@inject IRepositorioProductos RepositorioProductos;
+@inject Reciplas.Clases.ApplicationDbContext _contexto;
 
+
+@if (mostrarPedido == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+        <EditForm  Model="@mostrarPedido" OnValidSubmit="@(() => manejoMostrarPedido())">
 
 <RadzenCard Class="rz-my-12 rz-mx-auto" Style="max-width: 420px">
     <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Start" Gap="1rem" Class="rz-p-4">
         
         <RadzenStack Gap="0">
-            <RadzenText TextStyle="TextStyle.Overline" class="rz-display-flex rz-mt-2 rz-my-0">Nombre y Apellido del Cliente</RadzenText>
-            <RadzenText TextStyle="TextStyle.Body1"><b>Chiara Orgoñ</b></RadzenText>
-            <RadzenText TextStyle="TextStyle.Overline" class="rz-display-flex rz-mt-4 rz-mb-0">DNI</RadzenText>
-            <RadzenText TextStyle="TextStyle.Body1"><b>6541238</b></RadzenText>
-            <RadzenText TextStyle="TextStyle.Overline" class="rz-display-flex rz-mt-2 rz-my-0">Telefono</RadzenText>
-            <RadzenText TextStyle="TextStyle.Body1"><b>4-454654</b></RadzenText>
-            <RadzenText TextStyle="TextStyle.Overline" class="rz-display-flex rz-mt-4 rz-mb-0">Direccion</RadzenText>
-            <RadzenText TextStyle="TextStyle.Body1"><b>French 414</b></RadzenText>
+            <RadzenText TextStyle="TextStyle.Overline" class="rz-display-flex rz-mt-2 rz-my-0">ID del Cliente</RadzenText>
+            <InputFile OnChange="@(() => manejoMostrarPedido())" TextStyle="TextStyle.Body1" @bind-Value="mostrarPedido.id" ><b></b></InputFile>
+            <RadzenText TextStyle="TextStyle.Overline" class="rz-display-flex rz-mt-4 rz-mb-0">Apellido y Nombre del Cliente</RadzenText>
+            <InputFile OnChange="@(() => manejoMostrarPedido())" TextStyle="TextStyle.Body1" @bind-Value="mostrarPedido.cliente"><b></b></InputFile>
+            <RadzenText TextStyle="TextStyle.Overline" class="rz-display-flex rz-mt-2 rz-my-0">Fecha</RadzenText>
+            <InputFile OnChange="@(() => manejoMostrarPedido())" TextStyle="TextStyle.Body1" @bind-Value="mostrarPedido.fecha"><b></b></InputFile> 
         </RadzenStack>
     </RadzenStack>
-    <RadzenCard class="rz-background-color-primary-lighter rz-shadow-0 rz-border-radius-0 rz-p-8" style="margin: 1rem calc(-1 * var(--rz-card-padding));">
+
+
+    <RadzenCard Model="@detalleProducto" OnSubmit="@(() => manejoMostrarProducto())" 
+        class="rz-background-color-primary-lighter rz-shadow-0 rz-border-radius-0 rz-p-8" style="margin: 1rem calc(-1 * var(--rz-card-padding));">
         <RadzenText TextStyle="TextStyle.H6" class="rz-color-primary-light"><strong>Informacion del Pedido</strong></RadzenText>
         <RadzenRow RowGap="0">
             <RadzenColumn SizeSM="4">
                 <RadzenText TextStyle="TextStyle.Overline" class="rz-color-primary-light rz-display-flex rz-mt-4 rz-mb-0">N° Pedido</RadzenText>
-                <RadzenText TextStyle="TextStyle.Body1"><b>00015</b></RadzenText>
+                <InputFile OnChange="@(() => manejoMostrarProducto())" @bind-Value="detalleProducto.id" TextStyle="TextStyle.Body1"><b></b></InputFile>
                 <RadzenText TextStyle="TextStyle.Overline" class="rz-color-primary-light rz-display-flex rz-mt-4 rz-mb-0">Descripcion</RadzenText>
-                <RadzenText TextStyle="TextStyle.Body1"><b>Producto en Garantia</b></RadzenText>
+                <InputFile OnChange="@(() => manejoMostrarProducto())" @bind-Value="detalleProducto.nombre" TextStyle="TextStyle.Body1"><b></b></InputFile>
+                <RadzenText TextStyle="TextStyle.Overline" class="rz-color-primary-light rz-display-flex rz-mt-4 rz-mb-0">Descripcion</RadzenText>
+                <InputFile OnChange="@(() => manejoMostrarProducto())" @bind-Value="detalleProducto.stock" TextStyle="TextStyle.Body1"><b></b></InputFile>
             </RadzenColumn>
             <RadzenColumn SizeSM="8">
                 <RadzenText TextStyle="TextStyle.Overline" class="rz-color-primary-light rz-display-flex rz-mt-4 rz-mb-0">N°Vendedor</RadzenText>
-                <RadzenText TextStyle="TextStyle.Body1"><b>056</b></RadzenText>
+                <InputFile OnChange="@(() => manejoMostrarProducto())" @bind-Value="detalleProducto.precio" TextStyle="TextStyle.Body1"><b></b></InputFile>
                 <RadzenText TextStyle="TextStyle.Overline" class="rz-color-primary-light rz-display-flex rz-mt-4 rz-mb-0">Total</RadzenText>
-                <RadzenText TextStyle="TextStyle.Body1"><b>$76.000</b></RadzenText>
+                <InputFile OnChange="@(() => manejoMostrarProducto())" @bind-Value="detalleProducto.categoria" TextStyle="TextStyle.Body1"><b></b></InputFile>
+                <RadzenText TextStyle="TextStyle.Overline" class="rz-color-primary-light rz-display-flex rz-mt-4 rz-mb-0">Total</RadzenText>
+                <InputFile OnChange="@(() => manejoMostrarProducto())" @bind-Value="detalleProducto.fecha_actualizacion" TextStyle="TextStyle.Body1"><b></b></InputFile>
             </RadzenColumn>
         </RadzenRow>
     </RadzenCard>
@@ -41,15 +59,23 @@
         <RadzenButton Click="@(args => NavigationManager.NavigateTo("/ventas"))" Variant="Variant.Text" class="rz-text-secondary-color" Text="Volver" /> 
     </RadzenStack>
 </RadzenCard>
-
+        </EditForm>
+}
 
 @code {
-  //  Order order;
+   private Ventas mostrarPedido = new Ventas(); 
+   private Productos detalleProducto = new Productos();
+  [Parameter] public int? Id {get; set;}
 
-    protected override async Task OnInitializedAsync()
-    {
-        await base.OnInitializedAsync();
+    public async Task manejoMostrarPedido(){
 
-       //order = dbContext.Orders.Include("Customer").Include("Employee").FirstOrDefault();
+        var variableMostrarVenta = await RepositorioVentas.GetVentasId(Id.Value);
+        NavigationManager.NavigateTo("/ventas");
+    }
+
+     public async Task manejoMostrarProducto(){
+
+        var variableMostrarProducto = await RepositorioProductos.GetProductosId(Id.Value);
+        NavigationManager.NavigateTo("/ventas");
     }
 }

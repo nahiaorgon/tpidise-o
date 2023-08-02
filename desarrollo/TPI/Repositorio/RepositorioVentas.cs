@@ -26,6 +26,7 @@ namespace Reciplas.Repositorio
         public async Task<Ventas> CrearVenta(Ventas crearVenta)
         {
             if (crearVenta != null){ //si existe la venta para crearlo
+                crearVenta.fecha = DateTime.Now;
                 await _context.Ventas.AddAsync(crearVenta);
                 await _context.SaveChangesAsync();
                 return crearVenta;

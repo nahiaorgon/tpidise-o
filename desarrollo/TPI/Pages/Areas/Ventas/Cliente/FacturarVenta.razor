@@ -2,10 +2,11 @@
 @using Reciplas.Models;
 @inject NotificationService NotificationService 
 @inherits OwningComponentBase<Usuario>
-@using System.Collections.Generic;  
 @inject DialogService DialogService  
 @inject NavigationManager NavigationManager  
-
+@using Reciplas.Clases;
+@using Reciplas.Repositorio;
+@inject IRepositorioVentas RepositorioVentas;
 
 <PageTitle>Areas</PageTitle>
 <TituloPrincipal TextoPrincipal="Ventas" TextoSecundario="Facturación" />

@@ -1,10 +1,10 @@
-@page "/Empleados/Ventas/ClienteFormulario"
+@page "/Ventas/NuevaVenta"
 @inject NotificationService NotificationService 
 @inherits OwningComponentBase<Usuario> 
 @inject NavigationManager NavigationManager
 @using Reciplas.Clases;
 @using Reciplas.Repositorio;
-@inject IRepositorioVentas RepositorioVentas;
+@inject IRepositorioVentas RepositorioVentas;  
 
 
 <TituloPrincipal TextoPrincipal="Ventas" TextoSecundario="Clientes" />  
@@ -15,23 +15,14 @@
 else
 {
     <div class="card-body"> 
-    <EditForm  Model="nuevaVenta" OnValidSubmit="@(() => manejoCrearVenta())">
+    <EditForm  Model="@nuevaVenta" OnValidSubmit="@(() => manejoCrearVenta())">
         <DataAnnotationsValidator/>
     <RadzenRow Gap="2rem" Class="rz-p-0 rz-p-lg-4">
             <RadzenColumn Size="12" SizeMD="6">     
                 <RadzenStack>
                     <RadzenFieldset Text="Nueva Venta">
                         <RadzenStack Gap="1rem">
-                            <RadzenRow AlignItems="AlignItems.Center">  
-
-                                <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="ID" />
-                                </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="8"> 
-                                    <InputNumber Style="width: 100%;" @bind-Value="nuevaVenta.id" class="form-control"></InputNumber>
-                                    <ValidationMessage For="() => nuevaVenta.id"></ValidationMessage>
-
-                                </RadzenColumn>
+                            <RadzenRow AlignItems="AlignItems.Center"> 
 
                                 <RadzenColumn Size="12" SizeMD="4">
                                     <RadzenLabel Text="Cliente" />
@@ -40,7 +31,6 @@ else
  
                                     <InputText Style="width: 100%;" Name="CardNr" @bind-Value="nuevaVenta.cliente" class="form-control"> </InputText>
                                     <ValidationMessage For="() => nuevaVenta.cliente"></ValidationMessage>
-
 
                                 </RadzenColumn>  
                                 <RadzenColumn Size="12" SizeMD="4">
@@ -73,7 +63,7 @@ else
 @code {
     private Ventas nuevaVenta = new Ventas();
     //metodo para guardar
-    private async Task manejoCrearVenta(){
+    public async Task manejoCrearVenta(){
         var crearVenta = await RepositorioVentas.CrearVenta(nuevaVenta);
         NavigationManager.NavigateTo("/ventas");
     }
