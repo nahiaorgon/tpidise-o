@@ -10,13 +10,3 @@ public class Product : EntidadBase{
   public int Total {get; set;}
 
     }
-
-
-
-
-    /*public int idProd {get; set;}
-    public int Stock {get; set;}
-    public string MateriaPrima {get; set;}
-    public int compraProd {get; set;}*/
-
-
