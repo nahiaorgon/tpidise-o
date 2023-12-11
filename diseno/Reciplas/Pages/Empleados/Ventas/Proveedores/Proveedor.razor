@@ -18,7 +18,7 @@
 <CListado TItem="Models.Proveedor" Data="@proveedores" PageSize="5" AllowColumnResize="true" AllowAlternatingRows="false" Frozen="true">
     
        <Columns>      
-        <RadzenDataGridColumn TItem=" Models.Proveedor" TextAlign="TextAlign.Center" Property="ID" Title="ID" Width="35px" Frozen="true" />
+        <RadzenDataGridColumn TItem=" Models.Proveedor" TextAlign="TextAlign.Center" Property="Id" Title="Id" Width="35px" Frozen="true" />
         <RadzenDataGridColumn TItem=" Models.Proveedor" Property="Nombre" Title="Nombre" Width="80px"/> 
         <RadzenDataGridColumn TItem="Models.Proveedor" Property="DNI" Title="DNI" Width="60px" />
         <RadzenDataGridColumn TItem="Models.Proveedor" Property="Direccion" Title="Direcci&oacute;n" Width="100px" />
@@ -63,13 +63,13 @@
     [Parameter] public bool SoloLectura { get; set; } = true;
     [Parameter] public string Nombre {get; set;}
     [Parameter] public string Direccion {get; set;}
-    [Parameter] public int ID {get; set;}
+    [Parameter] public int Id {get; set;}
      [Parameter] public int Sucursal {get; set;} 
     private void OnClick(string text)
     {
         NotificationService.Notify(new NotificationMessage { Severity = NotificationSeverity.Error, Detail = text });
     }
-protected async Task QuitarAdjunto(int id)
+protected async Task QuitarAdjunto(int Id)
     {
       //
     }
@@ -78,13 +78,13 @@ protected async Task QuitarAdjunto(int id)
     protected override Task OnInitializedAsync()
     {
         List<Models.Proveedor> persons = new List<Models.Proveedor>();
-        var person1 = new Models.Proveedor {Nombre = "Chiara Madelein", DNI=98138187, Direccion = "Calle gualaby 42 Sydney", ID =12, Ciudad="Corrientes", PerfilAprobacion=false};
-        var person2 = new Models.Proveedor {Nombre = "Nahia Orgoñ", DNI=12345687, Direccion = "French 414", ID =7,  Ciudad="Resistencia - Chaco", PerfilAprobacion=true};
-        var person3 = new Models.Proveedor {Nombre = "Valen Sosa", DNI=23682387, Direccion = "Av. Sarmiento", ID =5,  Ciudad="Goya - Ctes", PerfilAprobacion=true};
-        var person4 = new Models.Proveedor {Nombre = "Mariano Gonzalez", DNI=98138187, Direccion = "Calle importante", ID =32,  Ciudad="Barranqueras - Chaco", PerfilAprobacion=false};
-        var person5 = new Models.Proveedor {Nombre = "Leandro Martinez", DNI=31829887, Direccion = "ni idea", ID =15,  Ciudad="Mburucuya - Ctes", PerfilAprobacion=true};
-        var person6 = new Models.Proveedor {Nombre = "Bibiana Altamirano", DNI=12819233, Direccion = "ejemplo 6", ID =13,  Ciudad="Corrientes", PerfilAprobacion=false};
-        var person7 = new Models.Proveedor {Nombre = "Mateo Messi", DNI=91358268, Direccion = "otra calle importante", ID =69,  Ciudad="Paso de los Libres - Ctes", PerfilAprobacion=false};
+        var person1 = new Models.Proveedor {Nombre = "Chiara Madelein", DNI=98138187, Direccion = "Calle gualaby 42 Sydney", Id =12, Ciudad="Corrientes", PerfilAprobacion=false};
+        var person2 = new Models.Proveedor {Nombre = "Nahia Orgoñ", DNI=12345687, Direccion = "French 414", Id =7,  Ciudad="Resistencia - Chaco", PerfilAprobacion=true};
+        var person3 = new Models.Proveedor {Nombre = "Valen Sosa", DNI=23682387, Direccion = "Av. Sarmiento", Id =5,  Ciudad="Goya - Ctes", PerfilAprobacion=true};
+        var person4 = new Models.Proveedor {Nombre = "Mariano Gonzalez", DNI=98138187, Direccion = "Calle importante", Id =32,  Ciudad="Barranqueras - Chaco", PerfilAprobacion=false};
+        var person5 = new Models.Proveedor {Nombre = "Leandro Martinez", DNI=31829887, Direccion = "ni idea", Id =15,  Ciudad="Mburucuya - Ctes", PerfilAprobacion=true};
+        var person6 = new Models.Proveedor {Nombre = "Bibiana Altamirano", DNI=12819233, Direccion = "ejemplo 6", Id =13,  Ciudad="Corrientes", PerfilAprobacion=false};
+        var person7 = new Models.Proveedor {Nombre = "Mateo Messi", DNI=91358268, Direccion = "otra calle importante", Id =69,  Ciudad="Paso de los Libres - Ctes", PerfilAprobacion=false};
 
         persons.Add(person1);        
         persons.Add(person2);        

@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Reciplas.Models;
 
 /// <summary>
@@ -9,5 +11,6 @@ public abstract class EntidadBase
     /// Obtiene o establece el identificador de la entidad.
     /// </summary>
     /// <value>Numerico entero.</value>
+    [Key]
     public int Id { get; set; }
 }

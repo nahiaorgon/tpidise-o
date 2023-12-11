@@ -1,17 +1,19 @@
 @page "/Empleados/Ventas/NuevoClienteFormulario"
+@using Reciplas.Repository
 @inject NotificationService NotificationService 
 @inherits OwningComponentBase<Usuario> 
 @inject NavigationManager NavigationManager
+@inject IClienteRepository _clientRepository
 
 <TituloPrincipal TextoPrincipal="Ventas" TextoSecundario="Clientes" /> 
-@if (order == null)
+@if (cliente == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
 
-    <RadzenTemplateForm Data="@order" Submit="@((Order args) => { Submit(args); })">
+    <RadzenTemplateForm Data="@cliente" Submit="@((Models.Cliente args) => { Submit(args); })">
     <RadzenRow Gap="2rem" Class="rz-p-0 rz-p-lg-4">
             <RadzenColumn Size="12" SizeMD="6">    
 
@@ -25,19 +27,19 @@ else
                                     <RadzenLabel Text="Nombre y Apellido" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenTextBox Style="width: 100%;" Name="CardNr" />
+                                    <RadzenTextBox Style="width: 100%;" Name="CardNr" @bind-Value=cliente.Nombre />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="4">
                                     <RadzenLabel Text="Dirección" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenTextBox Style="width: 100%;" Name="CardNr" />
+                                    <RadzenTextBox Style="width: 100%;" Name="CardNr" @bind-Value=cliente.Direccion />
                                 </RadzenColumn>  
                                 <RadzenColumn Size="12" SizeMD="4">
                                     <RadzenLabel Text="Teléfono" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenTextBox Style="width: 100%;" Name="CardNr" />
+                                    <RadzenNumeric Style="width: 100%;" Name="CardNr" @bind-Value=cliente.Telefono />
                                 </RadzenColumn> 
                                 <RadzenColumn Size="12" SizeMD="4">
                                     <RadzenLabel Text="Fecha de Nacimiento" />
@@ -53,21 +55,21 @@ else
             </RadzenColumn>
         </RadzenRow> 
             <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="1rem" Wrap="FlexWrap.Wrap">            
-            <a href="/Empleados/Ventas/ventasClientes"><RadzenButton Style="margin-left:15px" Click=@(args => OnClick("Registro Guardado")) Variant="Variant.Flat" Text="Guardar" Icon="check_circle" ButtonStyle="ButtonStyle.Primary"  /></a>
-            <a href="/Empleados/Ventas/ventasClientes"><RadzenButton Style="margin-left:auto" Click=@(args => OnClick("Registro sin guardar")) Variant="Variant.Flat" Text="Volver" Icon="history" ButtonStyle="ButtonStyle.Light" /></a>
+            <RadzenButton ButtonType="ButtonType.Submit" Style="margin-left:15px" Click=@(args => OnClick("Registro Guardado")) Variant="Variant.Flat" Text="Guardar" Icon="check_circle" ButtonStyle="ButtonStyle.Primary"  />
+            <RadzenButton ButtonType="ButtonType.Button" Style="margin-left:auto" Click=@(args => OnClick("Registro sin guardar")) Variant="Variant.Flat" Text="Volver" Icon="history" ButtonStyle="ButtonStyle.Light" />
            </RadzenStack> 
     </RadzenTemplateForm>
 }
 
-@code { 
-    DateTime value = DateTime.Now; 
-    Order order = new Order()
-    { 
-    }; 
+@code {
+    DateTime value = DateTime.Now;
+    Models.Cliente cliente = new Models.Cliente();
 
-    void Submit(Order arg)
+    async void Submit(Models.Cliente arg)
     {
-        //
+        var client = await _clientRepository.AddCliente(arg);
+
+        NavigationManager.NavigateTo("/Empleados/Ventas/ventasClientes");
     }
     private void OnClick(string text)
     {

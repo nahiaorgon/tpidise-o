@@ -19,7 +19,7 @@
        <Columns>            
        <RadzenButton Style="margin-left:auto" Click=@(args => OnClick("Excel Descargado"))  Variant="Variant.Flat" Shade="Shade.Dark"  Text="Excel" Icon="assignment_returned" ButtonStyle="ButtonStyle.Success"/>
         <br> <br>
-        <RadzenDataGridColumn TItem=" Models.StocksFabricados" Property="ID" TextAlign="TextAlign.Center" Title="ID" Width="30px" Frozen="true" />
+        <RadzenDataGridColumn TItem=" Models.StocksFabricados" Property="Id" TextAlign="TextAlign.Center" Title="Id" Width="30px" Frozen="true" />
         <RadzenDataGridColumn TItem=" Models.StocksFabricados" Property="Producto" Title="Nombre" Width="80px" />
         <RadzenDataGridColumn TItem="Models.StocksFabricados" Property="Cantidad" TextAlign="TextAlign.Center" Title="Cantidad" Width="50px"/> 
         <RadzenDataGridColumn TItem=" Models.StocksFabricados" Property="Descripcion" Title="Descripcion" Width="150px"/> 
@@ -49,7 +49,7 @@
                 
        <RadzenButton Style="margin-left:auto" Click=@(args => OnClick("Excel Descargado"))  Variant="Variant.Flat" Shade="Shade.Dark"  Text="Excel" Icon="assignment_returned" ButtonStyle="ButtonStyle.Success"/>
         <br> <br>
-        <RadzenDataGridColumn TItem=" Models.StocksPrima" Property="IdArticulo" TextAlign="TextAlign.Center" Title="ID" Width="30px" Frozen="true" />
+        <RadzenDataGridColumn TItem=" Models.StocksPrima" Property="IdArticulo" TextAlign="TextAlign.Center" Title="Id" Width="30px" Frozen="true" />
         <RadzenDataGridColumn TItem=" Models.StocksPrima" Property="Nombre" Title="Nombre" Width="100px" />
         <RadzenDataGridColumn TItem="Models.StocksPrima" Property="Cantidad" TextAlign="TextAlign.Center" Title="Cantidad" Width="50px"/>
         <RadzenDataGridColumn TItem=" Models.StocksPrima" Property="CantidadKgTotal" TextAlign="TextAlign.Center" Title="Cantidad Kg Total " Width="70px"/> 
@@ -87,7 +87,7 @@
     [Parameter]
     public int Cantidad { get; set; }
     [Parameter]
-    public int ID { get; set; }
+    public int Id { get; set; }
     [Parameter]
     public string Descripcion { get; set; }
     [Parameter]
@@ -137,7 +137,7 @@
         List<Models.StocksFabricados> fabricados = new List<Models.StocksFabricados>();
         
         var producto1 = new Models.StocksFabricados {
-            ID = 1,
+            Id = 1,
             Fecha = DateTime.Now,
             Producto = "Producto 1",
             Cantidad = 50,
@@ -146,7 +146,7 @@
         };
 
         var producto2 = new Models.StocksFabricados {
-            ID = 2,
+            Id = 2,
             Fecha = DateTime.Now.AddDays(-1),
             Producto = "Producto 2",
             Cantidad = 100,
@@ -155,7 +155,7 @@
         };
 
         var producto3 = new Models.StocksFabricados {
-            ID = 3,
+            Id = 3,
             Fecha = DateTime.Now.AddDays(-2),
             Producto = "Producto 3",
             Cantidad = 200,
@@ -164,7 +164,7 @@
         };
 
         var producto4 = new Models.StocksFabricados {
-            ID = 4,
+            Id = 4,
             Fecha = DateTime.Now.AddDays(-3),
             Producto = "Producto 4",
             Cantidad = 150,
@@ -173,7 +173,7 @@
         };
 
         var producto5 = new Models.StocksFabricados {
-            ID = 5,
+            Id = 5,
             Fecha = DateTime.Now.AddDays(-4),
             Producto = "Producto 5",
             Cantidad = 300,
@@ -182,7 +182,7 @@
         };
 
         var producto6 = new Models.StocksFabricados {
-            ID = 6,
+            Id = 6,
             Fecha = DateTime.Now.AddDays(-5),
             Producto = "Producto 6",
             Cantidad = 250,

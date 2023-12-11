@@ -55,7 +55,7 @@
                                                     <RadzenBadge BadgeStyle="BadgeStyle.Light" Text=@($" N° de pedido: {order.NumPedido}") Class="rz-mr-1" IsPill="true" />
                                                 </RadzenColumn>
                                                 <RadzenColumn Size="4" Class="rz-text-align-right">
-                                                    <RadzenText TextStyle="TextStyle.Caption" Class="rz-mb-0">ID Empleado</RadzenText>
+                                                    <RadzenText TextStyle="TextStyle.Caption" Class="rz-mb-0">Id Empleado</RadzenText>
 
                                                     <RadzenBadge BadgeStyle="BadgeStyle.Secondary" Shade="Shade.Lighter" Text=@($"{order.IDEmpleado}") IsPill="true" />
                                                 </RadzenColumn>
@@ -83,7 +83,7 @@
                                         <RadzenCard Style="width: 250px;" Class="rz-border-radius-3">
                                             <RadzenRow Gap="0.5rem">
                                                 <RadzenColumn Size="8" Class="rz-text-truncate">
-                                                    <RadzenBadge BadgeStyle="BadgeStyle.Light" Text=@($" IDCliente: {order.ID}") Class="rz-mr-1" IsPill="true" /> <br>
+                                                    <RadzenBadge BadgeStyle="BadgeStyle.Light" Text=@($" IDCliente: {order.Id}") Class="rz-mr-1" IsPill="true" /> <br>
                                                     <RadzenText TextStyle="TextStyle.Caption" Class="rz-mb-0"> DNI: @(order.dni)</RadzenText>
                                                 </RadzenColumn> 
                                             </RadzenRow>
@@ -134,7 +134,7 @@
                                     <Columns> 
                                         <RadzenDataGridColumn TItem="Pedidos" Property="NumPedido" Title="N° de Pedido" Frozen="true"/> 
                                         <RadzenDataGridColumn TItem="Pedidos" Property="Descripcion" Title="Descripcion" />
-                                        <RadzenDataGridColumn TItem="Pedidos" Property="IDEmpleado" Title="ID Empleado" />
+                                        <RadzenDataGridColumn TItem="Pedidos" Property="IDEmpleado" Title="Id Empleado" />
                                         <RadzenDataGridColumn TItem="Pedidos" Property="CodVenta" Title="Cod de Venta" />
                                         <RadzenDataGridColumn TItem="Pedidos" Property="Fecha" Title="Fecha" FormatString="{0:d}"/>
                                     </Columns>
@@ -148,7 +148,7 @@
                                         <br> <br>
                                     <RadzenDataGrid ColumnWidth="150px" AllowPaging="true" AllowSorting="true" PageSize="5" Data="@reportes" TItem="Reporte" AllowColumnResize="true" AllowAlternatingRows="false" Frozen="true">
                                         <Columns> 
-                                            <RadzenDataGridColumn TItem="Reporte" Property="ID" Title="ID" Width="55px" Frozen="true"/> 
+                                            <RadzenDataGridColumn TItem="Reporte" Property="Id" Title="Id" Width="55px" Frozen="true"/> 
                                             <RadzenDataGridColumn TItem="Reporte" Property="nya" Title="Nombre y Apellido" Width="150px"/>
                                             <RadzenDataGridColumn TItem="Reporte" Property="dni" Title="DNI" Width="90px"/>
                                             <RadzenDataGridColumn TItem="Reporte" Property="Telefono" Title="Telefono"  Width="90px"/>
@@ -249,12 +249,12 @@
         _count = empleados.Count;
 
          List<Reporte> reports = new List<Reporte>();
-        var deud1 = new Reporte {ID=189, nya="Nahiara Orgoñ", dni=12345687, Telefono=4569874, Direccion="calle importante", Ciudad="Corrientes", Notas="No abono el total", TotalDebe=8135, TotalPagado=1500};
-        var deud2 = new Reporte {ID=512, nya="Nemo Buscando", dni=23682387, Telefono=4569874, Direccion="wallaby 42 sidney", Ciudad="Chaco", Notas="Vencido", TotalDebe=13825, TotalPagado=1981};
-        var deud3 = new Reporte {ID=160, nya="LaCeni Cienta", dni=98138187, Telefono=4569874, Direccion="niu yorc 123", Ciudad="Corrientes", Notas="Mes atrasado", TotalDebe=9385, TotalPagado=1681};
-        var deud4 = new Reporte {ID=841, nya="Mateo Messi", dni=31829887, Telefono=4569874, Direccion="holiwud 456", Ciudad="Goya", Notas="Vencido", TotalDebe=81345, TotalPagado=3281};
-        var deud5 = new Reporte {ID=651, nya="Elton Yon", dni=12819233, Telefono=4569874, Direccion="mi casa 789", Ciudad="Mburucuya", Notas="Vencido", TotalDebe=1284, TotalPagado=571};
-        var deud6 = new Reporte {ID=100, nya="Mar Chese", dni=91358268, Telefono=4569874, Direccion="nueva yersei 985", Ciudad="Rosario", Notas="No abono el total", TotalDebe=145, TotalPagado=623};
+        var deud1 = new Reporte {Id=189, nya="Nahiara Orgoñ", dni=12345687, Telefono=4569874, Direccion="calle importante", Ciudad="Corrientes", Notas="No abono el total", TotalDebe=8135, TotalPagado=1500};
+        var deud2 = new Reporte {Id=512, nya="Nemo Buscando", dni=23682387, Telefono=4569874, Direccion="wallaby 42 sidney", Ciudad="Chaco", Notas="Vencido", TotalDebe=13825, TotalPagado=1981};
+        var deud3 = new Reporte {Id=160, nya="LaCeni Cienta", dni=98138187, Telefono=4569874, Direccion="niu yorc 123", Ciudad="Corrientes", Notas="Mes atrasado", TotalDebe=9385, TotalPagado=1681};
+        var deud4 = new Reporte {Id=841, nya="Mateo Messi", dni=31829887, Telefono=4569874, Direccion="holiwud 456", Ciudad="Goya", Notas="Vencido", TotalDebe=81345, TotalPagado=3281};
+        var deud5 = new Reporte {Id=651, nya="Elton Yon", dni=12819233, Telefono=4569874, Direccion="mi casa 789", Ciudad="Mburucuya", Notas="Vencido", TotalDebe=1284, TotalPagado=571};
+        var deud6 = new Reporte {Id=100, nya="Mar Chese", dni=91358268, Telefono=4569874, Direccion="nueva yersei 985", Ciudad="Rosario", Notas="No abono el total", TotalDebe=145, TotalPagado=623};
  
         reports.Add(deud1);
         reports.Add(deud2); 

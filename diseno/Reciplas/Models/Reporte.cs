@@ -2,7 +2,6 @@ namespace Reciplas.Models;
 
 public class Reporte : EntidadBase{
 
-    public int  ID {get; set;} 
     public int  dni {get; set;} 
 
     public string Area {get; set;} 

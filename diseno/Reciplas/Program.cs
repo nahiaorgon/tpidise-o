@@ -6,12 +6,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies; 
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Reciplas.Repository;
 
 
 var builder = WebApplication.CreateBuilder(args); 
 
 builder.Services.AddDbContextFactory<ApplicationDbContext>(options =>
-    options.UseSqlServer("Server=localhost\\sqlexpress;Initial Catalog=Reciplas;Integrated Security=True;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False;Trusted_Connection=True;"));
+    options.UseSqlServer("Server=(local);Initial Catalog=Reciplas;Integrated Security=True;Persist Security Info=False;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False;Trusted_Connection=True;"));
 System.Net.ServicePointManager.SecurityProtocol = 
     System.Net.SecurityProtocolType.Tls12;
 // Add services to the container.
@@ -23,6 +24,7 @@ builder.Services.AddScoped<DialogService>();
 builder.Services.AddScoped<NotificationService>();
 builder.Services.AddScoped<TooltipService>();
 builder.Services.AddScoped<ContextMenuService>();
+builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddBlazoredModal();   
 builder.Services.AddControllers(); 
 builder.Services.AddHttpClient();
