@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Reciplas.Migrations
 {
     /// <inheritdoc />
-    public partial class test : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -34,8 +34,9 @@ namespace Reciplas.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Direccion = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DNI = table.Column<int>(type: "int", nullable: false),
-                    Telefono = table.Column<int>(type: "int", nullable: false),
+                    DNI = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Telefono = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FechadeNacimiento = table.Column<DateTime>(type: "datetime2", nullable: false),
                     PerfilAprobacion = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -198,8 +199,8 @@ namespace Reciplas.Migrations
                     Cantidad = table.Column<int>(type: "int", nullable: false),
                     Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CantidadKgPorItem = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    CantidadKgTotal = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    CantidadKgPorItem = table.Column<decimal>(type: "decimal(18,4)", nullable: false),
+                    CantidadKgTotal = table.Column<decimal>(type: "decimal(18,4)", nullable: false),
                     IdUsuarioRecepcion = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

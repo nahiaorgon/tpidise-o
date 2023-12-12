@@ -7,9 +7,11 @@
 @inject DialogService DialogService   
 @inject NavigationManager NavigationManager
 @inject IClienteRepository _clientRepository 
+@using Radzen
+@inject TooltipService tooltipService
 
 
-<PageTitle>Areas</PageTitle>
+<PageTitle>Áreas</PageTitle>
 
 <TituloPrincipal TextoPrincipal="Ventas" TextoSecundario="Clientes" />   <br>
 <RadzenButton Class="float-end" Click="@(args => NavigationManager.NavigateTo("/Empleados/Administracion/Consultas"))"  Variant="Variant.Flat" Shade="Shade.Dark" Text="Área Administración" Icon="assignment" ButtonStyle="ButtonStyle.Light"/>
@@ -19,41 +21,31 @@
 <br>
 <br>
 <CListado TItem="Models.Cliente" Data="@clientes" PageSize="5"  Frozen="true">
-       <Columns>
-        <RadzenDataGridColumn TItem=" Models.Cliente" TextAlign="TextAlign.Center" Property="Id" Title="Id" Width="35px" Frozen="true" />
+       <Columns> 
         <RadzenDataGridColumn TItem=" Models.Cliente"  Property="Nombre" Title="Nombre" Width="80px" />
         <RadzenDataGridColumn TItem="Models.Cliente"  Property="Direccion" Title="Direcci&oacute;n" Width="80px"/>
         <RadzenDataGridColumn TItem=" Models.Cliente" Property="DNI" Title="DNI" Width="50px"/> 
         <RadzenDataGridColumn TItem=" Models.Cliente" Property="Telefono" Title="Telef&oacute;no" Width="50px"/> 
+        <RadzenDataGridColumn TItem=" Models.Cliente" Property="FechadeNacimiento" FormatString="{0:d}" Title="Fecha de Nacimiento" Width="90px"/> 
         <RadzenDataGridColumn TItem=" Models.Cliente" TextAlign="TextAlign.Center"  Title="Pedidos" Width="65px">
             <Template Context="item">
                 <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/PedidosDetalles"))" TextAlign="TextAlign.Center" Icon="list" ButtonStyle="ButtonStyle.Success" Style="margin-left: 5px" />
                 <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/AgregarPedidoCliente"))" TextAlign="TextAlign.Center" Icon="add_circle_outline" Color="Color.Warning" Style="margin-left: 5px" />
                 <RadzenButton Click=@RegisterEliminado  TextAlign="TextAlign.Center" Icon="delete" ButtonStyle="ButtonStyle.Danger" Style="margin-left: 5px"/>
             </Template>
-        </RadzenDataGridColumn>  
-        <RadzenDataGridColumn TItem=" Models.Cliente" Title="Ventas" Width="80px" Context="clientes" Filterable="false" Sortable="false">
-            <Template Context="data">
-                <RadzenButton Style="margin-left: 15px" Variant="Variant.Outlined" Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/FacturarVentaCliente"))" Icon="add_shopping_cart" />
-
-                <RadzenCheckBox Style="margin-left: 25px" @bind-Value=@data.PerfilAprobacion TValue="bool" Name=@($"CheckBoxNro{data.Id}")
-                                Disabled="false" />
-                <RadzenLabel Text="@(data.PerfilAprobacion ? "Finalizo" : "No Finalizo")" Component=@($"CheckBoxNro{data.Id}") />
-            </Template>
-        </RadzenDataGridColumn>
-
-        <RadzenDataGridColumn TItem=" Models.Cliente" Title="Acciones" Width="80px" Context="clientes" Filterable="false" Sortable="false">
-            <Template Context="data">
-                <RadzenButton Style="margin-left: 15px" Variant="Variant.Outlined" Click="@(args => NavigationManager.NavigateTo($"/Empleados/Ventas/ClienteFormulario/{data.Id}"))" Text="edit" />
-            </Template>
-        </RadzenDataGridColumn>
+        </RadzenDataGridColumn>   
+            <RadzenDataGridColumn TItem=" Models.Cliente" Title="Acciones" Width="50px" Context="clientes" Filterable="false" Sortable="false">
+                <Template Context="data">
+                    <RadzenButton Style="margin-left: 15px" Variant="Variant.Outlined" Click="@(args => NavigationManager.NavigateTo($"/Empleados/Ventas/ClienteFormulario/{data.Id}"))" Text="Editar" />
+                </Template>
+            </RadzenDataGridColumn> 
+        
     </Columns>  
 </CListado> 
 <br> 
 <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="1rem" Wrap="FlexWrap.Wrap">
    <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/NuevoClienteFormulario"))" Variant="Variant.Flat"  Text="Nuevo" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Secondary" />
-    <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ClienteFormulario"))" Variant="Variant.Flat"  Text="Modificar" Icon="check_circle" ButtonStyle="ButtonStyle.Success"  />
-     <RadzenButton Style="margin-left:auto;" Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ventasProveedor"))" Text="Proveedores" Variant="Variant.Outlined"  Icon="compare_arrows" ButtonStyle="ButtonStyle.Primary"/>
+      <RadzenButton Style="margin-left:auto;" Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ventasProveedor"))" Text="Proveedores" Variant="Variant.Outlined"  Icon="compare_arrows" ButtonStyle="ButtonStyle.Primary"/>
 
 </RadzenStack>
 <br> 

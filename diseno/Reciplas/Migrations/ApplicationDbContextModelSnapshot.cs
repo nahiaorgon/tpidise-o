@@ -52,11 +52,14 @@ namespace Reciplas.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("DNI")
-                        .HasColumnType("int");
+                    b.Property<string>("DNI")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Direccion")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("FechadeNacimiento")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
@@ -64,8 +67,8 @@ namespace Reciplas.Migrations
                     b.Property<bool>("PerfilAprobacion")
                         .HasColumnType("bit");
 
-                    b.Property<int>("Telefono")
-                        .HasColumnType("int");
+                    b.Property<string>("Telefono")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -329,10 +332,10 @@ namespace Reciplas.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("CantidadKgPorItem")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,4)");
 
                     b.Property<decimal>("CantidadKgTotal")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,4)");
 
                     b.Property<string>("Descripcion")
                         .HasColumnType("nvarchar(max)");
