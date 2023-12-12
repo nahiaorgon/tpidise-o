@@ -16,8 +16,8 @@ else
     <RadzenTemplateForm Data="@cliente" Submit="@((Models.Cliente args) => { Submit(args); })">
     <RadzenRow Gap="2rem" Class="rz-p-0 rz-p-lg-4">
             <RadzenColumn Size="12" SizeMD="6">    
+            <RadzenButton style="margin-left:380px" Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/AgregarPedidoCliente"))" TextAlign="TextAlign.Center" Icon="add_circle_outline" Text="Agregar Pedido" Color="Color.Warning"  />
 
-                <RadzenButton style="margin-left:380px" Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/AgregarPedidoCliente"))" TextAlign="TextAlign.Center" Icon="add_circle_outline" Text="Agregar Pedido" Color="Color.Warning"  />
 <br><br>
                 <RadzenStack>
                     <RadzenFieldset Text="Información del cliente">
@@ -61,26 +61,45 @@ else
             </RadzenColumn>
         </RadzenRow> 
             <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="1rem" Wrap="FlexWrap.Wrap">            
-            <RadzenButton ButtonType="ButtonType.Submit" Style="margin-left:15px" Click=@(args => OnClick("Registro Guardado")) Variant="Variant.Flat" Text="Guardar" Icon="check_circle" ButtonStyle="ButtonStyle.Primary"  />
-            <RadzenButton ButtonType="ButtonType.Button" Style="margin-left:auto" Click=@(args => OnClick("Registro sin guardar")) Variant="Variant.Flat" Text="Volver" Icon="history" ButtonStyle="ButtonStyle.Light" />
-           </RadzenStack> 
+            <RadzenButton ButtonType="ButtonType.Submit" Style="margin-left:15px"  Variant="Variant.Flat" Text="Guardar" Icon="check_circle" ButtonStyle="ButtonStyle.Primary"  />
+            <RadzenButton ButtonType="ButtonType.Button" Style="margin-right:15px" Click=@(args => OnClick("Registro sin guardar")) Variant="Variant.Flat" Text="Volver" Icon="history" ButtonStyle="ButtonStyle.Light" />
+                        
+</RadzenStack>  
     </RadzenTemplateForm>
 }
 
 @code {
     DateTime value = DateTime.Now;
-    Models.Cliente cliente = new Models.Cliente();
-
-    async void Submit(Models.Cliente arg)
-    {
-        var client = await _clientRepository.AddCliente(arg);
-
-        NavigationManager.NavigateTo("/Empleados/Ventas/ventasClientes");
-    }
+    Models.Cliente cliente = new Models.Cliente(); 
     private void OnClick(string text)
     {
         NotificationService.Notify(new NotificationMessage { Severity = NotificationSeverity.Warning, Detail = text });
+        NavigationManager.NavigateTo("/Empleados/Ventas/ventasClientes");
+
     }
     
+async void Submit(Models.Cliente arg)
+{ 
+    var existingCliente = await _clientRepository.GetClienteByDNI(arg.DNI);
+    if (existingCliente != null)
+    { 
+        NotificationService.Notify(new NotificationMessage
+        {
+            Severity = NotificationSeverity.Error,
+            Detail = "El cliente con este DNI ya existe. No se puede agregar."
+        });
+    }
+    else
+    { 
+        var client = await _clientRepository.AddCliente(arg);
+        NotificationService.Notify(new NotificationMessage
+        {
+            Severity = NotificationSeverity.Success,
+            Detail = "Cliente agregado exitosamente."
+        });
+        NavigationManager.NavigateTo("/Empleados/Ventas/ventasClientes");
+    }
+}
+
 
 }

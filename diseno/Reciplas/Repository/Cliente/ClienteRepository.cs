@@ -33,5 +33,11 @@ namespace Reciplas.Repository
             await _context.SaveChangesAsync();
             return cliente;
         }
+
+        public async Task<Cliente> GetClienteByDNI(string dni)
+        {
+            return await _context.Clientes.FirstOrDefaultAsync(c => c.DNI == dni);
+        }
+
     }
 }

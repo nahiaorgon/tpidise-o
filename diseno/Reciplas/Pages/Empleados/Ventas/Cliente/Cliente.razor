@@ -52,6 +52,7 @@
 
 @code {
     IEnumerable<Models.Cliente> clientes;   
+    Models.Cliente cliente = new();   
     protected bool cargando = true;    
     bool value;
     [Parameter] public bool SoloLectura { get; set; } = true;
@@ -80,6 +81,7 @@
         _count = persons.Count();
 
        await base.OnInitializedAsync();
+
     }
 
 

@@ -11,5 +11,7 @@ namespace Reciplas.Repository
         Task<Cliente> GetCliente(int clienteId);
 
         Task<Cliente> UpdateCliente(Cliente cliente);
+        Task<Cliente> GetClienteByDNI(string dni);
+
     }
 }
