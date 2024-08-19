@@ -40,19 +40,10 @@
 
     private async Task OnLogin(LoginArgs args)
     {
-        if (args.Username == "ventas" && args.Password == "ventas")
+        if (args.Username == "turnos" && args.Password == "turnos")
         {
-            NavigationManager.NavigateTo("/ventas");
+            NavigationManager.NavigateTo("/turnos/listado");
 
-        }else if (args.Username == "admin" && args.Password == "admin")
-        { 
-            NavigationManager.NavigateTo("/Empleados/Administracion/Consultas");
-        }else if (args.Username == "prod" && args.Password == "prod")
-        { 
-            NavigationManager.NavigateTo("/produccion");
-        }else{
-            ShowMessage = true;
-            ErrorMessage = "Credenciales inválidas";
         }
         await InvokeAsync(StateHasChanged); 
     }
