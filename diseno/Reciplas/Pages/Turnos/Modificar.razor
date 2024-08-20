@@ -28,20 +28,21 @@ else
                                     <RadzenDatePicker Style="width: 100%;" Name="ExpiryDate"
                                                       @bind-Value=@turno.FechaTurno ShowTime="true" DateFormat="dd/MM/yyyy" />
                                 </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="4">
+                                <<RadzenColumn Size="12" SizeMD="4">
                                     <RadzenLabel Text="Hora del turno" />
                                 </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="8">
-                                    <Radzen.Blazor.Rendering.Hours Style="width: 100%;"
-                                                      @bind-Value=@turno.FechaTurno  />
+                                <RadzenColumn Size="12" SizeMD="6">
+                                    <RadzenDatePicker Style="width: 100%;"
+                                                      @bind-Value=@turno.FechaTurno
+                                                      DateFormat="HH:mm"
+                                                      ShowTime="true" TimeOnly="true" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="4">
                                     <RadzenLabel Text="Estado" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenText Style="width: 100%;" Name="CardNr" @bind-Value=@turno.Estado />
-                                </RadzenColumn> 
-                               
+                                    <RadzenCheckBox Style="width: 100%;"@bind-Value=@estadoNombre />
+                                </RadzenColumn>  
                             </RadzenRow>
                         </RadzenStack>
                     </RadzenFieldset>
@@ -66,8 +67,22 @@ else
     public int turnoId { get; set; }
 
     Models.Turno turno;
+    string estadoNombre;
 
+    protected override async Task OnInitializedAsync()
+    {
+        turno = await _clientRepository.GetTurno(turnoId);
 
+        if (turno.Estado == false)
+        {
+            estadoNombre = "No realizado";
+        }
+        else
+        {
+            estadoNombre = "Realizado";
+        }
+
+    } 
 
     async void Submit(Models.Turno arg)
     {
@@ -81,10 +96,8 @@ else
     }
 
 
-    protected override async Task OnInitializedAsync()
-    {
-        turno = await _clientRepository.GetTurno(turnoId);
+    
 
-    }
+
 
 }

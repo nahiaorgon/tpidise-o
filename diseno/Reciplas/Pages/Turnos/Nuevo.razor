@@ -15,9 +15,7 @@ else
 
     <RadzenTemplateForm Data="@turno" Submit="@((Models.Turno args) => { Submit(args); })">
     <RadzenRow Gap="2rem" Class="rz-p-0 rz-p-lg-4">
-            <RadzenColumn Size="12" SizeMD="6">    
- 
-<br><br>
+            <RadzenColumn Size="12" SizeMD="6">     
                 <RadzenStack>
                     <RadzenFieldset Text="Información del turno">
                         <RadzenStack Gap="1rem">
@@ -62,7 +60,7 @@ else
                                     <RadzenLabel Text="DNI" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="6">
-                                    <RadzenTextBox Style="width: 100%;" @bind-Value=@turno.cliente.DNI />
+                                    <RadzenTextBox Style="width: 100%;" @bind-Value=@turno.cliente.DNI Placeholder="Sin caracteres especiales"/>
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="4">
                                     <RadzenLabel Text="Telefono" />
@@ -96,6 +94,14 @@ else
     Models.Turno turno = new Models.Turno(); 
     string estadoNombre = string.Empty;
 
+    protected override async Task OnInitializedAsync()
+    {
+        if (turno.Estado == false)
+        {
+            estadoNombre = "No realizado";
+        }
+    }
+
 
     private void OnClick(string text)
     {
@@ -112,7 +118,7 @@ else
             NotificationService.Notify(new NotificationMessage
         {
             Severity = NotificationSeverity.Error,
-            Detail = "El cliente con este DNI ya existe. No se puede agregar."
+            Detail = "El turno con este DNI ya existe. No se puede agregar."
         });
         }
         else
@@ -121,20 +127,12 @@ else
             NotificationService.Notify(new NotificationMessage
         {
             Severity = NotificationSeverity.Success,
-            Detail = "Cliente agregado exitosamente."
+            Detail = "Turno agregado exitosamente."
         });
             NavigationManager.NavigateTo("/turnos/listado");
         }
     }
-    protected override async Task OnInitializedAsync()
-    {
-        if (turno.Estado == false)
-        {
-            estadoNombre = "No realizado";
-        }
-    }
-
-
+  
     
 
 }
