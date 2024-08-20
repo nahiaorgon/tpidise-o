@@ -1,11 +1,11 @@
-@page "/Empleados/Ventas/NuevoClienteFormulario"
+@page "/turnos/nuevo"
 @using Reciplas.Repository
 @inject NotificationService NotificationService 
 @inherits OwningComponentBase<Turno> 
 @inject NavigationManager NavigationManager
 @inject IClienteRepository _clientRepository
 
-<TituloPrincipal TextoPrincipal="Ventas" TextoSecundario="Clientes" /> 
+<TituloPrincipal TextoPrincipal="Nuevo turno"/> 
 @if (turno == null)
 {
     <p><em>Loading...</em></p>
@@ -21,7 +21,30 @@ else
                 <RadzenStack>
                     <RadzenFieldset Text="Información del cliente">
                         <RadzenStack Gap="1rem">
-                            <RadzenRow AlignItems="AlignItems.Center"> 
+                            <RadzenRow AlignItems="AlignItems.Center">
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Datos del Cliente" />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Nombre y Apellido" />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenText Style="width: 100%;" @bind-Value=@turno.cliente.NombreyApellido />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="DNI" />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenText Style="width: 100%;" @bind-Value=@turno.cliente.DNI />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Estado" />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenDatePicker Style="width: 100%;" Name="ExpiryDate"
+                                                      @bind-Value=@turno.cliente.FechadeNacimiento ShowTime="true" DateFormat="dd/MM/yyyy" />
+                                </RadzenColumn>
+                                <br />
                                 <RadzenColumn Size="12" SizeMD="4">
                                     <RadzenLabel Text="Fecha del turno" />
                                 </RadzenColumn>
@@ -40,30 +63,9 @@ else
                                     <RadzenLabel Text="Estado" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenText Style="width: 100%;" Name="CardNr" @bind-Value=@turno.Estado />
+                                    <RadzenText Style="width: 100%;" @bind-Value=@turno.Estado />
                                 </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="Datos del Cliente" />
-                                </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="Nombre y Apellido" />
-                                </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenText Style="width: 100%;" Name="CardNr" @bind-Value=@turno.cliente.NombreyApellido />
-                                </RadzenColumn>  
-                                <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="DNI" />
-                                </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenText Style="width: 100%;" Name="CardNr" @bind-Value=@turno.cliente.DNI />
-                                </RadzenColumn>  
-                                <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="Estado" />
-                                </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenDatePicker Style="width: 100%;" Name="ExpiryDate"
-                                                      @bind-Value=@turno.cliente.FechadeNacimiento ShowTime="true" DateFormat="dd/MM/yyyy" />
-                                </RadzenColumn>
+                               <br />
                                 <RadzenColumn Size="12" SizeMD="4">
                                     <RadzenLabel Text="Datos del vehículo" />
                                 </RadzenColumn>
@@ -77,19 +79,19 @@ else
                                     <RadzenLabel Text="Marca" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenText Style="width: 100%;" Name="CardNr" @bind-Value=@turno.cliente.vehiculo.Marca />
+                                    <Radzen.Blazor.Rendering.Text Style="width: 100%;" Name="CardNr" @bind-Value=@turno.cliente.vehiculo.Marca />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="4">
                                     <RadzenLabel Text="Patente" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenText Style="width: 100%;" Name="CardNr" @bind-Value=@turno.cliente.vehiculo.Patente />
+                                    <Radzen.Blazor.Rendering.Text Style="width: 100%;" Name="CardNr" @bind-Value=@turno.cliente.vehiculo.Patente />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="4">
                                     <RadzenLabel Text="Color" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenText Style="width: 100%;" Name="CardNr" @bind-Value=@turno.cliente.vehiculo.Color />
+                                    <Radzen.Blazor.Rendering.Text Style="width: 100%;" Name="CardNr" @bind-Value=@turno.cliente.vehiculo.Color />
                                 </RadzenColumn>
                             </RadzenRow>
                         </RadzenStack>

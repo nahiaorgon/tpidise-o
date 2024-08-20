@@ -1,4 +1,3 @@
-using Reciplas.Data;
 using Radzen;
 using Blazored.Modal;
 using Reciplas.Clases;
@@ -32,7 +31,6 @@ builder.Services.AddHttpClient();
 
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
-builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddSingleton(new HttpClient{
         BaseAddress = new Uri("https://localhost:44331/")
         });
