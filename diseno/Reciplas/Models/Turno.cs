@@ -1,6 +1,6 @@
 namespace Reciplas.Models;
 
-public class Turno : EntidadBase{
+public class Turno{
 
     public int  NumeroTurno {get; set;} 
     public DateTime FechaTurno {get; set;} 
