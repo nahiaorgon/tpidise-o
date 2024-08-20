@@ -18,7 +18,7 @@ namespace Reciplas.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     NombreyApellido = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DNI = table.Column<int>(type: "int", nullable: false),
+                    DNI = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Telefono = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     FechadeNacimiento = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -36,7 +36,7 @@ namespace Reciplas.Migrations
                     NumeroTurno = table.Column<int>(type: "int", nullable: false),
                     FechaTurno = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaUltimaModificacion = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Estado = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Estado = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -12,7 +12,7 @@ using Reciplas.Clases;
 namespace Reciplas.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240820015229_InitialCreate")]
+    [Migration("20240820024957_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -33,8 +33,8 @@ namespace Reciplas.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("DNI")
-                        .HasColumnType("int");
+                    b.Property<string>("DNI")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("FechadeNacimiento")
                         .HasColumnType("datetime2");
@@ -58,8 +58,8 @@ namespace Reciplas.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Estado")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("Estado")
+                        .HasColumnType("bit");
 
                     b.Property<DateTime>("FechaTurno")
                         .HasColumnType("datetime2");
