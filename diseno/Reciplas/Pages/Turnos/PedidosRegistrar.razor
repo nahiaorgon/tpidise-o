@@ -1,0 +1,83 @@
+@page "/Empleados/Ventas/AgregarPedidoCliente"
+@using Reciplas.Models;
+@inject NotificationService NotificationService
+@inherits OwningComponentBase<Turno>
+@using System.Collections.Generic;
+@inject DialogService DialogService
+@inject NavigationManager NavigationManager
+
+<TituloPrincipal TextoPrincipal="Ventas" TextoSecundario="Registro de Pedidos" />
+<div>
+@if (order == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <RadzenTemplateForm Data="@order" Submit="@((Order args) => { Submit(args); })">
+        <RadzenRow Gap="2rem" Class="rz-p-0 rz-p-lg-4">
+            <RadzenColumn Size="12" SizeMD="6">
+                <RadzenStack>
+                    <RadzenFieldset Text="Información del Pedido">
+                        <RadzenStack Gap="1rem">
+                            <RadzenRow AlignItems="AlignItems.Center">
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="N°Pedido" />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenTextBox Style="width: 100%;" Name="CardNr" />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Nombre Producto" />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenTextBox Style="width: 100%;" Name="CardNr" />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Descripcion (opcional)" />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenTextBox Style="width: 100%;" Name="CardNr" />
+                                </RadzenColumn>
+                                 
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Fecha" />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="8">
+                                    <RadzenDatePicker Style="width: 100%;" Name="ExpiryDate"
+                                     @bind-Value=@value ShowTime="true" DateFormat="dd/MM/yyyy"/>
+                                </RadzenColumn>
+                            </RadzenRow>
+                        </RadzenStack>
+                    </RadzenFieldset>
+                </RadzenStack>
+            </RadzenColumn>
+        </RadzenRow>
+
+
+        
+    </RadzenTemplateForm>
+}
+<br>
+        <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="1rem" Wrap="FlexWrap.Wrap">
+            <a href="/Empleados/Ventas/ventasClientes"><RadzenButton Style="margin-left: 15px" Click=@(args => OnClick("Registro Agregado")) Text="Agregar" Icon="add_circle_outline" ButtonStyle="ButtonStyle.Primary"/></a>
+            <a href="/Empleados/Ventas/ventasClientes"><RadzenButton Click=@(args => OnClick("No se guardo el Registro")) ButtonStyle="ButtonStyle.Light" Variant="Variant.Flat" Icon="cancel" Text="Cancel"/></a> 
+        </RadzenStack>
+        <br>
+
+    </div>
+@code { 
+    public class Order{  //
+    } 
+    DateTime value = DateTime.Now; 
+    private void OnClick(string text){
+        NotificationService.Notify(new NotificationMessage { Severity = NotificationSeverity.Info, Detail = text });
+    }
+    Order order = new Order(){ 
+        };
+ 
+
+    void Submit(Order arg){
+        //
+    } 
+}
