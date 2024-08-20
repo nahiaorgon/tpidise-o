@@ -67,6 +67,8 @@ else
 
     Models.Turno turno;
 
+
+
     async void Submit(Models.Turno arg)
     {
         var cliente = await _clientRepository.UpdateTurno(arg);
@@ -77,13 +79,12 @@ else
     {
         NotificationService.Notify(new NotificationMessage { Severity = NotificationSeverity.Success, Detail = text });
     }
-    
+
 
     protected override async Task OnInitializedAsync()
     {
         turno = await _clientRepository.GetTurno(turnoId);
 
-        await base.OnInitializedAsync();
     }
 
 }

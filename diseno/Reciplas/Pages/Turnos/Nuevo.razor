@@ -19,79 +19,63 @@ else
  
 <br><br>
                 <RadzenStack>
-                    <RadzenFieldset Text="Información del cliente">
+                    <RadzenFieldset Text="Información del turno">
                         <RadzenStack Gap="1rem">
                             <RadzenRow AlignItems="AlignItems.Center">
                                 <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="Datos del Cliente" />
-                                </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="Nombre y Apellido" />
-                                </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenText Style="width: 100%;" @bind-Value=@turno.cliente.NombreyApellido />
-                                </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="DNI" />
-                                </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenText Style="width: 100%;" @bind-Value=@turno.cliente.DNI />
-                                </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="Estado" />
-                                </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenDatePicker Style="width: 100%;" Name="ExpiryDate"
-                                                      @bind-Value=@turno.cliente.FechadeNacimiento ShowTime="true" DateFormat="dd/MM/yyyy" />
-                                </RadzenColumn>
-                                <br />
-                                <RadzenColumn Size="12" SizeMD="4">
                                     <RadzenLabel Text="Fecha del turno" />
                                 </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenDatePicker Style="width: 100%;" Name="ExpiryDate"
+                                <RadzenColumn Size="12" SizeMD="6">
+                                    <RadzenDatePicker Style="width: 100%;" 
                                                       @bind-Value=@turno.FechaTurno ShowTime="true" DateFormat="dd/MM/yyyy" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="4">
                                     <RadzenLabel Text="Hora del turno" />
                                 </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenDatePicker Style="width: 100%;" Name="ExpiryDate"
-                                                      @bind-Value=@turno.FechaTurno ShowTime="true" DateFormat="dd/MM/yyyy" />
+                                <RadzenColumn Size="12" SizeMD="6">
+                                    <RadzenDatePicker Style="width: 100%;"
+                                                      @bind-Value=@turno.FechaTurno
+                                                      DateFormat="HH:mm"
+                                                      ShowTime="true" TimeOnly="true"
+                                                      />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="4">
                                     <RadzenLabel Text="Estado" />
                                 </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenText Style="width: 100%;" @bind-Value=@turno.Estado />
+                                <RadzenColumn Size="12" SizeMD="6">
+                                    <RadzenTextBox Style="width: 100%;" @bind-Value=@estadoNombre Disabled="true" />
                                 </RadzenColumn>
-                               <br />
+                            </RadzenRow>
+                        </RadzenStack>
+                    </RadzenFieldset>
+
+                               <RadzenFieldset Text="Información del cliente">
+                        <RadzenStack Gap="1rem">
+                            <RadzenRow AlignItems="AlignItems.Center">
                                 <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="Datos del vehículo" />
+                                    <RadzenLabel Text="Nombre y Apellido" />
                                 </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="Modelo" />
-                                </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenText Style="width: 100%;" Name="CardNr" @bind-Value=@turno.cliente.vehiculo.Modelo />
+                                <RadzenColumn Size="12" SizeMD="6">
+                                    <RadzenTextBox Style="width: 100%;" @bind-Value=@turno.cliente.NombreyApellido />
                                 </RadzenColumn> 
                                 <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="Marca" />
+                                    <RadzenLabel Text="DNI" />
                                 </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="8">
-                                    <Radzen.Blazor.Rendering.Text Style="width: 100%;" Name="CardNr" @bind-Value=@turno.cliente.vehiculo.Marca />
-                                </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="Patente" />
-                                </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="8">
-                                    <Radzen.Blazor.Rendering.Text Style="width: 100%;" Name="CardNr" @bind-Value=@turno.cliente.vehiculo.Patente />
+                                <RadzenColumn Size="12" SizeMD="6">
+                                    <RadzenTextBox Style="width: 100%;" @bind-Value=@turno.cliente.DNI />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="4">
-                                    <RadzenLabel Text="Color" />
+                                    <RadzenLabel Text="Telefono" />
                                 </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="8">
-                                    <Radzen.Blazor.Rendering.Text Style="width: 100%;" Name="CardNr" @bind-Value=@turno.cliente.vehiculo.Color />
+                                <RadzenColumn Size="12" SizeMD="6">
+                                    <RadzenTextBox Style="width: 100%;" @bind-Value=@turno.cliente.Telefono />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="4">
+                                    <RadzenLabel Text="Fecha de Nacimiento" />
+                                </RadzenColumn>
+                                <RadzenColumn Size="12" SizeMD="6">
+                                    <RadzenDatePicker Style="width: 100%;"
+                                                      @bind-Value=@turno.cliente.FechadeNacimiento ShowTime="true" DateFormat="dd/MM/yyyy" />
                                 </RadzenColumn>
                             </RadzenRow>
                         </RadzenStack>
@@ -110,35 +94,47 @@ else
 @code {
     DateTime value = DateTime.Now;
     Models.Turno turno = new Models.Turno(); 
+    string estadoNombre = string.Empty;
+
+
     private void OnClick(string text)
     {
         NotificationService.Notify(new NotificationMessage { Severity = NotificationSeverity.Warning, Detail = text });
         NavigationManager.NavigateTo("/turnos/listado");
 
     }
-    
-async void Submit(Models.Turno arg)
-{ 
-    var existingCliente = await _clientRepository.GetTurnoPorNro(arg.NumeroTurno);
-    if (existingCliente != null)
+
+    async void Submit(Models.Turno arg)
     { 
-        NotificationService.Notify(new NotificationMessage
+        var existingCliente = await _clientRepository.GetTurnoPorNro(arg.NumeroTurno);
+        if (existingCliente != null)
+        { 
+            NotificationService.Notify(new NotificationMessage
         {
             Severity = NotificationSeverity.Error,
             Detail = "El cliente con este DNI ya existe. No se puede agregar."
         });
-    }
-    else
-    { 
-        var client = await _clientRepository.AddTurno(arg);
-        NotificationService.Notify(new NotificationMessage
+        }
+        else
+        { 
+            var client = await _clientRepository.AddTurno(arg);
+            NotificationService.Notify(new NotificationMessage
         {
             Severity = NotificationSeverity.Success,
             Detail = "Cliente agregado exitosamente."
         });
             NavigationManager.NavigateTo("/turnos/listado");
+        }
     }
-}
+    protected override async Task OnInitializedAsync()
+    {
+        if (turno.Estado == false)
+        {
+            estadoNombre = "No realizado";
+        }
+    }
 
+
+    
 
 }
