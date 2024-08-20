@@ -30,9 +30,9 @@
 
             <Template Context="item">
                 <RadzenTooltip Text="Nuevo">
-                    <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/PedidosDetalles"))" TextAlign="TextAlign.Center" Icon="list" ButtonStyle="ButtonStyle.Success" Style="margin-left: 5px" />
+                    <RadzenButton Click="@(args => NavigationManager.NavigateTo("/turnos/detalles/{item.Id}"))" TextAlign="TextAlign.Center" Icon="list" ButtonStyle="ButtonStyle.Success" Style="margin-left: 5px" />
                 </RadzenTooltip>
-                 <RadzenButton Style="margin-left: 15px" Variant="Variant.Outlined" Click="@(args => NavigationManager.NavigateTo($"/Empleados/Ventas/ClienteFormulario/{item.Id}"))" Icon="list" />
+                <RadzenButton Style="margin-left: 15px" Variant="Variant.Outlined" Click="@(args => NavigationManager.NavigateTo($"/turnos/editar/{item.Id}"))" Icon="list" />
                 </Template>
             </RadzenDataGridColumn> 
         
@@ -70,7 +70,7 @@
     private int _count;
     protected override async Task OnInitializedAsync()
     {
-        var persons = await _clientRepository.GetClientes();
+        var persons = await _clientRepository.GetTurnos();
 
         turnos = persons;
         _count = persons.Count();

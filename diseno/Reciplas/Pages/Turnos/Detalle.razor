@@ -1,4 +1,4 @@
-@page "/Empleados/Ventas/PedidosDetalles"
+@page "/turnos/detalles/{turnoId:int}"
 @using Reciplas.Models;
 @inject NotificationService NotificationService
 @inherits OwningComponentBase<Turno> 
@@ -38,18 +38,13 @@
         </RadzenRow>
     </RadzenCard>
     <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.End" Gap="0">
-        <RadzenButton Click="@(args => NavigationManager.NavigateTo("/Empleados/Ventas/ventasClientes"))" Variant="Variant.Text" class="rz-text-secondary-color" Text="Volver" /> 
+        <RadzenButton Click="@(args => NavigationManager.NavigateTo("/turnos/listado"))" Variant="Variant.Text" class="rz-text-secondary-color" Text="Volver" />
     </RadzenStack>
 </RadzenCard>
 
 
-@code {
-  //  Order order;
-
-    protected override async Task OnInitializedAsync()
-    {
-        await base.OnInitializedAsync();
-
-       //order = dbContext.Orders.Include("Customer").Include("Employee").FirstOrDefault();
-    }
+@code 
+{
+    [Parameter]
+    public int turnoId { get; set; }
 }
