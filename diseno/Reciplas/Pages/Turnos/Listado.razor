@@ -25,7 +25,7 @@
         @* <RadzenDataGridColumn TItem="Turno" Property="@turno.cliente.NombreyApellido" Title="Cliente" Width="80px" /> *@
         <RadzenDataGridColumn TItem="Turno" Title="Estado" Width="100px">
             <Template Context="data">
-                @(data.Estado ? "Realizado" : "No Realizado")
+                @(data.Estado ? "Ocupado" : "Libre")
             </Template>
         </RadzenDataGridColumn>      
         <RadzenDataGridColumn TItem="Turno" Property="FechaTurno" FormatString="{0:d}" Title="Fecha" Width="90px" />

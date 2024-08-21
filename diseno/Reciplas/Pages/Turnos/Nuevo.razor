@@ -24,8 +24,10 @@ else
                                     <RadzenLabel Text="Fecha del turno" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="6">
-                                    <RadzenDatePicker Style="width: 100%;" 
-                                                      @bind-Value=@turno.FechaTurno ShowTime="true" DateFormat="dd/MM/yyyy" />
+                                    <RadzenDatePicker Style="width: 100%;"
+                                                      @bind-Value=@turno.FechaTurno 
+                                                      ShowTime="true"
+                                                      DateFormat="dd/MM/yyyy" Change="@(args => VerificarTurno(turno.FechaTurno))" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="4">
                                     <RadzenLabel Text="Hora del turno" />
@@ -42,8 +44,8 @@ else
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="6">
                                     <RadzenTextBox Style="width: 100%;"
-                                                   Value="@(turno.Estado ? "Realizado" : "No Realizado")"
-                                                   Disabled="true" />
+                                                   Value="@(turno.Estado ? "Libre" : "Ocupado")"
+                                                   Disabled="true"  />
                                 </RadzenColumn> 
                             </RadzenRow>
                         </RadzenStack>
@@ -98,9 +100,9 @@ else
 
     protected override async Task OnInitializedAsync()
     { 
-        turno.Estado = false; 
+        turno.Estado = true; 
     }
-     
+
     private void OnClick(string text)
     {
         NotificationService.Notify(new NotificationMessage { Severity = NotificationSeverity.Warning, Detail = text });
@@ -135,7 +137,20 @@ else
             NavigationManager.NavigateTo("/turnos/listado");
         }
     }
-  
-    
+
+    async void VerificarTurno(DateTime fechaTurno)
+    {
+        var existingTurno = await _clientRepository.GetFechaTurno(fechaTurno);
+
+        if (existingTurno != null)
+        {
+            NotificationService.Notify(new NotificationMessage
+            {
+                Severity = NotificationSeverity.Error,
+                Detail = "Ya existe un turno en la fecha indicada. No se puede agregar."
+            });
+            turno.Estado = false;
+        }
+    }
 
 }

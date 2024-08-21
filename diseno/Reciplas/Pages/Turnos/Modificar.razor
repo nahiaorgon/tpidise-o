@@ -41,9 +41,11 @@ else
                                     <RadzenLabel Text="Estado" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenLabel Text="Marcar para cambiar a Estado: Realizado" /> 
+                                    <RadzenLabel Text="Cambiar estado a: Ocupado" /> 
                                     <br />
-                                    <RadzenCheckBox @bind-Value=@turno.Estado />
+                                    <RadzenTextBox Style="width: 100%;"
+                                                   Value="@(turno.Estado ? "Libre" : "Ocupado")"
+                                                   Disabled="true" />
                                 </RadzenColumn>  
                             </RadzenRow>
                         </RadzenStack>

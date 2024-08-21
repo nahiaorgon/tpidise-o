@@ -46,6 +46,12 @@ namespace Reciplas.Repository
                 .FirstOrDefaultAsync(c => c.DNI == DNI && c.Turnos.Any(t => t.FechaTurno == fechaTurno));
         }
 
+        public async Task<Turno> GetFechaTurno(DateTime fechaTurno)
+        {
+            return await _context.Turnos
+                .FirstOrDefaultAsync(c=>c.FechaTurno.Date == fechaTurno.Date);
+        }
+
         public async Task EliminarTurno(int turnoId)
         { 
             var turno = await _context.Turnos.FindAsync(turnoId);
