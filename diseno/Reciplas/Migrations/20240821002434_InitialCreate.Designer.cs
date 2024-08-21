@@ -12,7 +12,7 @@ using Reciplas.Clases;
 namespace Reciplas.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240820024957_InitialCreate")]
+    [Migration("20240821002434_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
