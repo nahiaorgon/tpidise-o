@@ -6,7 +6,7 @@ public class Turno
     public int  NumeroTurno {get; set;} 
     public DateTime FechaTurno {get; set;} = DateTime.Now;
     public DateTime FechaUltimaModificacion {get; set; } 
-    public bool Estado { get; set; } = false;
+    public bool Estado { get; set; }  
 
     public Cliente cliente = new Cliente();
 }

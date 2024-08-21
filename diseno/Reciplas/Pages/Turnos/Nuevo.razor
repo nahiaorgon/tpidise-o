@@ -41,8 +41,10 @@ else
                                     <RadzenLabel Text="Estado" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="6">
-                                    <RadzenTextBox Style="width: 100%;" @bind-Value=@estadoNombre Disabled="true" />
-                                </RadzenColumn>
+                                    <RadzenTextBox Style="width: 100%;"
+                                                   Value="@(turno.Estado ? "Realizado" : "No Realizado")"
+                                                   Disabled="true" />
+                                </RadzenColumn> 
                             </RadzenRow>
                         </RadzenStack>
                     </RadzenFieldset>
@@ -91,18 +93,14 @@ else
 
 @code {
     DateTime value = DateTime.Now;
-    Models.Turno turno = new Models.Turno(); 
+    Turno turno = new Models.Turno(); 
     string estadoNombre = string.Empty;
 
     protected override async Task OnInitializedAsync()
-    {
-        if (turno.Estado == false)
-        {
-            estadoNombre = "No realizado";
-        }
+    { 
+        turno.Estado = false; 
     }
-
-
+     
     private void OnClick(string text)
     {
         NotificationService.Notify(new NotificationMessage { Severity = NotificationSeverity.Warning, Detail = text });
