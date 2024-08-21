@@ -42,6 +42,9 @@ namespace Reciplas.Migrations
                     b.Property<string>("Telefono")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("VehiculoId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("Clientes");
@@ -54,6 +57,9 @@ namespace Reciplas.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ClienteId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("Estado")
                         .HasColumnType("bit");
@@ -68,6 +74,8 @@ namespace Reciplas.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ClienteId");
 
                     b.ToTable("Turnos");
                 });
@@ -98,6 +106,22 @@ namespace Reciplas.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Vehiculos");
+                });
+
+            modelBuilder.Entity("Reciplas.Models.Turno", b =>
+                {
+                    b.HasOne("Reciplas.Models.Cliente", "cliente")
+                        .WithMany("Turnos")
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("cliente");
+                });
+
+            modelBuilder.Entity("Reciplas.Models.Cliente", b =>
+                {
+                    b.Navigation("Turnos");
                 });
 #pragma warning restore 612, 618
         }

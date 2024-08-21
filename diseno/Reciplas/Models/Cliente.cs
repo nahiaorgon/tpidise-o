@@ -1,4 +1,6 @@
 
+using Microsoft.EntityFrameworkCore;
+
 namespace Reciplas.Models;
 public class Cliente
 {
@@ -9,5 +11,9 @@ public class Cliente
     public DateTime FechadeNacimiento { get; set; }
 
     public Vehiculo vehiculo = new Vehiculo();
+    public int VehiculoId { get; set; } // Clave foránea
+
+    public ICollection<Turno> Turnos { get; set; } = new List<Turno>(); // Propiedad de navegación inversa
+
 }
 

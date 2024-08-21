@@ -9,4 +9,6 @@ public class Turno
     public bool Estado { get; set; }  
 
     public Cliente cliente = new Cliente();
+    public int ClienteId { get; set; } // Clave foránea
+
 }

@@ -23,10 +23,14 @@ namespace Reciplas.Repository
         }
 
         public async Task<Turno> GetTurno(int turnoId)
-            => await _context.Turnos.FirstOrDefaultAsync(c => c.Id == turnoId);
+            => await _context.Turnos
+                                .Include(t => t.cliente)
+                                .FirstOrDefaultAsync(c => c.Id == turnoId);
 
         public async Task<IEnumerable<Turno>> GetTurnos()
-            => await _context.Turnos.ToListAsync();
+            => await _context.Turnos
+                                .Include(t => t.cliente)
+                                .ToListAsync();
 
         public async Task<Turno> UpdateTurno(Turno turno)
         {
