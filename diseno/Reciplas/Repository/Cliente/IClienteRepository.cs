@@ -12,6 +12,6 @@ namespace Reciplas.Repository
 
         Task<Turno> UpdateTurno(Turno turno);
         Task<Cliente> GetClientePorDNIYFechaTurno(string DNI, DateTime fechaTurno);
-
+        Task EliminarTurno(int turnoId);
     }
 }

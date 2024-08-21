@@ -46,6 +46,21 @@ namespace Reciplas.Repository
                 .FirstOrDefaultAsync(c => c.DNI == DNI && c.Turnos.Any(t => t.FechaTurno == fechaTurno));
         }
 
+        public async Task EliminarTurno(int turnoId)
+        { 
+            var turno = await _context.Turnos.FindAsync(turnoId);
+             
+            if (turno != null)
+            { 
+                _context.Turnos.Remove(turno);
+                 
+                await _context.SaveChangesAsync();
+            }
+            else
+            { 
+                throw new Exception("Turno no encontrado.");
+            }
+        }
 
     }
 }
