@@ -33,7 +33,7 @@
         <RadzenDataGridColumn TItem="Turno" Title="Acciones" Width="50px" Context="clientes" Filterable="false" Sortable="false"> 
         <Template Context="item"> 
             <RadzenButton Click="@(args => NavigationManager.NavigateTo($"/turnos/detalles/{item.Id}"))" TextAlign="TextAlign.Center" Icon="list" ButtonStyle="ButtonStyle.Success" Style="margin-left: 5px" />
-            <RadzenButton Style="margin-left: 15px" Variant="Variant.Outlined" Click="@(args => NavigationManager.NavigateTo($"/turnos/editar/{item.Id}"))" Icon="list" />
+                <RadzenButton Style="margin-left: 15px" Variant="Variant.Outlined" Click="@(args => NavigationManager.NavigateTo($"/turnos/editar/{item.Id}"))" Icon="edit" />
             </Template>
         </RadzenDataGridColumn> 
         

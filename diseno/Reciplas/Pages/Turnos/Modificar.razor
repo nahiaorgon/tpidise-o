@@ -31,7 +31,7 @@ else
                                 <RadzenColumn Size="12" SizeMD="4">
                                     <RadzenLabel Text="Hora del turno" />
                                 </RadzenColumn>
-                                <RadzenColumn Size="12" SizeMD="6">
+                                <RadzenColumn Size="12" SizeMD="8">
                                     <RadzenDatePicker Style="width: 100%;"
                                                       @bind-Value=@turno.FechaTurno
                                                       DateFormat="HH:mm"
@@ -41,7 +41,9 @@ else
                                     <RadzenLabel Text="Estado" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="8">
-                                    <RadzenCheckBox Style="width: 100%;"@bind-Value=@estadoNombre />
+                                    <RadzenLabel Text="Marcar check para cambiar a Estado: Realizado" /> 
+                                    <br />
+                                    <RadzenCheckBox @bind-Value=@turno.Estado />
                                 </RadzenColumn>  
                             </RadzenRow>
                         </RadzenStack>
@@ -53,7 +55,7 @@ else
         <br>
             <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="1rem" Wrap="FlexWrap.Wrap">
                 <RadzenButton ButtonType="ButtonType.Submit" Style="margin-left:15px;" Click=@(args => OnClick("Registro Modificado")) Variant="Variant.Flat" Text="Modificar" Icon="check_circle" ButtonStyle="ButtonStyle.Success" />
-                <RadzenButton ButtonType="ButtonType.Button" Click=@(args => OnClick("Registro sin modificar")) Text="Volver" Icon="refresh" ButtonStyle="ButtonStyle.Light" />
+            <RadzenButton ButtonType="ButtonType.Button" Click="@(args => NavigationManager.NavigateTo("/turnos/listado"))" Text="Volver" Icon="refresh" ButtonStyle="ButtonStyle.Light" />
             </RadzenStack> 
     </RadzenTemplateForm>
 }
@@ -72,16 +74,7 @@ else
     protected override async Task OnInitializedAsync()
     {
         turno = await _clientRepository.GetTurno(turnoId);
-
-        if (turno.Estado == false)
-        {
-            estadoNombre = "No realizado";
-        }
-        else
-        {
-            estadoNombre = "Realizado";
-        }
-
+  
     } 
 
     async void Submit(Models.Turno arg)

@@ -32,7 +32,7 @@
                 <RadzenText TextStyle="TextStyle.Overline" class="rz-color-primary-light rz-display-flex rz-mt-4 rz-mb-0">Hora</RadzenText>
                 <RadzenText TextStyle="TextStyle.Body1"><b>@turno.FechaTurno.Hour</b></RadzenText>
                 <RadzenText TextStyle="TextStyle.Overline" class="rz-color-primary-light rz-display-flex rz-mt-4 rz-mb-0">Estado</RadzenText>
-                <RadzenText TextStyle="TextStyle.Body1"><b>@turno.Estado</b></RadzenText>
+                <RadzenText TextStyle="TextStyle.Body1"><b>@estadoNombre</b></RadzenText>
             </RadzenColumn>
         </RadzenRow>
     </RadzenCard>
@@ -48,10 +48,21 @@
     public int turnoId { get; set; } 
 
     Turno turno = new Turno();
+    string estadoNombre;
+
 
     protected override async Task OnInitializedAsync()
     {
         turno = await _clientRepository.GetTurno(turnoId);
+
+        if (turno.Estado == false)
+        {
+            estadoNombre = "No realizado";
+        }
+        else
+        {
+            estadoNombre = "Realizado";
+        }
     }
 
 }
