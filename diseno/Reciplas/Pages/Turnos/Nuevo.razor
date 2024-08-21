@@ -110,14 +110,14 @@ else
 
     async void Submit(Turno arg)
     { 
-        var existingCliente = await _clientRepository.GetTurnoPorDNI(arg.cliente.DNI);
+        var existingCliente = await _clientRepository.GetClientePorDNIYFechaTurno(arg.cliente.DNI, arg.FechaTurno);
 
         if (existingCliente != null)
         { 
             NotificationService.Notify(new NotificationMessage
         {
             Severity = NotificationSeverity.Error,
-            Detail = "El turno con este DNI ya existe. No se puede agregar."
+            Detail = "Ya existe un turno asociado al cliente. No se puede agregar."
         });
         }
         else

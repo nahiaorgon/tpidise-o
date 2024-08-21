@@ -39,10 +39,13 @@ namespace Reciplas.Repository
             return turno;
         }
 
-        public async Task<Cliente> GetTurnoPorDNI(string DNI)
+        public async Task<Cliente> GetClientePorDNIYFechaTurno(string DNI, DateTime fechaTurno)
         {
-            return await _context.Clientes.FirstOrDefaultAsync(c => c.DNI == DNI);
+            return await _context.Clientes
+                .Include(c => c.Turnos)  // Incluye la relación con los turnos
+                .FirstOrDefaultAsync(c => c.DNI == DNI && c.Turnos.Any(t => t.FechaTurno == fechaTurno));
         }
+
 
     }
 }
