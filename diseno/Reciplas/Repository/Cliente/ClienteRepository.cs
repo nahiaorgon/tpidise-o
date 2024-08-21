@@ -15,6 +15,13 @@ namespace Reciplas.Repository
          
         public async Task<Turno> AddTurno(Turno turno)
         {
+            var ultimoTurno = await _context.Turnos
+                .OrderByDescending(t => t.NumeroTurno)
+                .FirstOrDefaultAsync();
+
+            // Asignar el siguiente NumeroTurno
+            turno.NumeroTurno = (ultimoTurno?.NumeroTurno ?? 0) + 1; 
+
             _context.Turnos.Add(turno);
             _context.Clientes.Add(turno.cliente);
             await _context.SaveChangesAsync();
@@ -67,6 +74,8 @@ namespace Reciplas.Repository
                 throw new Exception("Turno no encontrado.");
             }
         }
+
+         
 
     }
 }

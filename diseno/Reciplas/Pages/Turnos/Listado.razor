@@ -22,7 +22,6 @@
 <CListado TItem="Turno" Data="@turnos" PageSize="5" Frozen="true">
        <Columns> 
         <RadzenDataGridColumn TItem="Turno" Property="NumeroTurno" Title="Número" Width="80px" /> 
-        @* <RadzenDataGridColumn TItem="Turno" Property="@turno.cliente.NombreyApellido" Title="Cliente" Width="80px" /> *@
         <RadzenDataGridColumn TItem="Turno" Title="Estado" Width="100px">
             <Template Context="data">
                 @(data.Estado ? "Ocupado" : "Libre")
