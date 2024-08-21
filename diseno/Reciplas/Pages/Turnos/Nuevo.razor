@@ -112,7 +112,7 @@ else
 
     async void Submit(Turno arg)
     { 
-        var existingCliente = await _clientRepository.GetTurnoPorNro(arg.NumeroTurno);
+        var existingCliente = await _clientRepository.GetTurnoPorDNI(arg.cliente.DNI);
 
         if (existingCliente != null)
         { 

@@ -35,9 +35,9 @@ namespace Reciplas.Repository
             return turno;
         }
 
-        public async Task<Turno> GetTurnoPorNro(int nro)
+        public async Task<Cliente> GetTurnoPorDNI(string DNI)
         {
-            return await _context.Turnos.FirstOrDefaultAsync(c => c.NumeroTurno == nro);
+            return await _context.Clientes.FirstOrDefaultAsync(c => c.DNI == DNI);
         }
 
     }

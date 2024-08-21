@@ -11,7 +11,7 @@ namespace Reciplas.Repository
         Task<Turno> GetTurno(int turnoId);
 
         Task<Turno> UpdateTurno(Turno turno);
-        Task<Turno> GetTurnoPorNro(int nro);
+        Task<Cliente> GetTurnoPorDNI(string DNI);
 
     }
 }
