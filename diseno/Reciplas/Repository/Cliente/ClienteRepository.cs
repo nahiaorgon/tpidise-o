@@ -12,37 +12,11 @@ namespace Reciplas.Repository
         {
             _context = context;
         }
-
-        //public async Task<Cliente> AddCliente(Cliente cliente)
-        //{
-        //    _context.Clientes.Add(cliente);
-        //    await _context.SaveChangesAsync();
-
-        //    return cliente;
-        //}
-
-        //public async Task<Cliente> GetCliente(int clienteId)
-        //    => await _context.Clientes.FirstOrDefaultAsync(c => c.Id == clienteId);
-
-        //public async Task<IEnumerable<Cliente>> GetClientes()
-        //    => await _context.Clientes.ToListAsync();
-
-        //public async Task<Cliente> UpdateCliente(Cliente cliente)
-        //{
-        //    _context.Clientes.Update(cliente);
-        //    await _context.SaveChangesAsync();
-        //    return cliente;
-        //}
-
-        //public async Task<Cliente> GetClienteByDNI(string dni)
-        //{
-        //    return await _context.Clientes.FirstOrDefaultAsync(c => c.DNI == dni);
-        //}
-
-
+         
         public async Task<Turno> AddTurno(Turno turno)
         {
             _context.Turnos.Add(turno);
+            _context.Clientes.Add(turno.cliente);
             await _context.SaveChangesAsync();
 
             return turno;

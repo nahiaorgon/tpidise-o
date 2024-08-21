@@ -28,7 +28,7 @@ else
                                     <RadzenDatePicker Style="width: 100%;" Name="ExpiryDate"
                                                       @bind-Value=@turno.FechaTurno ShowTime="true" DateFormat="dd/MM/yyyy" />
                                 </RadzenColumn>
-                                <<RadzenColumn Size="12" SizeMD="4">
+                                <RadzenColumn Size="12" SizeMD="4">
                                     <RadzenLabel Text="Hora del turno" />
                                 </RadzenColumn>
                                 <RadzenColumn Size="12" SizeMD="6">
@@ -86,6 +86,8 @@ else
 
     async void Submit(Models.Turno arg)
     {
+        turno.FechaUltimaModificacion = DateTime.Now;
+
         var cliente = await _clientRepository.UpdateTurno(arg);
 
         NavigationManager.NavigateTo("/turnos/listado");

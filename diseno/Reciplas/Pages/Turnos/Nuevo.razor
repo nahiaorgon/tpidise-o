@@ -110,9 +110,10 @@ else
 
     }
 
-    async void Submit(Models.Turno arg)
+    async void Submit(Turno arg)
     { 
         var existingCliente = await _clientRepository.GetTurnoPorNro(arg.NumeroTurno);
+
         if (existingCliente != null)
         { 
             NotificationService.Notify(new NotificationMessage
@@ -123,7 +124,11 @@ else
         }
         else
         { 
+            turno.FechaUltimaModificacion = DateTime.Now;
+            turno.NumeroTurno++;
+
             var client = await _clientRepository.AddTurno(arg);
+
             NotificationService.Notify(new NotificationMessage
         {
             Severity = NotificationSeverity.Success,

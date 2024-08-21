@@ -21,20 +21,18 @@
 <br>
 <CListado TItem="Models.Turno" Data="@turnos" PageSize="5" Frozen="true">
        <Columns> 
-        <RadzenDataGridColumn TItem=" Models.Turno" Property="Número" Title="Número" Width="80px" />
-        <RadzenDataGridColumn TItem=" Models.Turno" Property="Cliente" Title="Cliente" Width="80px" />
+        <RadzenDataGridColumn TItem=" Models.Turno" Property="NumeroTurno" Title="Número" Width="80px" />
+        <RadzenDataGridColumn TItem=" Models.Turno" Property="@turno.cliente.NombreyApellido" Title="Cliente" Width="80px" />
         <RadzenDataGridColumn TItem=" Models.Turno" Property="Estado" Title="Estado" Width="50px" /> 
-        <RadzenDataGridColumn TItem=" Models.Turno" Property="Hora" Title="Hora" Width="50px" />
         <RadzenDataGridColumn TItem=" Models.Turno" Property="Fecha" FormatString="{0:d}" Title="Fecha" Width="90px" />
+        <RadzenDataGridColumn TItem=" Models.Turno" Property="@turno.FechaTurno.ToString("HH:mm")" Title="Hora" Width="50px" />
         <RadzenDataGridColumn TItem=" Models.Turno" Title="Acciones" Width="50px" Context="clientes" Filterable="false" Sortable="false">
 
-            <Template Context="item">
-                <RadzenTooltip Text="Nuevo">
-                    <RadzenButton Click="@(args => NavigationManager.NavigateTo($"/turnos/detalles/{item.Id}"))" TextAlign="TextAlign.Center" Icon="list" ButtonStyle="ButtonStyle.Success" Style="margin-left: 5px" />
-                </RadzenTooltip>
-                <RadzenButton Style="margin-left: 15px" Variant="Variant.Outlined" Click="@(args => NavigationManager.NavigateTo($"/turnos/editar/{item.Id}"))" Icon="list" />
-                </Template>
-            </RadzenDataGridColumn> 
+        <Template Context="item"> 
+            <RadzenButton Click="@(args => NavigationManager.NavigateTo($"/turnos/detalles/{item.Id}"))" TextAlign="TextAlign.Center" Icon="list" ButtonStyle="ButtonStyle.Success" Style="margin-left: 5px" />
+            <RadzenButton Style="margin-left: 15px" Variant="Variant.Outlined" Click="@(args => NavigationManager.NavigateTo($"/turnos/editar/{item.Id}"))" Icon="list" />
+            </Template>
+        </RadzenDataGridColumn> 
         
     </Columns>  
 </CListado> 
@@ -45,8 +43,8 @@
 <br> 
 
 @code {
-    IEnumerable<Models.Turno> turnos;   
-    Models.Turno turno = new();
+    IEnumerable<Turno> turnos;   
+    Turno turno = new();
     protected bool cargando = true;    
 
     bool EmployeeIDVisible = false; 
