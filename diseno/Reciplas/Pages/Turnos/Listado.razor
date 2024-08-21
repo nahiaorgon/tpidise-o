@@ -23,8 +23,11 @@
        <Columns> 
         <RadzenDataGridColumn TItem="Turno" Property="NumeroTurno" Title="Número" Width="80px" />
         <RadzenDataGridColumn TItem="Turno" Property="@turno.cliente.NombreyApellido" Title="Cliente" Width="80px" />
-        <RadzenDataGridColumn TItem="Turno" Property="@_estado" Title="Estado" Width="50px" />
-        <RadzenDataGridColumn TItem="Turno" Property="FechaTurno" FormatString="{0:d}" Title="Fecha" Width="90px" />
+        <RadzenDataGridColumn TItem="Turno" Title="Estado" Width="100px">
+            <Template Context="data">
+                @(data.Estado ? "No realizado" : "Realizado")
+            </Template>
+        </RadzenDataGridColumn>        <RadzenDataGridColumn TItem="Turno" Property="FechaTurno" FormatString="{0:d}" Title="Fecha" Width="90px" />
         <RadzenDataGridColumn TItem="Turno" Property="FechaTurno" FormatString="{0:t}" Title="Hora" Width="90px" />
         <RadzenDataGridColumn TItem="Turno" Title="Acciones" Width="50px" Context="clientes" Filterable="false" Sortable="false"> 
         <Template Context="item"> 
@@ -61,21 +64,8 @@
         var persons = await _clientRepository.GetTurnos();
 
         turnos = persons;
-        _count = persons.Count();
+        _count = persons.Count(); 
 
-        if (persons.FirstOrDefault().Estado)
-        {
-            _estado = "No realizado";
-        }
-        else
-        {
-            _estado = "realizado";
-
-        }
-
-    }
-
- 
-
+    } 
 }
 
